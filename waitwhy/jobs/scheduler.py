@@ -58,13 +58,24 @@ class Cron:
             return dom_ok and dow_ok
         return dom_ok or dow_ok  # standard cron semantics when both are restricted
 
-    def next_slot(self, now: datetime, horizon: timedelta = timedelta(days=8)) -> datetime | None:
+    def _day_ok(self, t: datetime) -> bool:
+        if t.month not in self.months:
+            return False
+        dom_ok, dow_ok = t.day in self.dom, (t.weekday() + 1) % 7 in self.dow
+        return dom_ok and dow_ok if (self.dom_any or self.dow_any) else dom_ok or dow_ok
+
+    def next_slot(self, now: datetime, horizon: timedelta = timedelta(days=40)) -> datetime | None:
         t = now.replace(second=0, microsecond=0) + timedelta(minutes=1)
         end = now + horizon
-        while t <= end:
-            if self.matches(t):
+        while t <= end:  # skip whole days and hours that can't match, so monthly jobs stay cheap
+            if not self._day_ok(t):
+                t = (t + timedelta(days=1)).replace(hour=0, minute=0)
+            elif t.hour not in self.hours:
+                t = (t + timedelta(hours=1)).replace(minute=0)
+            elif self.matches(t):
                 return t
-            t += timedelta(minutes=1)
+            else:
+                t += timedelta(minutes=1)
         return None
 
     def last_slot(self, now: datetime, lookback: timedelta) -> datetime | None:
@@ -75,6 +86,28 @@ class Cron:
                 return t
             t -= timedelta(minutes=1)
         return None
+
+
+_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+
+def describe(expr: str) -> str:
+    """Plain-words version of the cron shapes used in company.yaml; anything else is shown as is."""
+    m, h, dom, mon, dow = expr.split()
+    if m.startswith("*/") and h == dom == mon == dow == "*":
+        return f"every {m[2:]} min"
+    if m.isdigit() and h == dom == mon == dow == "*":
+        return f"every hour at :{int(m):02d}"
+    if not (m.isdigit() and mon == "*" and all(x.isdigit() for x in h.split(","))):
+        return expr
+    times = ", ".join(f"{int(x):02d}:{int(m):02d}" for x in h.split(","))
+    if dom == "*" and dow == "*":
+        return f"daily at {times}"
+    if dom == "*" and dow.isdigit():
+        return f"{_DAYS[int(dow) % 7]}s at {times}"
+    if dom.isdigit() and dow == "*":
+        return f"day {dom} of each month at {times}"
+    return expr
 
 
 def due_jobs(now_local: datetime, schedules: dict[str, dict], catch_up: timedelta = timedelta(hours=6)):

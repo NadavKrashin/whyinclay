@@ -60,3 +60,25 @@ def test_manual_refresh_rereads_recent_posts(session, cfg, monkeypatch):
     monkeypatch.setattr(ingest, "adapter_for", lambda *a: A())
     assert ingest.collect(session, cfg)["skipped_recent"] == 1            # scheduled run: an hour is too recent
     assert ingest.collect(session, cfg, min_gap_hours=0.25)["snapshots"] == 1
+
+
+def test_describe_cron():
+    from waitwhy.jobs.scheduler import describe
+    assert describe("*/30 * * * *") == "every 30 min"
+    assert describe("15 * * * *") == "every hour at :15"
+    assert describe("30 1,7,13,19 * * *") == "daily at 01:30, 07:30, 13:30, 19:30"
+    assert describe("0 10 * * 0") == "Suns at 10:00"
+    assert describe("0 10 1 * *") == "day 1 of each month at 10:00"
+
+
+def test_schedule_overview_lists_every_timed_job(session, cfg):
+    rows = ds.schedule_overview(session, cfg)
+    assert {r["name"] for r in rows} == set(cfg["schedules"])
+    assert all(r["next_at"] for r in rows) and all(r["purpose"] for r in rows)
+
+
+def test_next_slot_monthly_and_weekly():
+    t = datetime(2026, 10, 17, 8, 0)   # a Saturday
+    assert Cron("0 10 1 * *").next_slot(t) == datetime(2026, 11, 1, 10, 0)
+    assert Cron("0 10 * * 0").next_slot(t) == datetime(2026, 10, 18, 10, 0)
+    assert Cron("*/5 * * * *").next_slot(t) == datetime(2026, 10, 17, 8, 5)

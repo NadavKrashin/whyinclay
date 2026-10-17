@@ -495,7 +495,8 @@ def agents_page(request: Request, u: str = Depends(user), s: Session = Depends(d
     workers = s.execute(select(SystemSetting).where(SystemSetting.key.like("worker_heartbeat:%"))).scalars().all()
     sched = s.get(SystemSetting, "scheduler_heartbeat")
     return render(request, "agents.html", {"runs": runs, "jobs": jobs, "counts": counts, "workers": workers,
-                                           "sched": sched}, u, s)
+                                           "sched": sched, "schedule": datasources.schedule_overview(s, get_config(s)),
+                                           "queued": counts.get("queued", 0)}, u, s)
 
 
 @app.post("/jobs/{jid}/retry")

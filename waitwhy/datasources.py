@@ -162,6 +162,37 @@ def all_sources(session: Session, cfg: dict) -> list[Source]:
     return out
 
 
+SCHEDULE_PURPOSE = {
+    "import_episodes": "Bring in new episodes from GitHub, check them, give them a posting slot",
+    "publish_due": "Post videos whose slot has come; re-send missed ones",
+    "recover_stalled": "Restart jobs that froze",
+    "production_tick": "Restart in-app production stages that stalled (idle in Claude-runs mode)",
+    "analytics_collect": "Read views and likes from YouTube and Instagram",
+    "health_check": "Check services, storage, failed jobs and budget; raise alerts",
+    "strategy_analysis": "Compare videos by category and hook (needs 8 posts with 7-day data)",
+    "content_planning": "Plan production (in Claude-runs mode it only records that runs handle it)",
+    "daily_report": "Write the daily business report",
+    "weekly_review": "Write the weekly review",
+    "monthly_review": "Write the monthly review",
+    "instagram_token_refresh": "Renew the 60-day Instagram login token",
+    "db_backup": "Back up the database",
+}
+
+
+def schedule_overview(session: Session, cfg: dict) -> list[dict]:
+    """Every timed job from company.yaml (plus Settings overrides): when, why, next and last run."""
+    from waitwhy.jobs.scheduler import describe
+    rows = []
+    for name, spec in cfg.get("schedules", {}).items():
+        job = session.execute(select(WorkflowJob).where(WorkflowJob.type == name, WorkflowJob.finished_at.is_not(None))
+                              .order_by(WorkflowJob.finished_at.desc())).scalars().first()
+        rows.append({"name": name, "cron": spec["cron"], "when": describe(spec["cron"]),
+                     "purpose": SCHEDULE_PURPOSE.get(name, ""), "next_at": _next_run(cfg, name),
+                     "last_at": job.finished_at if job else None, "last_status": job.status if job else None,
+                     "last_error": (job.last_error or "")[:200] if job else ""})
+    return sorted(rows, key=lambda r: r["next_at"] or datetime.max.replace(tzinfo=timezone.utc))
+
+
 def views_freshness(sources: list[Source]) -> dict:
     """Short summary for page headers: newest stats time and which platforms it came from."""
     stats = [s for s in sources if s.key in PLATFORM_ORIGIN and s.state != "off"]

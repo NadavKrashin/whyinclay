@@ -102,6 +102,8 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   - Stats are now collected every 6 hours (was daily at 07:30), and the Refresh button re-reads posts
     whose last reading is over 15 minutes old. YouTube quota impact is tiny (about 2 units per post).
   - Not yet seen on the Mac with real data: check it from the phone after the Mac pulls `main`.
+  - Agents page has a **Schedule** table (`#schedule`): every timed job from `company.yaml` in plain words,
+    with next run, last run and its error, and what it does. Settings links to it from the raw config.
 
 - **Topics (2026-10-17, owner asked whether trend fetching ever happens): it didn't.** The app's
   `trend_discovery` agent only runs in `production_source: app` mode, asks the LLM to brainstorm (no

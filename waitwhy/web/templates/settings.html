@@ -12,5 +12,5 @@
 <h3>Current overrides</h3>{% for o in overrides %}<div><code>{{ o.key }}</code> = <span class="muted">{{ o.value|tojson }}</span> <span class="muted">({{ o.updated_by }})</span></div>{% endfor %}
 <h3>Credentials (presence only — values never shown)</h3>{% for k, ok in creds.items() %}<span class="chip {{ 'ok' if ok else '' }}" style="margin:2px">{{ k }}{{ ' ✓' if ok else ' ✗' }}</span>{% endfor %}
 <h3>Prompt templates (versioned in git)</h3>{% for p in prompts %}<div><code>{{ p.name }}</code> v{{ p.version }} <span class="muted">{{ p.purpose }}</span></div>{% endfor %}
-</div><div class="card"><h3>Effective configuration</h3><pre>{{ cfg_json }}</pre></div></div>
+</div><div class="card"><h3>Effective configuration</h3><p class="small muted"><code>config/company.yaml</code> from the repo with the overrides on the left applied. The timed jobs are under <code>schedules</code>; they are easier to read on the <a href="/agents#schedule">Agents page</a>.</p><pre>{{ cfg_json }}</pre></div></div>
 {% endblock %}
