@@ -217,3 +217,12 @@ def test_publish_at_moves_waiting_posts_once(session, cfg, ep):
     assert {j.scheduled_at for j in jobs} == {later}
     ep["publish_at"] = "2020-01-01T10:00:00+00:00"           # past times are ignored
     assert importer.apply_publish_at(session, ep) is None
+
+
+def test_published_episodes_are_never_imported_again(session, cfg, ep, tmp_path):
+    """After a database reset, an episode marked published in episodes.json must not be posted twice."""
+    import json
+    path = tmp_path / "episodes.json"
+    path.write_text(json.dumps({"episodes": [{**ep, "status": "published", "posted": {"youtube": "x"}}]}))
+    assert importer.import_all(session, _cleared(cfg), path=path) == {}
+    assert session.execute(select(Video)).first() is None

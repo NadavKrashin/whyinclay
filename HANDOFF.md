@@ -114,6 +114,16 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   and `inspired_by`. The dashboard hides the trend-discovery button in this mode and says the Pipeline
   "Add topic" form doesn't reach the runs. First refresh: Mon 2026-10-19 run; check it worked.
 
+- **Database (2026-10-17):** Homebrew Postgres on the Mac, database `waitwhy`. Nightly `db_backup` (03:30)
+  writes `pg_dump` files to `~/daily-shorts/backups/` (unless `BACKUP_DIR` is set in the Mac's `.env`) and
+  keeps the newest 14. No S3/R2 bucket, so backups sit on the same disk as the database: a dead disk
+  loses both. Not checked from here whether the backup job succeeds on the Mac (`pg_dump` must be on the
+  worker's PATH); the Agents page Schedule table shows its last run.
+  **Never just delete the database:** the importer would re-import every `produced_not_published`
+  episode and post it again. Episode 1 is now `status: published` with a `posted` map in
+  `episodes.json`, which the importer skips. **Episode 2: set it to `published` too once its posts
+  are confirmed live** (it was due 2026-10-17 19:00 Israel; not verified from here).
+
 ## What the owner still has to do (details in `docs/setup-guide.md`)
 
 1. Don't archive the "Why in Clay: episode production" session, and keep it on Auto mode. I can't

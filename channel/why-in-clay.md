@@ -166,7 +166,9 @@ follow them, except where this file says otherwise.
    (balance before minus after), sources, known issues, `category`, `description` and `hashtags`
    (yt-seo rules; at most 5, as TikTok allows no more; the app keeps `#shorts` for YouTube only and
    drops it elsewhere), `caption`, `cover_url`, and `checks` with `narration_strict`, `captions` and `visual_review`
-   set to `passed` only if that check really ran and passed. Use status `produced_not_published`. The
+   set to `passed` only if that check really ran and passed. Use status `produced_not_published` (once an episode is
+   confirmed live, a session sets it to `published` with a `posted` map of links: the importer never
+   touches `published` entries, so a reset or restored database can't post it twice). The
    app's `import_episodes` job picks it up from there, runs the same check as step 7b, and publishes at
    the next free slot. Update `HANDOFF.md` (latest episode, credits left, any new
    open items), then commit `channel/` and `HANDOFF.md` and push to `main`, the only branch. The app on
