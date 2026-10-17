@@ -82,7 +82,21 @@ follow them, except where this file says otherwise.
    **Credit guard.** Call `balance`. If below 200 credits, stop: make nothing new and report
    "paused: N credits left". One episode costs about 150 credits. Never buy credits or change the plan.
 1. **Topic.** Take the highest-scoring topic in `seeds/topics.json` whose slug is not in
-   `channel/episodes.json` and has no `risk_flags`.
+   `channel/episodes.json` and has no `risk_flags`. Score = the weighted sum of its `scores` using
+   `topic_scoring_weights` in `config/company.yaml`.
+   **Topic refresh first, on Monday runs or when fewer than 10 unused unflagged topics remain:** find
+   what is working right now and add 5-8 new topics to `seeds/topics.json` before picking.
+   - Use the yt-viral skill: collect the latest 15-30 Shorts from 4-6 public science/explainer Shorts
+     channels (`yt-dlp --flat-playlist -J <channel>/shorts`, public listings only; if yt-dlp can't
+     reach YouTube, use web search for recent popular explainer Shorts), run `swipe.py --min 2.0`,
+     and note which ideas beat their own channel's median by 2x or more.
+   - Turn those into topics in our format and voice (one surprising mechanism, showable in clay, no
+     people, settled science). Never copy a video: take the question, find our own angle.
+   - Same shape as the existing entries (slug, title, category from `content_categories`, angle,
+     summary, keywords, risk_flags, the seven scores, reasoning), plus `added_on` (YYYY-MM-DD) and
+     `inspired_by` (the video URL and its multiple, or the search that led to it). Skip near-duplicates
+     of existing topics. Scores stay editorial judgements; say so in `reasoning`.
+   - Commit the list change with the episode. If nothing beat 2x, add nothing and say so in the report.
 2. **Research + script.** Search the web, fact-check, and write `channel/episodes/NNN-slug/script_manifest.json`
    in episode 1's shape: blocks with `vo_line`, five `shots` (vary size and angle on every cut, no
    OTS, no people), `assets_used` (max 7: location first), `through_line_state` and `audio`

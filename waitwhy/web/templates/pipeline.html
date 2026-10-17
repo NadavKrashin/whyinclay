@@ -11,6 +11,7 @@
 <td>{% for f in t.risk_flags %}<span class="chip warn">{{ f }}</span>{% endfor %}</td>
 <td><form class="inline" method="post" action="/topics/{{ t.id }}/produce"><input type="hidden" name="csrf" value="{{ csrf }}"><button class="primary">Produce</button></form></td></tr>{% endfor %}
 </table>
+{% if cfg.production_source == 'claude_runs' %}<p class="small muted" style="margin-top:10px">Topics added here stay on the Mac and don't reach the Claude production runs, which use <code>seeds/topics.json</code> in the repo. To get a topic made, ask in a Claude session.</p>{% endif %}
 <form class="inline" method="post" action="/topics" style="margin-top:10px"><input type="hidden" name="csrf" value="{{ csrf }}">
 <input name="title" placeholder="New topic title" required><select name="category">{% for c in cfg.content_categories %}<option>{{ c }}</option>{% endfor %}</select>
 <input name="angle" placeholder="Angle / surprising mechanism"><button>Add topic</button></form></div>

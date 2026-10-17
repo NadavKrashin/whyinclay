@@ -103,6 +103,15 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     whose last reading is over 15 minutes old. YouTube quota impact is tiny (about 2 units per post).
   - Not yet seen on the Mac with real data: check it from the phone after the Mac pulls `main`.
 
+- **Topics (2026-10-17, owner asked whether trend fetching ever happens): it didn't.** The app's
+  `trend_discovery` agent only runs in `production_source: app` mode, asks the LLM to brainstorm (no
+  real trend data), and writes to the Mac's database, which the Claude runs never read. The runs pick
+  from `seeds/topics.json` (36 hand-made ideas). Fix: recipe step 1 now refreshes that list on Monday
+  runs, or when fewer than 10 unused topics remain, from Shorts that beat their channel's median by 2x+
+  (yt-viral skill, public listings via yt-dlp, web search as fallback). New entries carry `added_on`
+  and `inspired_by`. The dashboard hides the trend-discovery button in this mode and says the Pipeline
+  "Add topic" form doesn't reach the runs. First refresh: Mon 2026-10-19 run; check it worked.
+
 ## What the owner still has to do (details in `docs/setup-guide.md`)
 
 1. Don't archive the "Why in Clay: episode production" session, and keep it on Auto mode. I can't
