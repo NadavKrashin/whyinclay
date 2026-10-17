@@ -229,13 +229,19 @@ dashboard Agents page. Never claim it is live without checking.
 
 ## Open quality items (fix in future episodes, not urgent)
 
-- Episode 1's hook scored WEAK (31) on `hookscore.py`, and its thumbnail text is 5 words (limit 3).
+- **Hooks are now a hard gate (owner, 2026-10-18).** YouTube Studio showed only 43% (episode 1) and
+  46% (episode 2) of viewers staying past the first seconds, against 60-70% for Shorts that keep
+  growing. Every new script follows "Hook and retention" in `channel/why-in-clay.md`: a punch of at most
+  10 words, then a spoken promise of what the end shows ("Stay to the end and you'll find yours in five
+  seconds"), the promised demo or answer held back until scene 6, a re-hook in scene 4 or 5, text on
+  screen from the first word, and a last line that loops to the first.
+  `python3 channel/tools/check_hook.py <script_manifest.json>` must pass before narration; episodes 1
+  and 2 both fail it as shipped.
+
+- Episode 1's thumbnail text is 5 words (limit 3).
 - The red strip on the scene-5 chart is never named by the narration.
 - The `ring`/`wave` overlay diagrams are traffic-specific. For a new topic, add a diagram type to
   `channel/tools/overlays.py` drawn from a real model or real numbers, or use cards and chains.
-
-- Episode 2 v2's hook scores WEAK (47) on `hookscore.py`; it was chosen for clarity on one listen
-  (owner priority) over the score.
 
 ## How things work (gotchas learned the hard way)
 

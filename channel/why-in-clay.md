@@ -30,12 +30,37 @@ worked example: copy its file shapes.
   10-second scenes. If a take still comes out short or rushed, add one concrete detail in plain words
   rather than swapping in longer words. (Kevin, the episode-1 voice, ran 3.1-3.8 words/second on plain
   wording; that is why the narrator changed.)
-- **Hook (scene 1):** write five candidate first lines, score them with
-  `python3 .claude/skills/yt-script/hookscore.py hooks.txt`, and use the best. Aim for a verdict
-  above WEAK. The hook confirms the title and opens a question the viewer cannot close.
-  Clarity beats the score: a first-time viewer must understand the hook on one listen. No
-  comparison or number that needs explaining (episode 2's "wider than ten moons" confused the
-  owner); say the plain fact first ("Each of your eyes has a blind spot").
+- **Hook and retention (owner, 2026-10-18).** Episodes 1 and 2 kept only 43% and 46% of viewers
+  past the first seconds; Shorts that keep growing hold 60-70%. Both opened with a 22-word fact
+  ("Each of your eyes has a blind spot. There's an area...") that gave no reason to stay. Every
+  episode now follows this shape, and `python3 channel/tools/check_hook.py script_manifest.json`
+  must pass before narration (step 2):
+  - **First sentence: a punch, max 10 words, said in the first 3 seconds.** A claim that clashes
+    with what the viewer believes, said straight at them, about them or their world right now:
+    "You're blind in one spot right now." / "This traffic jam has no cause." Never a textbook
+    fact, a definition, a date or a name. A first-time viewer must get it on one listen (episode
+    2's "wider than ten moons" confused the owner).
+  - **Second sentence: the promise of the ending**, recorded as the block's `promise` and said word
+    for word: "Stay to the end and you'll find yours in five seconds." / "Stay to the end and you'll
+    see how one driver can stop it." It names a concrete thing the viewer gets at the end: a test
+    they can do on themselves, a reveal they can see, the one move that fixes it. Never vague bait
+    ("wait for it", "you won't believe"). Breaking a promise teaches viewers to swipe, so only
+    promise what scene 6 really shows.
+  - **Hold the promised thing back until scene 6.** Build (2-4) makes the question sharper, it
+    doesn't answer it: no history or names before scene 5 unless they are the surprise (episode 2's
+    "Edme Mariotte found it" in scene 3 was a detour), and no "Try it" before the payoff (episode 2
+    handed over its blind-spot test in scene 4, so nobody needed the ending).
+  - **Re-hook in scene 4 or 5:** one line that raises the stakes again before the answer ("But
+    that's not the weird part." / "So why don't you see a black hole?").
+  - **Payoff (scene 6) delivers the promise on screen** (record how in the block's
+    `delivers_promise`), and its last sentence comes back to the hook's words so the end flows into
+    the start and rewatches loop.
+  - **Text from frame one:** scene 1's first card starts on the first words (its `at` is in the
+    first four words), in different words from the voice, so muted viewers get the hook at once.
+    Shot 1 opens on the most striking image already moving: no establishing shot, no slow push-in.
+  - Write five candidate hook pairs (punch + promise), read them out loud, and pick the clearest.
+    `python3 .claude/skills/yt-script/hookscore.py hooks.txt` is a second opinion only: it rewards
+    words like "never" and "lose" and rated every hook above WEAK, including the good ones.
 - **Through-line:** one signal-red element that changes state in every scene and resolves in the
   payoff. It must be something the viewer already understands (brake lights, a warning sign, a
   thermometer) or something the narration names. Abstract symbols the voice never explains read as
@@ -45,7 +70,8 @@ worked example: copy its file shapes.
   sand car).
 - **Direction of travel:** for anything that moves, state which way it faces and moves in the shot
   text, and put the reverse motion in the negatives (episode 1 had a car reversing at 0:37).
-- **Arc:** hook (1), build (2-4), turn (5), payoff (6). The payoff answers the hook.
+- **Arc:** hook + promise (1), build (2-4, re-hook in 4 or 5), turn (5), payoff (6). The payoff
+  answers the hook, keeps the promise and loops back to the first line.
 - **On-screen text and diagrams (owner request, every episode):** give every block an `overlays`
   list (format in the `overlays.py` docstring; episode 2 is the worked example). About ONE per
   scene; a card has to earn its place (owner, 2026-10-16: two or three echo cards per scene looked
@@ -102,6 +128,9 @@ follow them, except where this file says otherwise.
    OTS, no people), `assets_used` (max 7: location first), `through_line_state` and `audio`
    (2-4 diegetic clay SFX cues). Validate with
    `validate_motion_script.py --script script_manifest.json --duration-seconds 60` until `valid: true`.
+   Then run `python3 channel/tools/check_hook.py channel/episodes/NNN-slug/script_manifest.json`
+   until it prints "hook check passed" (no credits; see "Hook and retention"). Scene 1 needs
+   `promise`, the payoff scene `delivers_promise`.
 3. **Narration first** (cheap; it proves the script fits before the 120-credit video spend). One
    `generate_audio_batch` with all six lines in the format
    `[curious] {line}` (this overrides the narration workflow's timecode format, which leaked words).
