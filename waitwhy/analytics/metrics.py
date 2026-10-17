@@ -104,3 +104,78 @@ def relative_to_baseline(row: PostMetrics, baselines: dict, window: str = "7d") 
     if not b or v is None:
         return None
     return round(v / b, 2)
+
+
+def views_timeline(session: Session, days: int = 60) -> dict:
+    """Total views per platform over time: each post's newest reading per bucket, carried forward over buckets
+    without a reading, then summed. Buckets are 6 hours while the history is under a week, else days (UTC).
+    Before a post's first reading it counts nothing. Labels are ISO timestamps of each bucket's start."""
+    from datetime import datetime, timedelta, timezone
+    since = datetime.now(timezone.utc) - timedelta(days=days)
+    snaps = session.execute(select(PlatformPost.platform, AnalyticsSnapshot.platform_post_id, AnalyticsSnapshot.captured_at,
+                                   AnalyticsSnapshot.views)
+                            .join(PlatformPost, PlatformPost.id == AnalyticsSnapshot.platform_post_id)
+                            .where(AnalyticsSnapshot.is_mock.is_(False), AnalyticsSnapshot.views.is_not(None),
+                                   AnalyticsSnapshot.captured_at >= since)
+                            .order_by(AnalyticsSnapshot.captured_at)).all()
+    if not snaps:
+        return {"days": [], "series": {}}
+    span = datetime.now(timezone.utc) - snaps[0][2]
+    step = timedelta(hours=6) if span < timedelta(days=7) else timedelta(days=1)
+
+    def bucket(t: datetime) -> datetime:
+        t = t.astimezone(timezone.utc)
+        if step == timedelta(days=1):
+            return t.replace(hour=0, minute=0, second=0, microsecond=0)
+        return t.replace(hour=t.hour - t.hour % 6, minute=0, second=0, microsecond=0)
+
+    per_post: dict = {}   # post -> (platform, {bucket: views})
+    for platform, pid, at, views in snaps:
+        per_post.setdefault(pid, (platform, {}))[1][bucket(at)] = views
+    first = min(min(d) for _, d in per_post.values())
+    last = max(bucket(datetime.now(timezone.utc)), max(max(d) for _, d in per_post.values()))
+    day_list = [first + step * i for i in range(int((last - first) / step) + 1)]
+    series: dict[str, list[int]] = {}
+    for platform, by_day in per_post.values():
+        row = series.setdefault(platform, [0] * len(day_list))
+        cur = None
+        for i, d in enumerate(day_list):
+            cur = by_day.get(d, cur)
+            row[i] += cur or 0
+    return {"days": [d.isoformat() for d in day_list], "step_h": int(step.total_seconds() // 3600),
+            "series": dict(sorted(series.items()))}
+
+
+def views_by_video(rows: list[PostMetrics]) -> list[dict]:
+    """Latest views per video, split by platform, biggest first."""
+    vids: dict[str, dict] = {}
+    for r in rows:
+        v = vids.setdefault(r.video_id, {"video_id": r.video_id, "title": r.title, "platforms": {}, "total": 0})
+        views = r.latest.get("views")
+        if views is not None:
+            v["platforms"][r.platform] = v["platforms"].get(r.platform, 0) + views
+            v["total"] += views
+    return sorted(vids.values(), key=lambda v: -v["total"])
+
+
+def totals(rows: list[PostMetrics]) -> dict:
+    """Sum of each latest metric across posts; None when no post reports it (never a fake zero)."""
+    out = {}
+    for k in ("views", "likes", "comments", "shares", "saves", "followers_gained"):
+        vals = [r.latest.get(k) for r in rows if r.latest.get(k) is not None]
+        out[k] = sum(vals) if vals else None
+    return out
+
+
+def per_video_chart(rows: list[PostMetrics], section: str, key: str) -> dict | None:
+    """Bar-chart data for one metric: a label per video, a series per platform (None where not reported)."""
+    have = [r for r in rows if getattr(r, section).get(key) is not None]
+    if not have:
+        return None
+    from waitwhy.datasources import platform_name
+    titles = list(dict.fromkeys(r.title for r in have))
+    platforms = sorted({r.platform for r in have})
+    value = {(r.title, r.platform): getattr(r, section).get(key) for r in have}
+    return {"labels": [t if len(t) <= 34 else t[:33] + "…" for t in titles], "platforms": platforms,
+            "series": [{"label": platform_name(p), "color": f"--c-{p}", "data": [value.get((t, p)) for t in titles]}
+                       for p in platforms]}

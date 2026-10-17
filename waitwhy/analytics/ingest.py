@@ -17,7 +17,7 @@ FIELDS = ("views", "reach", "likes", "comments", "shares", "saves", "followers_g
           "avg_pct_viewed", "completion_rate", "estimated_revenue_usd")
 
 
-def collect(session: Session, cfg: dict, max_age_days: int = 35) -> dict:
+def collect(session: Session, cfg: dict, max_age_days: int = 35, min_gap_hours: float = 5) -> dict:
     now = datetime.now(timezone.utc)
     done, skipped, errors = 0, 0, []
     posts = session.execute(select(PlatformPost).where(PlatformPost.published_at.is_not(None),
@@ -26,7 +26,7 @@ def collect(session: Session, cfg: dict, max_age_days: int = 35) -> dict:
     for post in posts.scalars():
         last = session.execute(select(AnalyticsSnapshot).where(AnalyticsSnapshot.platform_post_id == post.id)
                                .order_by(AnalyticsSnapshot.captured_at.desc())).scalars().first()
-        if last and (now - last.captured_at) < timedelta(hours=20):
+        if last and (now - last.captured_at) < timedelta(hours=min_gap_hours):
             skipped += 1
             continue
         try:

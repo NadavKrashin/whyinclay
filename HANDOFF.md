@@ -85,6 +85,24 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   `why-airplanes-fly-curved-routes`). Pushed episodes reach the Mac's import within about 45 minutes
   (15-minute pull + 30-minute import).
 
+- **Dashboard redesign for phones (2026-10-17, owner request: "not UX at all, especially on phone";
+  wants to see when the data last came in and from where; graphs where possible).**
+  - Phone layout: bottom tab bar (Home, Analytics, Calendar, Approvals, More), compact header, every
+    table turns into one card per row under 760 px, 16 px inputs (no iOS zoom), no horizontal scroll
+    (checked at 390 px with Playwright in light and dark).
+  - Freshness: every Home/Analytics page starts with "Views updated X ago (time) from YouTube, Instagram
+    · next update in Y · Refresh". A "Where the data comes from" list (Home and Analytics `#sources`)
+    shows each source (per-platform stats, new episodes, costs, revenue, health, Mac scheduler) with
+    its origin, last arrival, next run, last run's errors and an up to date / late / never state.
+    Logic: `waitwhy/datasources.py`. TikTok is shown as "not collected" (manual posting, no API).
+  - Charts (Chart.js 4.4.1 from cdnjs, shared helpers in `web/static/charts.js`; platform colours are
+    fixed: YouTube blue, Instagram orange, TikTok aqua): views over time per platform (6-hour buckets
+    while history is under a week, then daily), views by video, likes per 1,000 views, average % watched,
+    costs vs revenue by month, Higgsfield credits per episode, spend by provider.
+  - Stats are now collected every 6 hours (was daily at 07:30), and the Refresh button re-reads posts
+    whose last reading is over 15 minutes old. YouTube quota impact is tiny (about 2 units per post).
+  - Not yet seen on the Mac with real data: check it from the phone after the Mac pulls `main`.
+
 ## What the owner still has to do (details in `docs/setup-guide.md`)
 
 1. Don't archive the "Why in Clay: episode production" session, and keep it on Auto mode. I can't

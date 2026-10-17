@@ -1,26 +1,66 @@
 {% extends "base.html" %}{% block content %}
 <h1>Finance</h1>
-<div class="grid">
- <div class="card kpi"><div class="l">Spend MTD ({{ budget.month }})</div><div class="v">${{ "%.2f"|format(budget.total_spend_usd) }}</div><div class="s">fixed ${{ "%.2f"|format(budget.fixed_spend_usd) }} · variable ${{ "%.2f"|format(budget.variable_spend_usd) }}</div></div>
- <div class="card kpi"><div class="l">Budget remaining</div><div class="v">${{ "%.2f"|format(budget.remaining_vs_budget_usd) }}</div><div class="s">of ${{ budget.monthly_budget_usd|int }} · {{ (budget.pct_of_budget*100)|round(1) if budget.pct_of_budget is not none else 0 }}% used</div></div>
- <div class="card kpi"><div class="l">Headroom to hard cap</div><div class="v">${{ "%.2f"|format(budget.remaining_vs_cap_usd) }}</div><div class="s">cap ${{ budget.hard_cap_usd|int }} (variable spend)</div></div>
- <div class="card kpi"><div class="l">Real provider usage</div><div class="v">${{ "%.2f"|format(budget.real_provider_usage_usd) }}</div><div class="s">simulated (dry run): ${{ "%.2f"|format(budget.simulated_usage_usd) }}</div></div>
+<p class="sub">Costs come from {{ cost_source.origin[0]|lower }}{{ cost_source.origin[1:] }} (last update {{ cost_source.last_at|ago }}).
+ Revenue is {{ revenue_source.origin[0]|lower }}{{ revenue_source.origin[1:] }}{% if revenue_source.last_at %} (last entry {{ revenue_source.last_at|ago }}){% else %} (nothing recorded yet){% endif %}.</p>
+{% set pct = (budget.pct_of_budget or 0) * 100 %}
+<div class="kpis">
+ <div class="card kpi"><div class="l">Spend this month ({{ budget.month }})</div><div class="v">${{ "%.2f"|format(budget.total_spend_usd) }}</div>
+  <div class="meter {{ 'bad' if pct >= 100 else ('warn' if pct >= 80 else '') }}"><span style="width:{{ [pct, 100]|min }}%"></span></div>
+  <div class="s">{{ pct|round(1) }}% of ${{ budget.monthly_budget_usd|int }} · fixed ${{ "%.2f"|format(budget.fixed_spend_usd) }}</div></div>
+ <div class="card kpi"><div class="l">Budget left</div><div class="v">${{ "%.2f"|format(budget.remaining_vs_budget_usd) }}</div><div class="s">of ${{ budget.monthly_budget_usd|int }}</div></div>
+ <div class="card kpi"><div class="l">Room to hard cap</div><div class="v">${{ "%.2f"|format(budget.remaining_vs_cap_usd) }}</div><div class="s">cap ${{ budget.hard_cap_usd|int }} (variable spend)</div></div>
+ <div class="card kpi"><div class="l">Provider usage</div><div class="v">${{ "%.2f"|format(budget.real_provider_usage_usd) }}</div><div class="s">simulated (dry run): ${{ "%.2f"|format(budget.simulated_usage_usd) }}</div></div>
 </div>
-<div class="two" style="margin-top:12px">
- <div class="card"><h3>Spend by provider</h3>{% for r in by_provider %}<div>{{ r.provider }}{% if r.simulated %} <span class="chip">simulated</span>{% endif %}: ${{ "%.2f"|format(r.usd) }}</div>{% else %}<p class="muted">No usage.</p>{% endfor %}
-  <h3>Monthly P&amp;L (cash view)</h3><div class="scroll"><table><tr><th>Month</th><th>Expenses</th><th>Provider usage</th><th>Revenue received</th><th>Contribution</th></tr>
-  {% for m in pnl %}<tr><td>{{ m.month }}</td><td>${{ m.expenses }}</td><td>${{ m.usage_real }}</td><td>${{ m.revenue_received }}</td><td class="{{ 'bad' if m.cash_contribution < 0 else 'ok' }}">${{ m.cash_contribution }}</td></tr>{% endfor %}</table></div>
-  <h3>Sponsorship rate guidance</h3><pre>{{ rate|tojson(indent=1) }}</pre></div>
- <div class="card"><h3>Cost per video</h3><div class="scroll"><table><tr><th>Video</th><th>Real</th><th>Incl. simulated</th></tr>
-  {% for v, real, sim in per_video %}<tr><td><a href="/videos/{{ v.id }}">{{ v.title }}</a></td><td>${{ "%.2f"|format(real) }}</td><td>${{ "%.2f"|format(sim) }}</td></tr>{% endfor %}</table></div>
-  <h3>Outstanding invoices</h3>{% for r in invoices %}<div>{{ r.counterparty }} ${{ r.amount_usd }} due {{ r.due_on }}</div>{% else %}<p class="muted">None.</p>{% endfor %}
-  <h3>Record expense</h3><form class="inline" method="post" action="/finance/expense"><input type="hidden" name="csrf" value="{{ csrf }}">
-   <input name="vendor" placeholder="Vendor" required><select name="category">{% for c in ['ai_llm','video_generation','voiceover','audio_licensing','hosting','storage','software','freelance','other'] %}<option>{{ c }}</option>{% endfor %}</select>
-   <input name="amount" type="number" step="0.01" placeholder="USD" required><select name="kind"><option>cash</option><option>accrued</option><option>estimated</option></select>
-   <label><input type="checkbox" name="fixed" value="true"> fixed/subscription</label><input name="description" placeholder="Note"><button>Add</button></form>
-  <h3>Record revenue</h3><form class="inline" method="post" action="/finance/revenue"><input type="hidden" name="csrf" value="{{ csrf }}">
-   <select name="source">{% for c in ['sponsorship','affiliate','platform','licensing','client'] %}<option>{{ c }}</option>{% endfor %}</select><input name="counterparty" placeholder="Counterparty" required>
-   <input name="amount" type="number" step="0.01" placeholder="USD" required><select name="status"><option>expected</option><option>invoiced</option><option>received</option></select><input name="description" placeholder="Note"><button>Add</button></form>
-  <h3>Recent revenue records</h3>{% for r in revenue %}<div>{{ r.source }} · {{ r.counterparty }} · ${{ r.amount_usd }} · {{ r.status }}</div>{% else %}<p class="muted">No revenue recorded. Nothing is counted until it is recorded here.</p>{% endfor %}
- </div></div>
+
+<div class="cols" style="margin-top:12px">
+ <div class="card"><h3>Costs and revenue by month</h3>
+  {% if pnl %}<div class="legend"><span><span class="dot" style="background:var(--series-2)"></span>Costs</span><span><span class="dot" style="background:var(--series-1)"></span>Revenue received</span></div>
+  <div class="chart short"><canvas id="pnl" aria-label="Costs and revenue per month"></canvas></div>
+  <div class="chart-note">Costs = expenses + real provider usage. Revenue counts only payments marked received.</div>
+  {% else %}<div class="empty">No costs or revenue recorded yet.</div>{% endif %}
+ </div>
+ <div class="card"><h3>Higgsfield credits per episode</h3>
+  {% if credits %}<div class="chart short"><canvas id="credits" aria-label="Higgsfield credits spent per episode"></canvas></div>
+  <div class="chart-note">As each production run reported it in episodes.json. Target about 150, hard cap 200.</div>
+  {% else %}<div class="empty">No episode has reported its credits yet.</div>{% endif %}
+ </div>
+</div>
+
+<div class="cols" style="margin-top:12px">
+ <div class="card"><h3>Spend by provider (this month)</h3>
+  {% set top = (by_provider|map(attribute='usd')|max) if by_provider else 0 %}
+  {% for r in by_provider %}<div class="hbar"><span class="t">{{ r.provider }}{% if r.simulated %} <span class="chip">simulated</span>{% endif %}</span><span class="n">${{ "%.2f"|format(r.usd) }}</span>
+   <div class="track"><span style="width:{{ (r.usd / top * 100) if top else 0 }}%;background:var(--series-1)"></span></div></div>
+  {% else %}<p class="muted">No usage this month.</p>{% endfor %}
+  <h3 style="margin-top:14px">Monthly P&amp;L (cash)</h3><div class="scroll"><table><tr><th>Month</th><th class="n">Expenses</th><th class="n">Provider usage</th><th class="n">Revenue received</th><th class="n">Net</th></tr>
+  {% for m in pnl %}<tr><td>{{ m.month }}</td><td class="n">{{ m.expenses|usd }}</td><td class="n">{{ m.usage_real|usd }}</td><td class="n">{{ m.revenue_received|usd }}</td><td class="n {{ 'bad' if m.cash_contribution < 0 else 'ok' }}">{{ m.cash_contribution|usd }}</td></tr>{% endfor %}</table></div>
+ </div>
+ <div class="card"><h3>Cost per video</h3><div class="scroll"><table><tr><th>Video</th><th class="n">Real</th><th class="n">Incl. simulated</th></tr>
+  {% for v, real, sim in per_video %}<tr><td data-label=""><a href="/videos/{{ v.id }}">{{ v.title }}</a></td><td class="n">${{ "%.2f"|format(real) }}</td><td class="n">${{ "%.2f"|format(sim) }}</td></tr>{% endfor %}</table></div>
+  <h3 style="margin-top:14px">Outstanding invoices</h3>{% for r in invoices %}<div>{{ r.counterparty }} ${{ r.amount_usd }} due {{ r.due_on }}</div>{% else %}<p class="muted">None.</p>{% endfor %}
+  <h3>Recent revenue records</h3>{% for r in revenue %}<div>{{ r.source }} · {{ r.counterparty }} · ${{ r.amount_usd }} · {{ r.status }} <span class="muted small">{{ r.created_at|ago }}</span></div>{% else %}<p class="muted">No revenue recorded. Nothing is counted until it is recorded here.</p>{% endfor %}
+ </div>
+</div>
+
+<div class="cols" style="margin-top:12px">
+ <details class="card"><summary>Record an expense</summary><form class="inline" method="post" action="/finance/expense" style="margin-top:8px"><input type="hidden" name="csrf" value="{{ csrf }}">
+  <input name="vendor" placeholder="Vendor" required><select name="category">{% for c in ['ai_llm','video_generation','voiceover','audio_licensing','hosting','storage','software','freelance','other'] %}<option>{{ c }}</option>{% endfor %}</select>
+  <input name="amount" type="number" step="0.01" inputmode="decimal" placeholder="USD" required><select name="kind"><option>cash</option><option>accrued</option><option>estimated</option></select>
+  <label><input type="checkbox" name="fixed" value="true"> fixed/subscription</label><input name="description" placeholder="Note"><button>Add</button></form></details>
+ <details class="card"><summary>Record revenue</summary><form class="inline" method="post" action="/finance/revenue" style="margin-top:8px"><input type="hidden" name="csrf" value="{{ csrf }}">
+  <select name="source">{% for c in ['sponsorship','affiliate','platform','licensing','client'] %}<option>{{ c }}</option>{% endfor %}</select><input name="counterparty" placeholder="Counterparty" required>
+  <input name="amount" type="number" step="0.01" inputmode="decimal" placeholder="USD" required><select name="status"><option>expected</option><option>invoiced</option><option>received</option></select><input name="description" placeholder="Note"><button>Add</button></form></details>
+</div>
+<details class="card" style="margin-top:12px"><summary>Sponsorship rate guidance</summary><pre>{{ rate|tojson(indent=1) }}</pre></details>
 {% endblock %}
+{% block scripts %}{% if pnl or credits %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/static/charts.js?v=2"></script>
+<script>
+const usd = v => v == null ? '—' : '$' + (+v).toFixed(Math.abs(v) >= 100 ? 0 : 2);
+{% if pnl %}ww.bars('pnl', {{ pnl|map(attribute='month')|list|tojson }}, [
+  {label: 'Costs', color: '--series-2', data: {{ pnl|map(attribute='expenses')|list|tojson }}.map((e, i) => +(e + {{ pnl|map(attribute='usage_real')|list|tojson }}[i]).toFixed(2))},
+  {label: 'Revenue received', color: '--series-1', data: {{ pnl|map(attribute='revenue_received')|list|tojson }}}], usd);{% endif %}
+{% if credits %}ww.bars('credits', {{ credits|map(attribute='title')|map('truncate', 34, true, '…', 0)|list|tojson }},
+  [{label: 'Credits', color: '--series-1', data: {{ credits|map(attribute='credits')|list|tojson }}}], v => v == null ? '—' : Math.round(v));{% endif %}
+</script>{% endif %}{% endblock %}

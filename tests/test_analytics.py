@@ -46,3 +46,28 @@ def test_cohorts_flag_small_samples_and_never_pool_platforms(session, cfg):
     stats = m.cohort_stats(rows, "category")
     assert {s["platform"] for s in stats} == {"youtube", "instagram"}
     assert all(not s["sufficient"] for s in stats)
+
+
+def test_views_timeline_sums_posts_and_carries_readings_forward(session, cfg):
+    now = datetime.now(timezone.utc)
+    a, b = _post(session, cfg, age_h=30), _post(session, cfg, age_h=30)
+    session.add_all([
+        AnalyticsSnapshot(platform_post_id=a.id, captured_at=now - timedelta(hours=24), hours_since_publish=6, views=100),
+        AnalyticsSnapshot(platform_post_id=a.id, captured_at=now - timedelta(hours=1), hours_since_publish=29, views=300),
+        AnalyticsSnapshot(platform_post_id=b.id, captured_at=now - timedelta(hours=12), hours_since_publish=18, views=50),
+    ])
+    session.flush()
+    t = m.views_timeline(session)
+    assert t["step_h"] == 6                      # short history: 6-hour buckets
+    yt = t["series"]["youtube"]
+    assert yt[0] == 100                          # only post a has a reading yet
+    assert yt[-1] == 350                         # a's newest (300) + b carried forward (50)
+    assert yt == sorted(yt)                      # carrying forward never dips
+
+
+def test_totals_stay_none_when_no_post_reports_a_metric(session, cfg):
+    p = _post(session, cfg)
+    session.add(AnalyticsSnapshot(platform_post_id=p.id, hours_since_publish=170, views=500, likes=10))
+    session.flush()
+    t = m.totals(m.all_post_metrics(session))
+    assert t["views"] == 500 and t["likes"] == 10 and t["saves"] is None

@@ -58,6 +58,15 @@ class Cron:
             return dom_ok and dow_ok
         return dom_ok or dow_ok  # standard cron semantics when both are restricted
 
+    def next_slot(self, now: datetime, horizon: timedelta = timedelta(days=8)) -> datetime | None:
+        t = now.replace(second=0, microsecond=0) + timedelta(minutes=1)
+        end = now + horizon
+        while t <= end:
+            if self.matches(t):
+                return t
+            t += timedelta(minutes=1)
+        return None
+
     def last_slot(self, now: datetime, lookback: timedelta) -> datetime | None:
         t = now.replace(second=0, microsecond=0)
         end = now - lookback

@@ -1,23 +1,73 @@
-{% extends "base.html" %}{% block content %}
+{% extends "base.html" %}{% from "_data.html" import freshness, sources_list, platform_legend %}{% block content %}
 <h1>Analytics</h1>
-<p class="muted">Real platform data only. Unavailable metrics show “—” (never zero). Window metrics (24h/72h/7d/30d) appear only once a post is old enough. Platforms are compared against their own baselines, never pooled.</p>
-<div class="grid">{% for p, b in baselines.items() %}<div class="card kpi"><div class="l">{{ p }} · median 7-day views</div><div class="v">{{ "{:,.0f}".format(b.median_views) if b.median_views is not none else "—" }}</div><div class="s">n = {{ b.n }}</div></div>{% else %}<div class="card muted">No real published posts with analytics yet.</div>{% endfor %}</div>
-<div class="card" style="margin-top:12px"><h3>Daily views by platform</h3>{% if daily %}<canvas id="views" height="110"></canvas>{% else %}<p class="muted">No data yet.</p>{% endif %}</div>
-<h2>Posts</h2><div class="card scroll"><table><tr><th>Video</th><th>Platform</th><th>24h</th><th>72h</th><th>7d</th><th>30d</th><th>Latest views</th><th>Likes/1k</th><th>Shares/1k</th><th>Avg % viewed</th></tr>
-{% for r in rows %}<tr><td>{{ r.title }}</td><td>{{ r.platform }}</td>{% for w in ('24h','72h','7d','30d') %}<td>{{ "{:,}".format(r.windows[w]) if r.windows[w] is not none else "—" }}</td>{% endfor %}
-<td>{{ r.latest.get('views') if r.latest.get('views') is not none else "—" }}</td><td>{{ r.rates.get('likes_per_1k') or "—" }}</td><td>{{ r.rates.get('shares_per_1k') or "—" }}</td><td>{{ r.latest.get('avg_pct_viewed') or "—" }}</td></tr>{% else %}<tr><td colspan="10" class="muted">Nothing yet.</td></tr>{% endfor %}</table></div>
+<p class="sub">Real platform numbers only. "—" means the platform doesn't report it (never a fake zero).</p>
+{{ freshness(fresh, cfg, csrf) }}
+
+<div class="kpis">
+ {% for k, label in [('views','Views'),('likes','Likes'),('comments','Comments'),('shares','Shares'),('saves','Saves'),('followers_gained','New followers')] %}
+ <div class="card kpi"><div class="l">{{ label }}</div><div class="v">{{ totals[k]|num }}</div></div>{% endfor %}
+</div>
+
+<div class="cols" style="margin-top:12px">
+ <div class="card"><h3>Views over time</h3>
+  {% if timeline.days %}{{ platform_legend(timeline.series.keys()) }}<div class="chart"><canvas id="views" aria-label="Total views per platform per day"></canvas></div>
+  <div class="chart-note">Each post's newest reading{{ ' in each 6-hour slot' if timeline.step_h < 24 else ' of the day' }}, added up per platform.</div>
+  {% else %}<div class="empty">No views collected yet.</div>{% endif %}
+ </div>
+ <div class="card"><h3>Views by video</h3>
+  {% set top = by_video[0].total if by_video and by_video[0].total else 0 %}
+  {% if top %}{% set plats = [] %}{% for v in by_video %}{% for pl in v.platforms %}{% if pl not in plats %}{% set _ = plats.append(pl) %}{% endif %}{% endfor %}{% endfor %}
+  {{ platform_legend(plats) }}
+  {% for v in by_video %}<div class="hbar" title="{% for pl, n in v.platforms.items() %}{{ pl }}: {{ '{:,}'.format(n) }}{{ ' · ' if not loop.last }}{% endfor %}">
+   <a class="t" href="/videos/{{ v.video_id }}">{{ v.title }}</a><span class="n">{{ v.total|num }}</span>
+   <div class="track">{% for pl, n in v.platforms.items() %}<span style="width:{{ n / top * 100 }}%;background:var(--c-{{ pl }})"></span>{% endfor %}</div>
+   <div class="small muted" style="grid-column:1/-1">{% for pl, n in v.platforms.items() %}<span class="dot {{ pl }}"></span>{{ '{:,}'.format(n) }}{{ ' · ' if not loop.last }}{% endfor %}</div></div>{% endfor %}
+  {% else %}<div class="empty">No video has views yet.</div>{% endif %}
+ </div>
+</div>
+
+{% if likes_chart or watched_chart %}<div class="cols" style="margin-top:12px">
+ {% if likes_chart %}<div class="card"><h3>Likes per 1,000 views</h3>{{ platform_legend(likes_chart.platforms) }}
+  <div class="chart short"><canvas id="likes" aria-label="Likes per 1,000 views per video"></canvas></div>
+  <div class="chart-note">Higher means viewers liked it more. Compare within one platform.</div></div>{% endif %}
+ {% if watched_chart %}<div class="card"><h3>Average % of the video watched</h3>{{ platform_legend(watched_chart.platforms) }}
+  <div class="chart short"><canvas id="watched" aria-label="Average percent viewed per video"></canvas></div>
+  <div class="chart-note">Shorts that loop can go over 100%.</div></div>{% endif %}
+</div>{% endif %}
+
+<h2>Each post</h2>
+<div class="posts">{% for r in rows %}<div class="card post">
+ <div class="top"><div><b>{{ r.title }}</b><div class="small muted"><span class="dot {{ r.platform }}"></span>{{ r.platform|pname }}
+  · {% if r.latest.get('hours_since_publish') is not none %}read {{ r.latest.hours_since_publish|round|int }} h after posting{% else %}no reading yet{% endif %}</div></div>
+  <div class="views">{{ r.latest.get('views')|num }} <small>views</small></div></div>
+ <dl>{% for w in ('24h','72h','7d','30d') %}<div><dt>{{ w }}</dt><dd>{{ r.windows[w]|num }}</dd></div>{% endfor %}
+  <div><dt>Likes/1k</dt><dd>{{ r.rates.get('likes_per_1k') or "—" }}</dd></div><div><dt>Shares/1k</dt><dd>{{ r.rates.get('shares_per_1k') or "—" }}</dd></div>
+  <div><dt>Comments</dt><dd>{{ r.latest.get('comments')|num }}</dd></div>
+  <div><dt>Watched</dt><dd>{{ ((r.latest.get('avg_pct_viewed')|round|int)|string + '%') if r.latest.get('avg_pct_viewed') is not none else "—" }}</dd></div></dl>
+</div>{% else %}<div class="card muted">No real posts yet.</div>{% endfor %}</div>
+<p class="small muted">24h / 72h / 7d / 30d show views at that age, and stay "—" until a post is old enough.</p>
+
+<h2>Platform baselines</h2>
+<div class="kpis">{% for p, b in baselines.items() %}<div class="card kpi"><div class="l"><span class="dot {{ p }}"></span>{{ p|pname }} · median 7-day views</div><div class="v">{{ b.median_views|num }}</div><div class="s">from {{ b.n }} post{{ 's' if b.n != 1 }}</div></div>{% else %}<div class="card muted">No posts with 7-day numbers yet.</div>{% endfor %}</div>
+
+<h2 id="sources">Where the data comes from</h2>
+<div class="card">{{ sources_list(sources, cfg) }}</div>
+
 <h2>Cohorts (median 7-day views)</h2>
-<div class="two"><div class="card"><h3>By category</h3>{% for c in by_category %}<div>{{ c.platform }} · {{ c.cohort }}: {{ c.median }} <span class="muted">(n={{ c.n }}{{ ', too few to conclude' if not c.sufficient }})</span></div>{% else %}<p class="muted">Insufficient data.</p>{% endfor %}</div>
-<div class="card"><h3>By hook style</h3>{% for c in by_hook %}<div>{{ c.platform }} · {{ c.cohort }}: {{ c.median }} <span class="muted">(n={{ c.n }})</span></div>{% else %}<p class="muted">Insufficient data.</p>{% endfor %}</div></div>
-<h2>Strategy analysis</h2><div class="card">{% if strategy %}<p>{{ strategy.decision }}</p>{% else %}<p class="muted">Not run yet.</p>{% endif %}
+<div class="cols"><div class="card"><h3>By category</h3>{% for c in by_category %}<div>{{ c.platform|pname }} · {{ c.cohort }}: {{ c.median|num }} <span class="muted">(n={{ c.n }}{{ ', too few to conclude' if not c.sufficient }})</span></div>{% else %}<p class="muted">Not enough data yet.</p>{% endfor %}</div>
+<div class="card"><h3>By hook style</h3>{% for c in by_hook %}<div>{{ c.platform|pname }} · {{ c.cohort }}: {{ c.median|num }} <span class="muted">(n={{ c.n }})</span></div>{% else %}<p class="muted">Not enough data yet.</p>{% endfor %}</div></div>
+<h2>Strategy analysis</h2><div class="card">{% if strategy %}<p>{{ strategy.decision }}</p><p class="small muted">{{ strategy.created_at|ago }}</p>{% else %}<p class="muted">Not run yet.</p>{% endif %}
 <form class="inline" method="post" action="/jobs/run/strategy_analysis"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Run analysis</button></form></div>
 <h2>Experiment log</h2><div class="card scroll"><table><tr><th>Hypothesis</th><th>Change</th><th>Metric</th><th>Status</th><th>n</th><th>Outcome / limits</th></tr>
-{% for e in experiments %}<tr><td>{{ e.hypothesis }}</td><td>{{ e.change }}</td><td>{{ e.metric }}</td><td>{{ e.status }}</td><td>{{ e.sample_size }}</td><td>{{ e.outcome or '' }} <span class="muted">{{ e.confidence_limitations or '' }}</span></td></tr>{% endfor %}</table>
-<form class="inline" method="post" action="/experiments" style="margin-top:8px"><input type="hidden" name="csrf" value="{{ csrf }}"><input name="hypothesis" placeholder="Hypothesis" required><input name="change" placeholder="Change to test" required><input name="metric" placeholder="Metric (e.g. 7d views vs baseline)" required><button>Log experiment</button></form></div>
-{% if daily %}<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script>const rows={{ daily|tojson }};const days=[...new Set(rows.map(r=>r.d))];const plats=[...new Set(rows.map(r=>r.platform))];
-const css=getComputedStyle(document.documentElement);const colors=['#0284c7','#ca8a04','#15803d','#c2410c'];
-new Chart(document.getElementById('views'),{type:'line',data:{labels:days,datasets:plats.map((p,i)=>({label:p,borderColor:colors[i%4],backgroundColor:colors[i%4],
-data:days.map(d=>{const r=rows.find(x=>x.d==d&&x.platform==p);return r?r.views:null}),spanGaps:true,tension:.25}))},
-options:{plugins:{legend:{labels:{color:css.getPropertyValue('--muted')}}},scales:{x:{ticks:{color:css.getPropertyValue('--muted')}},y:{ticks:{color:css.getPropertyValue('--muted')}}}}});</script>{% endif %}
+{% for e in experiments %}<tr><td>{{ e.hypothesis }}</td><td>{{ e.change }}</td><td>{{ e.metric }}</td><td>{{ e.status }}</td><td>{{ e.sample_size }}</td><td>{{ e.outcome or '' }} <span class="muted">{{ e.confidence_limitations or '' }}</span></td></tr>{% else %}<tr><td colspan="6" class="muted" data-label="">None logged.</td></tr>{% endfor %}</table></div>
+<details class="card" style="margin-top:12px"><summary>Log an experiment</summary>
+<form class="inline" method="post" action="/experiments" style="margin-top:8px"><input type="hidden" name="csrf" value="{{ csrf }}"><input name="hypothesis" placeholder="Hypothesis" required><input name="change" placeholder="Change to test" required><input name="metric" placeholder="Metric (e.g. 7d views vs baseline)" required><button>Log experiment</button></form></details>
 {% endblock %}
+{% block scripts %}{% if timeline.days or likes_chart or watched_chart %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/static/charts.js?v=2"></script>
+<script>
+{% if timeline.days %}ww.timeline('views', {{ timeline|tojson }});{% endif %}
+{% if likes_chart %}{const d = {{ likes_chart|tojson }}; ww.bars('likes', d.labels, d.series, v => v == null ? '—' : (+v).toFixed(1));}{% endif %}
+{% if watched_chart %}{const d = {{ watched_chart|tojson }}; ww.bars('watched', d.labels, d.series, v => v == null ? '—' : Math.round(v) + '%');}{% endif %}
+</script>{% endif %}{% endblock %}

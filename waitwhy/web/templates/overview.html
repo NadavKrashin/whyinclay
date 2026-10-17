@@ -1,29 +1,66 @@
-{% extends "base.html" %}{% block content %}
+{% extends "base.html" %}{% from "_data.html" import freshness, sources_list, platform_legend %}{% block content %}
 <h1>Business at a glance</h1>
-<div class="grid">
- <div class="card kpi"><div class="l">Published this month</div><div class="v">{{ published_month }}</div><div class="s">distinct videos, real posts only{% if mock_published %} · {{ mock_published }} dry-run posts excluded{% endif %}</div></div>
- <div class="card kpi"><div class="l">Total views (all platforms)</div><div class="v">{{ "{:,}".format(total_views) if total_views is not none else "—" }}</div><div class="s">sum of platform views, not unique viewers{% if views_partial %} · some platforms unavailable{% endif %}</div></div>
- <div class="card kpi"><div class="l">Operating spend (MTD)</div><div class="v">${{ "%.2f"|format(budget.total_spend_usd) }}</div><div class="s">budget ${{ budget.monthly_budget_usd|int }} · cap ${{ budget.hard_cap_usd|int }}{% if budget.simulated_usage_usd %} · ${{ "%.2f"|format(budget.simulated_usage_usd) }} simulated{% endif %}</div></div>
- <div class="card kpi"><div class="l">Confirmed revenue (MTD)</div><div class="v">${{ "%.2f"|format(revenue) }}</div><div class="s">received payments only</div></div>
- <div class="card kpi"><div class="l">Cash contribution (MTD)</div><div class="v {{ 'bad' if contribution < 0 else 'ok' }}">${{ "%.2f"|format(contribution) }}</div><div class="s">revenue − spend</div></div>
- <div class="card kpi"><div class="l">Pipeline</div><div class="v">{{ inventory.in_flight }}</div><div class="s">in production · {{ inventory.finished_videos }} finished · {{ inventory.candidate_topics }} ideas</div></div>
+<p class="sub">{{ now|local(cfg.timezone, "%A %d %B, %H:%M") }} · {{ cfg.timezone }}</p>
+{{ freshness(fresh, cfg, csrf) }}
+
+<div class="kpis">
+ <div class="card kpi"><div class="l">Total views</div><div class="v">{{ totals.views|num }}</div><div class="s">all platforms, latest reading{% if views_partial %} · some unavailable{% endif %}</div></div>
+ <div class="card kpi"><div class="l">Published this month</div><div class="v">{{ published_month }}</div><div class="s">videos, real posts only</div></div>
+ <div class="card kpi"><div class="l">Likes</div><div class="v">{{ totals.likes|num }}</div><div class="s">{% if totals.comments is not none %}{{ totals.comments|num }} comments{% else %}comments unavailable{% endif %}</div></div>
+ <div class="card kpi"><div class="l">New followers</div><div class="v">{{ totals.followers_gained|num }}</div><div class="s">where the platform reports it</div></div>
+ {% set pct = (budget.pct_of_budget or 0) * 100 %}
+ <div class="card kpi"><div class="l">Spend this month</div><div class="v">${{ "%.0f"|format(budget.total_spend_usd) }}</div>
+  <div class="meter {{ 'bad' if pct >= 100 else ('warn' if pct >= 80 else '') }}"><span style="width:{{ [pct, 100]|min }}%"></span></div>
+  <div class="s">{{ pct|round|int }}% of ${{ budget.monthly_budget_usd|int }} budget</div></div>
+ <div class="card kpi"><div class="l">Revenue this month</div><div class="v">${{ "%.0f"|format(revenue) }}</div><div class="s {{ 'bad' if contribution < 0 else 'ok' }}">net {{ contribution|usd }}</div></div>
 </div>
-<div class="two" style="margin-top:14px">
- <div class="card"><h3>Needs attention</h3>
-  {% for n in attention %}<div style="margin:6px 0"><span class="chip {{ 'bad' if n.severity in ('critical','high') else '' }}">{{ n.severity }}</span> {{ n.title }}{% if n.occurrences > 1 %} <span class="muted">×{{ n.occurrences }}</span>{% endif %}</div>{% else %}<p class="muted">Nothing open.</p>{% endfor %}
-  <p><a href="/incidents">All incidents →</a></p>
-  <h3>Pipeline health</h3>
-  {% if health %}<div class="muted">checked {{ health.checked_at[:16] }} UTC</div>
+
+{% if attention %}<div class="card" style="margin-top:12px"><div class="card-h"><h3>Needs attention</h3><a href="/incidents" class="small">All →</a></div>
+ {% for n in attention %}<div style="margin:6px 0"><span class="chip {{ 'bad' if n.severity in ('critical','high') else '' }}">{{ n.severity }}</span> {{ n.title }}{% if n.occurrences > 1 %} <span class="muted">×{{ n.occurrences }}</span>{% endif %} <span class="muted small">{{ n.created_at|ago }}</span></div>{% endfor %}
+</div>{% endif %}
+
+<div class="cols" style="margin-top:12px">
+ <div class="card"><div class="card-h"><h3>Views over time</h3><a href="/analytics" class="small">Details →</a></div>
+  {% if timeline.days %}{{ platform_legend(timeline.series.keys()) }}<div class="chart"><canvas id="views" aria-label="Total views per platform per day"></canvas></div>
+  <div class="chart-note">Total views per platform{{ ', every 6 hours' if timeline.step_h < 24 else ' at the end of each day' }}.</div>
+  {% else %}<div class="empty">No views collected yet. The first numbers arrive within 6 hours of a post going live.</div>{% endif %}
+ </div>
+ <div class="card"><div class="card-h"><h3>Top videos</h3><a href="/library" class="small">Library →</a></div>
+  {% set top = by_video[0].total if by_video and by_video[0].total else 0 %}
+  {% if top %}{% set plats = [] %}{% for v in by_video %}{% for pl in v.platforms %}{% if pl not in plats %}{% set _ = plats.append(pl) %}{% endif %}{% endfor %}{% endfor %}
+  {{ platform_legend(plats) }}
+  {% for v in by_video %}<div class="hbar" title="{% for pl, n in v.platforms.items() %}{{ pl }}: {{ '{:,}'.format(n) }}{{ ' · ' if not loop.last }}{% endfor %}">
+   <a class="t" href="/videos/{{ v.video_id }}">{{ v.title }}</a><span class="n">{{ v.total|num }}</span>
+   <div class="track">{% for pl, n in v.platforms.items() %}<span class="{{ pl }}" style="width:{{ n / top * 100 }}%;background:var(--c-{{ pl }})"></span>{% endfor %}</div></div>{% endfor %}
+  {% else %}<div class="empty">No video has views yet.</div>{% endif %}
+ </div>
+</div>
+
+<div class="cols" style="margin-top:12px">
+ <div class="card" id="sources"><h3>Where the data comes from</h3>{{ sources_list(sources, cfg) }}</div>
+ <div class="card"><h3>Pipeline</h3>
+  <div class="kpis" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+   <div class="kpi"><div class="l">In production</div><div class="v">{{ inventory.in_flight }}</div></div>
+   <div class="kpi"><div class="l">Finished</div><div class="v">{{ inventory.finished_videos }}</div></div>
+   <div class="kpi"><div class="l">Ideas</div><div class="v">{{ inventory.candidate_topics }}</div></div>
+  </div>
+  <h3 style="margin-top:14px">System health</h3>
+  {% if health %}<div class="muted small">checked {{ health.checked_at[:16].replace('T', ' ') }} UTC</div>
    <div>Scheduler: {% if health.scheduler_age_s is not none and health.scheduler_age_s < 300 %}<span class="ok">alive</span>{% else %}<span class="bad">not running</span>{% endif %} · Workers: <b>{{ health.live_workers }}</b> · Storage: {{ "ok" if health.storage_ok else "DOWN" }}</div>
    <div>Dead jobs 24h: {{ health.dead_jobs_24h }} · Blocked: {{ health.blocked_jobs }}</div>
   {% else %}<p class="muted">No health check yet.</p>{% endif %}
-  <form class="inline" method="post" action="/jobs/run/health_check"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Run health check</button></form>
-  <h3>Integrations</h3>
+  <form class="inline" method="post" action="/jobs/run/health_check" style="margin-top:6px"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Run health check</button></form>
+  <h3 style="margin-top:14px">Connections</h3>
   {% for k, ok in creds.items() %}<span class="chip {{ 'ok' if ok else '' }}" style="margin:2px">{{ k }}{{ ' ✓' if ok else '' }}</span>{% endfor %}
  </div>
- <div class="card"><h3>Latest daily CEO report</h3>
-  {% if report %}<pre>{{ report.text }}</pre>{% else %}<p class="muted">Not generated yet.</p>{% endif %}
-  <form class="inline" method="post" action="/jobs/run/daily_report"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Generate now</button></form>
- </div>
 </div>
+
+<details class="card" style="margin-top:12px"><summary>Latest daily report{% if report and report.generated_at %} <span class="muted small">· {{ report.generated_at[:16].replace('T', ' ') }} UTC</span>{% endif %}</summary>
+ {% if report %}<pre>{{ report.text }}</pre>{% else %}<p class="muted">Not generated yet.</p>{% endif %}
+ <form class="inline" method="post" action="/jobs/run/daily_report"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Generate now</button></form>
+</details>
 {% endblock %}
+{% block scripts %}{% if timeline.days %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="/static/charts.js?v=2"></script>
+<script>ww.timeline('views', {{ timeline|tojson }});</script>{% endif %}{% endblock %}

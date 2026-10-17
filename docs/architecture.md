@@ -143,7 +143,7 @@ Any active state can move to `NEEDS_REVISION`, `BLOCKED`, `FAILED` or `CANCELLED
 | Time | Job | What it does |
 |---|---|---|
 | 07:00 | `health_check` | scheduler/worker heartbeats, DB, storage, credentials, failed/stalled jobs, spend, inventory, bounded auto-fixes |
-| 07:30 | `analytics_collect` | per-post snapshots (NULL = unavailable), preliminary vs final |
+| 01:30, 07:30, 13:30, 19:30 | `analytics_collect` | per-post snapshots (NULL = unavailable), preliminary vs final; the dashboard's Refresh button runs it on demand |
 | 08:00 | `strategy_analysis` | cohort medians per platform; refuses to conclude below n thresholds |
 | 08:30 | `content_planning` | keeps inventory at target, budget-aware topic selection |
 | 09:00 | `daily_report` | CEO digest: facts / unknowns / 3 recommendations |

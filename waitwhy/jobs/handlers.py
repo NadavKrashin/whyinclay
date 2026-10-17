@@ -131,7 +131,9 @@ def h_publish_due(session: Session, job: WorkflowJob):
 @handler("analytics_collect")
 def h_analytics(session: Session, job: WorkflowJob):
     from waitwhy.analytics import ingest
-    return ingest.collect(session, get_config(session))
+    # "Refresh now" on the dashboard re-reads anything older than 15 minutes; scheduled runs every ~6 hours
+    gap = 0.25 if (job.payload or {}).get("manual") else 5
+    return ingest.collect(session, get_config(session), min_gap_hours=gap)
 
 
 @handler("strategy_analysis")

@@ -1,0 +1,29 @@
+{# Where the numbers come from and how fresh they are. #}
+{% macro freshness(fresh, cfg, csrf) -%}
+<div class="fresh">
+ {% if fresh.last_at %}<span><span class="state {{ 'stale' if fresh.stale else 'fresh' }}"></span>
+  Views updated <b>{{ fresh.last_at|ago }}</b> ({{ fresh.last_at|local(cfg.timezone) }})
+  from {% for p in fresh.from %}<span class="dot {{ p }}"></span>{{ p|pname }}{{ ', ' if not loop.last }}{% endfor %}.</span>
+ {% else %}<span><span class="state never"></span> No views collected yet.</span>{% endif %}
+ {% if fresh.next_at %}<span>Next update {{ fresh.next_at|ago }}.</span>{% endif %}
+ <a href="/analytics#sources">Sources</a>
+ <form method="post" action="/jobs/run/analytics_collect"><input type="hidden" name="csrf" value="{{ csrf }}"><button title="Read the latest numbers from the platforms now">↻ Refresh</button></form>
+</div>
+{%- endmacro %}
+
+{% macro sources_list(sources, cfg) -%}
+<ul class="sources">
+{% for s in sources %}<li>
+ <span class="name">{{ s.name }}</span>
+ <span class="when"><span class="state {{ s.state }}">{{ {'fresh': 'up to date', 'stale': 'late', 'never': 'never', 'manual': 'on demand', 'none': 'nothing yet', 'off': 'not collected'}[s.state] }}</span></span>
+ <span class="origin">From: {{ s.origin }}</span>
+ <span class="detail">Last: {% if s.last_at %}<b>{{ s.last_at|ago }}</b> · {{ s.last_at|local(cfg.timezone) }}{% else %}never{% endif %}
+  {%- if s.next_at %} · next {{ s.next_at|ago }}{% endif %}{% if s.detail %} · {{ s.detail }}{% endif %}</span>
+</li>{% endfor %}
+</ul>
+<p class="small muted" style="margin:8px 0 0">Times are {{ cfg.timezone }}. The Mac mini collects platform stats every 6 hours; "Refresh" asks for them now (takes about a minute, then reload).</p>
+{%- endmacro %}
+
+{% macro platform_legend(platforms) -%}
+<div class="legend">{% for p in platforms %}<span><span class="dot {{ p }}"></span>{{ p|pname }}</span>{% endfor %}</div>
+{%- endmacro %}

@@ -73,7 +73,7 @@ daily_report_time: "09:00"
 weekly_review_day: sunday
 schedules:
   health_check:      {cron: "0 7 * * *"}
-  analytics_collect: {cron: "30 7 * * *"}
+  analytics_collect: {cron: "30 1,7,13,19 * * *"}   # every 6 hours: fresher numbers on the dashboard
   strategy_analysis: {cron: "0 8 * * *"}
   content_planning:  {cron: "30 8 * * *"}
   daily_report:      {cron: "0 9 * * *"}

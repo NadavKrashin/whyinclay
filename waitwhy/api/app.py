@@ -24,7 +24,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
-from waitwhy import pipeline
+from waitwhy import datasources, pipeline
 from waitwhy.agents import coo
 from waitwhy.analytics import metrics as am
 from waitwhy.audit import audit
@@ -48,6 +48,12 @@ app = FastAPI(title="Why in Clay - operations", docs_url="/api/docs", openapi_ur
 app.mount("/static", StaticFiles(directory=HERE / "static"), name="static")
 templates = Jinja2Templates(directory=HERE / "templates")
 templates.env.filters["in_tz"] = lambda dt, tz: dt.astimezone(ZoneInfo(tz)).strftime("%H:%M") if dt else ""
+templates.env.filters["local"] = lambda dt, tz, fmt="%a %d %b, %H:%M": dt.astimezone(ZoneInfo(tz)).strftime(fmt) if dt else "never"
+templates.env.filters["ago"] = datasources.ago
+templates.env.filters["ts"] = datasources.parse_ts
+templates.env.filters["pname"] = datasources.platform_name
+templates.env.filters["usd"] = lambda v: "—" if v is None else f"{'-' if v < 0 else ''}${abs(v):,.2f}"
+templates.env.filters["num"] = lambda v: "—" if v is None else (f"{v / 1000:.1f}k" if abs(v) >= 10000 else f"{v:,.0f}")
 basic = HTTPBasic()
 Sessions = session_factory()
 
@@ -145,7 +151,10 @@ def overview(request: Request, u: str = Depends(user), s: Session = Depends(db))
     attention = s.execute(select(Notification).where(Notification.acknowledged_at.is_(None))
                           .order_by(Notification.created_at.desc()).limit(6)).scalars().all()
     report = (s.get(SystemSetting, "last_daily_report") or SystemSetting(value=None)).value
+    sources = datasources.all_sources(s, cfg)
     return render(request, "overview.html", {
+        "sources": sources, "fresh": datasources.views_freshness(sources), "timeline": am.views_timeline(s),
+        "by_video": am.views_by_video(rows)[:6], "totals": am.totals(rows),
         "published_month": published_month, "mock_published": mock_published,
         "total_views": sum(v for v in views if v is not None) if any(v is not None for v in views) else None,
         "views_partial": any(v is None for v in views), "budget": st, "inventory": inv, "health": health,
@@ -372,17 +381,17 @@ def manual_done(request: Request, pid: uuid.UUID, url: str = Form(...), csrf: st
 def analytics(request: Request, u: str = Depends(user), s: Session = Depends(db)):
     rows = am.all_post_metrics(s)
     baselines = am.platform_baselines(rows)
-    daily = s.execute(text("""
-        select date_trunc('day', a.captured_at)::date as d, p.platform, max(a.views) as views
-        from analytics_snapshots a join platform_posts p on p.id = a.platform_post_id
-        where a.is_mock = false and a.views is not null group by 1, 2 order by 1""")).all()
+    sources = datasources.all_sources(s, get_config(s))
     experiments = s.execute(select(Experiment).order_by(Experiment.created_at.desc())).scalars().all()
     strategy = s.execute(select(AgentRun).where(AgentRun.task == "strategy_analysis")
                          .order_by(AgentRun.created_at.desc())).scalars().first()
     return render(request, "analytics.html", {
         "rows": rows, "baselines": baselines, "by_category": am.cohort_stats(rows, "category"),
         "by_hook": am.cohort_stats(rows, "hook_style"),
-        "daily": [{"d": str(d), "platform": p, "views": int(v)} for d, p, v in daily],
+        "timeline": am.views_timeline(s), "by_video": am.views_by_video(rows), "totals": am.totals(rows),
+        "likes_chart": am.per_video_chart(rows, "rates", "likes_per_1k"),
+        "watched_chart": am.per_video_chart(rows, "latest", "avg_pct_viewed"),
+        "sources": sources, "fresh": datasources.views_freshness(sources),
         "experiments": experiments, "strategy": strategy}, u, s)
 
 
@@ -399,7 +408,15 @@ def add_experiment(request: Request, hypothesis: str = Form(...), change: str = 
 def finance_page(request: Request, u: str = Depends(user), s: Session = Depends(db)):
     cfg = get_config(s)
     vids = s.execute(select(Video).order_by(Video.created_at.desc()).limit(30)).scalars().all()
+    credits = []  # Higgsfield credits per episode, as each production run reported them in episodes.json
+    for v in reversed(vids):
+        vv = s.get(VideoVersion, v.current_version_id) if v.current_version_id else None
+        spent = (vv.manifest or {}).get("credits_spent") if vv else None
+        if spent is not None:
+            credits.append({"title": v.title, "credits": float(spent)})
+    sources = {x.key: x for x in datasources.all_sources(s, cfg)}
     return render(request, "finance.html", {
+        "credits": credits, "cost_source": sources["costs"], "revenue_source": sources["revenue"],
         "budget": budget.status(s, cfg), "by_provider": finance.spend_by_provider(s),
         "per_video": [(v, finance.video_cost(s, v.id), finance.video_cost(s, v.id, include_mock=True)) for v in vids],
         "pnl": finance.monthly_pnl(s), "invoices": finance.outstanding_invoices(s),
