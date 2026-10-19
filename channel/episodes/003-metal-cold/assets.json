@@ -1,0 +1,38 @@
+{
+ "loc_kitchen": {
+  "id": "92f1aaa8-5069-4df5-868e-2ff2fa2c6962",
+  "desc": "LOCATION (sunny clay kitchen counter of warm sand clay with cream cupboards below and a window with clouds and clay trees behind)"
+ },
+ "loc_heat_cutaway": {
+  "id": "911ce0cf-233b-43c5-ab38-03e9eb2a1fab",
+  "desc": "LOCATION (upright cream clay cutaway board on a sand tabletop: a warm peach clay layer on top of a silver-grey metal slab, three cream clay arrows pointing down from the peach into the metal)"
+ },
+ "loc_chart_board": {
+  "id": "23ab85b3-651b-4e53-934c-278da8db0b4a",
+  "desc": "LOCATION (upright cream clay board on green clay ground: a very tall silver-grey bar on the left, a tiny wooden-brown stub on the right, no letters or numbers)"
+ },
+ "loc_wood_bench": {
+  "id": "57c24c9d-0823-4e95-a735-0c94839887dc",
+  "desc": "LOCATION (cozy workbench of warm wooden planks by a window, a chunky light-wood block on it and a small glowing cream lamp)"
+ },
+ "loc_blocks_table": {
+  "id": "8dd0fc1b-4a5c-4d1b-9a69-5d00083046a9",
+  "desc": "LOCATION (sky-blue clay table with a shiny silver-grey metal block on the LEFT and a light wooden block on the RIGHT, green hills and clouds behind)"
+ },
+ "prop_thermometer": {
+  "id": "a6e5d8a0-9c2e-4041-bfbb-89310b5b0109",
+  "desc": "PROP chunky cream clay thermometer with a signal-red column and round red bulb, tick marks only (the only red thing in every scene)"
+ },
+ "prop_metal_spoon": {
+  "id": "55951ed3-4c52-4c1a-94e0-f646aa9fa469",
+  "desc": "PROP silver-grey clay metal spoon"
+ },
+ "prop_wood_spoon": {
+  "id": "a6630e21-c34a-4309-b041-3e40beae2794",
+  "desc": "PROP light-brown wooden clay spoon with pressed wood grain"
+ },
+ "prop_ice_cube": {
+  "id": "de384544-1df9-4100-8534-ea09895bd589",
+  "desc": "PROP pale blue-white glossy clay ice cube (repeat it for a second cube)"
+ }
+}

@@ -1,9 +1,19 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-17.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-19.
 
 ## State right now
 
+- **Episode 3 is finished (2026-10-19, first scheduled run):** "Why Metal Feels Colder Than Wood"
+  (slug `why-metal-feels-colder-than-wood`, status `produced_not_published`, no `publish_at`, so the
+  importer schedules it at the next free slot). 142.4 credits, 54.5 s.
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/f6a87c43-0f3c-43d8-9184-e0a7a0e4cdc3.mp4
+  - Thumbnail ("YOUR HAND LIES"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261019_061231_fe886d8b-9916-425b-86d6-77a891207e53.png
+    and 9:16 cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/b9693b30-0d82-40f8-9d75-36c78f37e31e.jpg
+  - First episode made with the new hook rules (8-word punch, spoken promise of the ice-cube test,
+    payoff held to scene 6, card from the first word) and with step 6a (dead-air trim).
+  - `scripts/qc_episode.py 3` on the hosted file: "would be approved and posted automatically (score 95.5)".
+  - Files: `channel/episodes/003-metal-cold/`. Sandbox working files: `~/ep3/`.
 - **Episode 2 is finished (v3):** "Why You Never Notice Your Blind Spot" (slug
   `why-your-brain-fills-in-your-blind-spot`, status `produced_not_published`), made 2026-10-16 on the
   owner's request and reworked the same day after the owner's review (captions too small and low,
@@ -47,8 +57,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits:** 400.7 on the Higgsfield Plus plan after episode 2's rework (2026-10-16), enough for about two
-  more episodes before the 200 floor pauses runs. An episode costs about 150, and runs
+- **Credits:** 258.3 on the Higgsfield Plus plan after episode 3 (2026-10-19). Wednesday's run can make
+  one more episode (about 150, leaving about 108); after that every run pauses at the 200 floor until
+  the owner tops up or upgrades. An episode costs about 150, and runs
   pause by themselves under 200. Buying credits or changing the plan is the owner's call.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
@@ -81,8 +92,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   - The old `claude/happy-cannon-dzuzwj` branch is deleted, and `main` is the default branch
     (checked 2026-10-16).
   - The scheduled task's prompt now says `main` (applied 2026-10-16 on the owner's word).
-- **Next scheduled run:** Mon 2026-10-19 08:58 makes episode 3 (next topic by score:
-  `why-airplanes-fly-curved-routes`). Pushed episodes reach the Mac's import within about 45 minutes
+- **Next scheduled run:** Wed 2026-10-21 08:58 makes episode 4 (next topic by score:
+  `where-the-gold-in-your-ring-came-from`, 85.5; say "much of" Earth's gold, not "all": how much
+  comes from neutron-star mergers is still debated). Pushed episodes reach the Mac's import within about 45 minutes
   (15-minute pull + 30-minute import).
 
 - **Dashboard redesign for phones (2026-10-17, owner request: "not UX at all, especially on phone";
@@ -112,7 +124,10 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   runs, or when fewer than 10 unused topics remain, from Shorts that beat their channel's median by 2x+
   (yt-viral skill, public listings via yt-dlp, web search as fallback). New entries carry `added_on`
   and `inspired_by`. The dashboard hides the trend-discovery button in this mode and says the Pipeline
-  "Add topic" form doesn't reach the runs. First refresh: Mon 2026-10-19 run; check it worked.
+  "Add topic" form doesn't reach the runs. First refresh ran Mon 2026-10-19: 5 channels
+  (Steve Mould, The Action Lab, SciShow, Veritasium, minutephysics; BeAmazed and SmarterEveryDay
+  returned nothing), 133 Shorts; 7 topics added from ideas at 3.9-20.6x their channel's median.
+  Flat listings round view counts, so the multiples are approximate.
 
 - **Database (2026-10-17):** Homebrew Postgres on the Mac, database `waitwhy`. Nightly `db_backup` (03:30)
   writes `pg_dump` files to `~/daily-shorts/backups/` (unless `BACKUP_DIR` is set in the Mac's `.env`) and

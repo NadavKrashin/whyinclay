@@ -948,6 +948,197 @@
     "feasibility": 90
    },
    "reasoning": "Editorial heuristic score 82.7. Strong points: visual potential, scientific clarity, evergreen, feasibility. Weaker: originality. Not a virality prediction."
+  },
+  {
+   "slug": "why-metal-feels-colder-than-wood",
+   "title": "Why Metal Feels Colder Than Wood (When It Isn't)",
+   "category": "science_physics",
+   "angle": "A metal spoon and a wooden spoon in the same room are the same temperature; metal just pulls heat out of your skin far faster",
+   "summary": "Your skin senses heat leaving it, not temperature. Explained visually in under 60 seconds.",
+   "keywords": [
+    "metal",
+    "cold",
+    "wood",
+    "heat",
+    "conduction",
+    "touch"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 88,
+    "visual_potential": 84,
+    "audience_curiosity": 86,
+    "scientific_clarity": 92,
+    "evergreen": 95,
+    "originality": 62,
+    "feasibility": 92
+   },
+   "reasoning": "Editorial heuristic score 85.8, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "The Action Lab, 'The Fastest Heat Conductor' https://www.youtube.com/shorts/ZEGazGMEhtw (about 20.6x its channel's median Shorts views, scan 2026-10-19)"
+  },
+  {
+   "slug": "why-a-coin-dances-on-a-cold-bottle",
+   "title": "Why a Coin Dances on a Cold Bottle",
+   "category": "science_physics",
+   "angle": "Air inside a chilled bottle warms, expands and lifts a coin over the mouth in little hops",
+   "summary": "Warming air expands and pushes until it escapes. Explained visually in under 60 seconds.",
+   "keywords": [
+    "coin",
+    "bottle",
+    "cold",
+    "air",
+    "expansion",
+    "pressure"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 82,
+    "visual_potential": 90,
+    "audience_curiosity": 80,
+    "scientific_clarity": 90,
+    "evergreen": 90,
+    "originality": 72,
+    "feasibility": 88
+   },
+   "reasoning": "Editorial heuristic score 84.6, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "The Action Lab, 'Coins shiver when they're too cold' https://www.youtube.com/shorts/xlh0Cy-4Jho (about 8.8x its channel's median, scan 2026-10-19)"
+  },
+  {
+   "slug": "why-a-dropped-ball-and-a-thrown-ball-land-together",
+   "title": "Why a Dropped Ball and a Thrown Ball Land at the Same Time",
+   "category": "science_physics",
+   "angle": "Sideways speed and falling are independent, so a ball thrown flat and a ball dropped from the same height hit the floor together",
+   "summary": "Gravity doesn't care how fast you're going sideways. Explained visually in under 60 seconds.",
+   "keywords": [
+    "gravity",
+    "falling",
+    "projectile",
+    "ball",
+    "horizontal"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 86,
+    "visual_potential": 86,
+    "audience_curiosity": 84,
+    "scientific_clarity": 88,
+    "evergreen": 95,
+    "originality": 60,
+    "feasibility": 90
+   },
+   "reasoning": "Editorial heuristic score 84.5, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "The Action Lab, 'Will the bullet drop straight down?' https://www.youtube.com/shorts/JwYB9nCdKOM (about 10.8x its channel's median, scan 2026-10-19); our version uses balls, no weapons"
+  },
+  {
+   "slug": "where-the-gold-in-your-ring-came-from",
+   "title": "Where the Gold in Your Ring Came From",
+   "category": "space_astronomy",
+   "angle": "Much of Earth's gold was forged when neutron stars collided, long before the Sun existed",
+   "summary": "Gold is made in cosmic collisions, not in ordinary stars. Explained visually in under 60 seconds.",
+   "keywords": [
+    "gold",
+    "neutron stars",
+    "kilonova",
+    "elements",
+    "space"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 90,
+    "visual_potential": 86,
+    "audience_curiosity": 90,
+    "scientific_clarity": 78,
+    "evergreen": 90,
+    "originality": 75,
+    "feasibility": 82
+   },
+   "reasoning": "Editorial heuristic score 85.5, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "SciShow, 'Neutron stars gave you jewelry.' https://www.youtube.com/shorts/F6rEF04gc4c (about 3.9x its channel's median, scan 2026-10-19). Science note: neutron-star mergers are a confirmed source (GW170817); how much gold they make versus other events is still debated, so say 'much', not 'all'"
+  },
+  {
+   "slug": "why-water-beads-on-a-leaf",
+   "title": "Why Water Rolls Off Some Leaves Like Marbles",
+   "category": "science_physics",
+   "angle": "Tiny bumps coated in wax let a drop sit on air pockets, so it rolls off and carries dirt away (the lotus effect)",
+   "summary": "A leaf that cleans itself with rain. Explained visually in under 60 seconds.",
+   "keywords": [
+    "water",
+    "leaf",
+    "lotus",
+    "hydrophobic",
+    "drops"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 78,
+    "visual_potential": 92,
+    "audience_curiosity": 78,
+    "scientific_clarity": 88,
+    "evergreen": 90,
+    "originality": 70,
+    "feasibility": 88
+   },
+   "reasoning": "Editorial heuristic score 83.2, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "The Action Lab, 'Cutting Water in Half With a Hydrophobic Knife' https://www.youtube.com/shorts/4oU_RrCV7ks (about 10x) and 'I Made Dry Water' https://www.youtube.com/shorts/dfEqoWYLjBk (about 17x), scan 2026-10-19"
+  },
+  {
+   "slug": "why-0-999-repeating-equals-1",
+   "title": "Why 0.999... Is Exactly 1",
+   "category": "math_probability",
+   "angle": "There is no number between 0.999... and 1, so they are the same number written two ways",
+   "summary": "The math fact that starts arguments. Explained visually in under 60 seconds.",
+   "keywords": [
+    "math",
+    "infinity",
+    "decimals",
+    "0.999",
+    "one"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 86,
+    "visual_potential": 62,
+    "audience_curiosity": 85,
+    "scientific_clarity": 82,
+    "evergreen": 95,
+    "originality": 58,
+    "feasibility": 80
+   },
+   "reasoning": "Editorial heuristic score 78.25, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "minutephysics, 'When 2 + 2 = 3.999999999...' https://www.youtube.com/shorts/0fV8kYoGDNM (about 4.7x its channel's median, scan 2026-10-19)"
+  },
+  {
+   "slug": "why-some-people-taste-broccoli-as-bitter",
+   "title": "Why Broccoli Tastes Bitter to Some People",
+   "category": "psychology_behavior",
+   "angle": "One taste-receptor gene comes in versions that do or don't detect a bitter compound found in broccoli and its cousins",
+   "summary": "Same broccoli, different tongues. Explained visually in under 60 seconds.",
+   "keywords": [
+    "taste",
+    "bitter",
+    "broccoli",
+    "genes",
+    "supertaster"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 84,
+    "visual_potential": 78,
+    "audience_curiosity": 84,
+    "scientific_clarity": 80,
+    "evergreen": 90,
+    "originality": 66,
+    "feasibility": 84
+   },
+   "reasoning": "Editorial heuristic score 81.0, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
+   "added_on": "2026-10-19",
+   "inspired_by": "Steve Mould, 'Are you a super taster?' https://www.youtube.com/shorts/zoTuSOEOvPw (about 5.9x its channel's median, scan 2026-10-19)"
   }
  ]
 }

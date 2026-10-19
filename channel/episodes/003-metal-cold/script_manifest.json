@@ -1,0 +1,224 @@
+{
+ "topic": "Why metal feels colder than wood at the same temperature",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red thermometer",
+  "asset": "prop_thermometer",
+  "progression": "the thermometer stands between the two spoons, reads the same on metal and wood, stands in for your skin as its red column drops on metal, sits beside the tall metal bar, stays high on the wood, then waits between the two ice cubes",
+  "resolution": "between the puddle on the metal block and the still-square ice cube on the wooden block, the red column sits at the same room mark it started at"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2,
+   3,
+   4
+  ],
+  "turn": 5,
+  "payoff": 6
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "Your hand lies to you about cold metal. Stay to the end and you'll see two ice cubes prove it.",
+   "promise": "Stay to the end and you'll see two ice cubes prove it.",
+   "location": "loc_kitchen",
+   "through_line_state": "the red thermometer stands upright between the metal spoon and the wooden spoon, its red column at the middle mark",
+   "shots": [
+    "MEDIUM low angle: the silver-grey clay metal spoon spins slowly on the counter and stops beside the wooden spoon, a puff of cold mist curling up from the metal spoon only",
+    "CU frontal: the chunky cream thermometer with its signal-red column stands between the two spoons, the red column trembling at the middle mark",
+    "ECU macro: frosty white specks bloom across the silver-grey spoon's bowl, fingerprint texture visible in the clay",
+    "WIDE high angle: the whole sunny counter, the two spoons side by side and the thermometer between them, cotton-wool clouds drifting past the window",
+    "MEDIUM lateral: two pale blue-white clay ice cubes slide in from the left and stop at the edge of the counter, then everything settles"
+   ],
+   "assets_used": [
+    "loc_kitchen",
+    "prop_thermometer",
+    "prop_metal_spoon",
+    "prop_wood_spoon",
+    "prop_ice_cube"
+   ],
+   "audio": "a bright metallic clink as the spoon stops spinning, a faint icy crackle of frost, a soft clay slide as the ice cubes arrive",
+   "direction_note": "The metal spoon is always on the LEFT, the wooden spoon on the RIGHT. The ice cubes slide only from left to right and stop; they do not melt yet.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Metal isn't *colder*.\nIt just feels it",
+     "at": "your hand lies",
+     "until": "stay to the end"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Leave a metal spoon and a wooden one in a kitchen and both reach room temperature. A thermometer reads the same on each.",
+   "location": "loc_kitchen",
+   "through_line_state": "the thermometer lies against the metal spoon, then against the wooden spoon, and its red column stays at exactly the same height both times",
+   "shots": [
+    "MEDIUM frontal: the metal spoon on the left and the wooden spoon on the right lie on the sunny clay counter, a gentle push-in",
+    "CU lateral: the thermometer tips over and rests across the silver-grey metal spoon, its red column steady at the middle mark",
+    "MEDIUM overhead: the thermometer rolls from the metal spoon across to the wooden spoon and rests on it",
+    "ECU macro: the red column inside the thermometer, sitting at exactly the same middle mark, not moving",
+    "MEDIUM low angle: the thermometer stands back up between the two spoons while sunlight warms the counter, then settles"
+   ],
+   "assets_used": [
+    "loc_kitchen",
+    "prop_thermometer",
+    "prop_metal_spoon",
+    "prop_wood_spoon"
+   ],
+   "audio": "a soft clay tap as the thermometer tips, a light rolling rattle across the counter, a calm kitchen hum bed",
+   "direction_note": "The metal spoon stays on the LEFT and the wooden spoon on the RIGHT. The thermometer rolls only from left to right. The red column never moves in this scene.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Same room,\n*same* temperature",
+     "at": "both reach room",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "build",
+   "vo_line": "So why does metal feel colder? Your skin can't measure temperature, it only feels how fast its own heat is leaving.",
+   "location": "loc_heat_cutaway",
+   "through_line_state": "the thermometer, standing in for your skin, leans its red bulb on the metal slab and its red column drops quickly",
+   "shots": [
+    "WIDE frontal: the clay cutaway board, a thick warm peach clay layer resting on a silver-grey metal slab, with cream clay arrows pressed into it pointing down from the peach layer into the metal",
+    "CU lateral: the cream clay arrows slide downward one after another, from the peach layer into the grey metal",
+    "MEDIUM high angle: the thermometer leans its red bulb against the silver-grey slab",
+    "ECU macro: the thermometer's red column sinks quickly down toward its bulb",
+    "MEDIUM low angle: the arrows keep sliding down into the metal and fade into it, then the scene settles"
+   ],
+   "assets_used": [
+    "loc_heat_cutaway",
+    "prop_thermometer"
+   ],
+   "audio": "a low soft whoosh as each arrow slides down, a faint clay squeak as the thermometer leans, a gentle settling tap",
+   "direction_note": "The arrows only ever move DOWNWARD, from the peach layer into the metal. The red column only falls in this scene.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "Touch it",
+      "Heat *leaves*",
+      "Feels *cold*"
+     ],
+     "at": "it only feels",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "build",
+   "vo_line": "Aluminum carries heat over a thousand times better than wood, so the moment you touch it, warmth rushes out of your fingers.",
+   "location": "loc_chart_board",
+   "through_line_state": "the thermometer stands beside the very tall silver-grey bar, its red column low and still falling",
+   "shots": [
+    "MEDIUM frontal: the upright cream clay chart board with a very tall silver-grey bar on the left and a tiny wooden-brown stub on the right, no letters or numbers",
+    "CU low angle: the silver-grey bar grows taller and taller, pushing up toward the top of the board",
+    "ECU macro: the tiny wooden-brown stub on the right barely rises at all",
+    "WIDE high angle: the thermometer stands at the foot of the tall grey bar, its red column low",
+    "MEDIUM lateral: cream clay arrows rush sideways along the grey bar from left to right, then everything settles"
+   ],
+   "assets_used": [
+    "loc_chart_board",
+    "prop_thermometer"
+   ],
+   "audio": "a rising clay stretch as the grey bar grows, a tiny wooden tick for the brown stub, a quick whoosh of the arrows",
+   "direction_note": "The tall grey bar is always on the LEFT, the tiny brown stub on the RIGHT. Bars only grow upward.",
+   "overlays": [
+    {
+     "type": "stat",
+     "text": "1000x",
+     "label": "better at carrying heat",
+     "at": "aluminum carries heat",
+     "until": "so the moment"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "arc_role": "turn",
+   "vo_line": "Wood barely carries heat, so your skin stays warm against it. But if metal feels colder, which one would melt ice faster?",
+   "location": "loc_wood_bench",
+   "through_line_state": "the thermometer rests its red bulb on the wooden block and its red column stays high and steady",
+   "shots": [
+    "WIDE frontal: the cozy clay workbench of warm wooden planks with a chunky wooden block on it, warm lamp light",
+    "CU lateral: the thermometer leans its red bulb on the wooden block, its red column high and steady",
+    "ECU macro: the wood grain pressed into the clay block, a faint warm glow over it",
+    "MEDIUM high angle: a pair of pale ice cubes glides onto the bench from the left and waits side by side",
+    "CU low angle: the two ice cubes sit still and square while the lamp light flickers softly, then settles"
+   ],
+   "assets_used": [
+    "loc_wood_bench",
+    "prop_thermometer",
+    "prop_ice_cube"
+   ],
+   "audio": "a warm wooden knock as the thermometer leans, a soft lamp hum, a gentle clay slide as the ice cubes arrive",
+   "direction_note": "The ice cubes slide only from left to right and stay square: they do not melt in this scene.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Wood keeps your\nskin *warm*",
+     "at": "wood barely carries heat",
+     "until": "but if metal"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "arc_role": "payoff",
+   "vo_line": "Put ice on each, and the metal melts it first, pouring its heat in fast. Your hand felt heat leaving, not cold metal.",
+   "delivers_promise": "two identical ice cubes sit on a metal block and a wooden block side by side; the cube on the metal slumps into a puddle while the cube on the wood stays square",
+   "location": "loc_blocks_table",
+   "through_line_state": "the thermometer stands between the two blocks at its middle room mark while the ice on the metal block melts into a puddle",
+   "shots": [
+    "WIDE frontal: the sky-blue clay tabletop with the silver-grey metal block on the left and the wooden block on the right, one pale blue-white ice cube on top of each",
+    "CU lateral: the ice cube on the silver-grey metal block slumps and spreads into a shiny clay puddle",
+    "ECU macro: the ice cube on the wooden block stays square and dry",
+    "MEDIUM high angle: the thermometer stands between the two blocks, its red column at the middle mark",
+    "WIDE low angle: a flat puddle on the metal block beside a square ice cube on the wooden block, then everything settles"
+   ],
+   "assets_used": [
+    "loc_blocks_table",
+    "prop_thermometer",
+    "prop_ice_cube"
+   ],
+   "audio": "a soft wet drip as the ice on the metal melts, a quiet trickle, a gentle settling tap",
+   "direction_note": "The metal block is always on the LEFT, the wooden block on the RIGHT. Only the ice on the METAL block melts; the ice on the wood stays square.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "The metal melts\nthe ice *first*",
+     "at": "put ice on each",
+     "until": "your hand felt"
+    },
+    {
+     "type": "card",
+     "text": "You feel heat\n*leaving*, not cold",
+     "at": "your hand felt",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://van.physics.illinois.edu/QA/listing.php?id=44029",
+  "https://dx.doi.org/10.4249/scholarpedia.7955",
+  "https://ergo.human.cornell.edu/studentdownloads/DEA3500notes/Thermal/thsensnotes.html",
+  "https://engineeringtoolbox.com/thermal-conductivity-metals-d_858.html",
+  "https://pmc.ncbi.nlm.nih.gov/articles/PMC2873019/table/RSTB20080304TB1",
+  "https://www.physics.purdue.edu/demos/display_page.php?item=3B-05",
+  "https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/52.10.html"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds, cream, warm sand, grass green, wooden-brown and silver-grey clay (the metal), pale blue-white ice; signal red ONLY on the thermometer's column and bulb"
+}

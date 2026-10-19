@@ -8,7 +8,11 @@
    "thumbnail_hook": "The Jam With No Cause",
    "produced_on": "2026-10-15",
    "status": "published",
-   "posted": {"youtube": "public since 2026-10-16 19:00 Israel (owner report; URL not recorded here)", "instagram": "https://www.instagram.com/reel/Dek_itADRNh/", "tiktok": "posted by the owner by hand"},
+   "posted": {
+    "youtube": "public since 2026-10-16 19:00 Israel (owner report; URL not recorded here)",
+    "instagram": "https://www.instagram.com/reel/Dek_itADRNh/",
+    "tiktok": "posted by the owner by hand"
+   },
    "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/e3fa913d-9646-4721-9e23-5613ac164da4.mp4",
    "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/5df59c23-26b6-4eea-8f0e-bafa47bfd13a.png",
    "credits_spent": 255.35,
@@ -118,6 +122,57 @@
     "v2 was held by the Mac's import check (no_excessive_silence: 1.59 s of dead air at 9.27-10.86 s, where scene 1 meets scene 2), so it was never posted. v3 (2026-10-17, 0 credits) trims each scene clip to its line plus about 0.45 s each side (channel/tools/trim_dead_air.py), then re-captions and re-runs the overlays on the new scene timings. Longest silence is now 0.99 s and the video runs 54.5 s instead of 60.1 s. scripts/qc_episode.py 2 on the hosted file: every check passes, 'would be approved and posted automatically (score 95.5)'."
    ],
    "publish_at": "2026-10-17T19:00:00+03:00"
+  },
+  {
+   "number": 3,
+   "slug": "why-metal-feels-colder-than-wood",
+   "title": "Why Metal Feels Colder Than Wood",
+   "thumbnail_hook": "YOUR HAND LIES",
+   "produced_on": "2026-10-19",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/f6a87c43-0f3c-43d8-9184-e0a7a0e4cdc3.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261019_061231_fe886d8b-9916-425b-86d6-77a891207e53.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/b9693b30-0d82-40f8-9d75-36c78f37e31e.jpg",
+   "credits_spent": 142.4,
+   "sources": [
+    "https://van.physics.illinois.edu/QA/listing.php?id=44029",
+    "https://dx.doi.org/10.4249/scholarpedia.7955",
+    "https://ergo.human.cornell.edu/studentdownloads/DEA3500notes/Thermal/thsensnotes.html",
+    "https://engineeringtoolbox.com/thermal-conductivity-metals-d_858.html",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC2873019/table/RSTB20080304TB1",
+    "https://www.physics.purdue.edu/demos/display_page.php?item=3B-05",
+    "https://web.physics.ucsb.edu/~lecturedemonstrations/Composer/Pages/52.10.html"
+   ],
+   "known_issues": [
+    "Scene 1 narration is 7.33 s of speech (soft band, accepted after one retry; the dead-air trim keeps the scene tight around it)",
+    "Scene 4: the thermometer's red column rises a little in shot 4 where the script has it staying low beside the metal bar",
+    "Scene 4's chart board renders the tall metal bar as a rod standing beside the board rather than drawn on it; it still reads as tall metal vs a tiny wood stub",
+    "The thumbnail and cover jobs report model nano_banana_2 although nano_banana_pro was requested; both came back at 4K (5504x3072) with the hook text exact"
+   ],
+   "credits_note": "Balance 400.7 before the run -> 258.3 after (2026-10-19): 7 narration takes, 9 set/prop images, 6 scenes, thumbnail and cover. No scene regenerations.",
+   "category": "science_physics",
+   "description": "Why does metal feel colder than wood when both are the same temperature? Your skin can't measure an object's temperature. It feels how fast its own heat is leaving, and aluminum carries heat over a thousand times better than wood. The ice cube test at the end proves it: the metal melts the ice first.",
+   "caption": "That cold metal spoon isn't colder than the wooden one. Here's why, in clay.",
+   "hashtags": [
+    "#shorts",
+    "#science",
+    "#physics",
+    "#heat",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "7 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, a cause-and-effect chain, a 1000x stat, and the payoff cards",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-10-19 (inspired by The Action Lab, 'The Fastest Heat Conductor', about 20.6x its channel's median)",
+   "publish_at": null
   }
  ]
 }
