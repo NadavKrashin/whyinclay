@@ -15,7 +15,7 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   - `scripts/qc_episode.py 3` on the hosted file: "would be approved and posted automatically (score 95.5)".
   - Files: `channel/episodes/003-metal-cold/`. Sandbox working files: `~/ep3/`.
 - **Episode 2 is finished (v3):** "Why You Never Notice Your Blind Spot" (slug
-  `why-your-brain-fills-in-your-blind-spot`, status `produced_not_published`), made 2026-10-16 on the
+  `why-your-brain-fills-in-your-blind-spot`, status `published`, live per the owner 2026-10-19), made 2026-10-16 on the
   owner's request and reworked the same day after the owner's review (captions too small and low,
   cards templated, narration stiff, hook not understandable). 185.2 credits in total (170.05 + 15.15
   for the rework).
@@ -136,8 +136,8 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   worker's PATH); the Agents page Schedule table shows its last run.
   **Never just delete the database:** the importer would re-import every `produced_not_published`
   episode and post it again. Episode 1 is now `status: published` with a `posted` map in
-  `episodes.json`, which the importer skips. **Episode 2: set it to `published` too once its posts
-  are confirmed live** (it was due 2026-10-17 19:00 Israel; not verified from here).
+  `episodes.json`, which the importer skips. Episode 2 is `published` too (owner confirmed it live
+  2026-10-19; its post URLs are not recorded here).
 
 ## What the owner still has to do (details in `docs/setup-guide.md`)
 

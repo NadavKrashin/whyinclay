@@ -64,7 +64,7 @@
    "title": "Why You Never Notice Your Blind Spot",
    "thumbnail_hook": "YOU CAN'T SEE THIS",
    "produced_on": "2026-10-16",
-   "status": "produced_not_published",
+   "status": "published",
    "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/5092e338-1cff-4f8e-bb3c-6758ed3e41ee.mp4",
    "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261016_142806_331565a1-444b-43e4-b2f4-72d231b1eff9.png",
    "credits_spent": 185.2,
@@ -121,7 +121,10 @@
    "fixed_after_app_qc": [
     "v2 was held by the Mac's import check (no_excessive_silence: 1.59 s of dead air at 9.27-10.86 s, where scene 1 meets scene 2), so it was never posted. v3 (2026-10-17, 0 credits) trims each scene clip to its line plus about 0.45 s each side (channel/tools/trim_dead_air.py), then re-captions and re-runs the overlays on the new scene timings. Longest silence is now 0.99 s and the video runs 54.5 s instead of 60.1 s. scripts/qc_episode.py 2 on the hosted file: every check passes, 'would be approved and posted automatically (score 95.5)'."
    ],
-   "publish_at": "2026-10-17T19:00:00+03:00"
+   "publish_at": "2026-10-17T19:00:00+03:00",
+   "posted": {
+    "reported": "live, reported by the owner 2026-10-19 (scheduled 2026-10-17 19:00 Israel); platforms and URLs not recorded here"
+   }
   },
   {
    "number": 3,
