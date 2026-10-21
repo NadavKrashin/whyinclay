@@ -1,6 +1,6 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-19.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-21.
 
 ## State right now
 
@@ -57,10 +57,12 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits:** 258.3 on the Higgsfield Plus plan after episode 3 (2026-10-19). Wednesday's run can make
-  one more episode (about 150, leaving about 108); after that every run pauses at the 200 floor until
-  the owner tops up or upgrades. An episode costs about 150, and runs
-  pause by themselves under 200. Buying credits or changing the plan is the owner's call.
+- **Credits: 90.3, so production is PAUSED (checked Wed 2026-10-21 06:00 UTC).** Runs make nothing
+  while the balance is under 200. After episode 3 the balance was 258.3; on Mon 2026-10-19 between
+  11:00 and 11:37 UTC 168 more credits went on models this channel's recipe does not use (FLUX 3 Video
+  -72 net after refunds, two Gemini Omni Flash jobs -90, four GPT Image 2.5 Flare images -6). That
+  spend did not come from the production session. Runs resume by themselves once the owner tops up
+  or upgrades (the owner's call) and the balance is 200 or more.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet
@@ -92,7 +94,7 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   - The old `claude/happy-cannon-dzuzwj` branch is deleted, and `main` is the default branch
     (checked 2026-10-16).
   - The scheduled task's prompt now says `main` (applied 2026-10-16 on the owner's word).
-- **Next scheduled run:** Wed 2026-10-21 08:58 makes episode 4 (next topic by score:
+- **Next episode (once credits are back above 200):** episode 4 (next topic by score:
   `where-the-gold-in-your-ring-came-from`, 85.5; say "much of" Earth's gold, not "all": how much
   comes from neutron-star mergers is still debated). Pushed episodes reach the Mac's import within about 45 minutes
   (15-minute pull + 30-minute import).
