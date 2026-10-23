@@ -158,8 +158,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
 5. Platform credentials: YouTube and Instagram connected 2026-10-16 (see "Platform accounts").
    Still open:
    - restart the services and confirm Settings shows youtube ✓ and instagram ✓
-   - get Google **Publish app** to work, then rerun `scripts/youtube_auth.py` (until then the token
-     lapses every 7 days)
+   - ~~get Google **Publish app** to work~~ Done 2026-10-23: the Google app is "In production", so new
+     sign-ins no longer lapse after 7 days. The 2026-10-16 token expired that day; the owner must rerun
+     `scripts/youtube_auth.py` once (a token from Testing mode stays dead after publishing)
    - ~~apply for the YouTube API audit~~ Submitted 2026-10-16; waiting for Google
    - TikTok stays a manual handoff
    No R2 bucket is needed.
@@ -218,8 +219,9 @@ dashboard Agents page. Never claim it is live without checking.
   link in the version manifest (`source_url`): the same bytes that passed QC. See
   `publishing.service.public_video_url`. No R2 bucket is needed.
 - YouTube: connected 2026-10-16 with `scripts/youtube_auth.py` (channel "Why In Clay", a brand
-  account). The Google app was still in "Testing", so the refresh token lapses after 7 days until the
-  owner gets **Publish app** to work and reruns the script. Episode 1's upload came out public
+  account). The Google app was in "Testing" until 2026-10-23, so that first token lapsed after 7 days
+  (it broke on 2026-10-23). The app is now "In production"; a token from a fresh
+  `scripts/youtube_auth.py` run doesn't expire on a timer. Episode 1's upload came out public
   before the audit was approved (see the audit section).
 
 ## YouTube API audit (submitted 2026-10-16)
