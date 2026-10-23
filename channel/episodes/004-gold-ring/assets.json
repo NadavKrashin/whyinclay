@@ -1,0 +1,42 @@
+{
+ "loc_dresser": {
+  "id": "f6d6115b-f0b2-4a45-93b2-ae94c295bb84",
+  "desc": "LOCATION (sunny cream clay bedroom dresser with a round mirror, a window behind showing sky-blue backdrop, cotton-wool clouds and a round warm-yellow clay Sun)"
+ },
+ "loc_star_cutaway": {
+  "id": "af750424-2d60-4393-94b0-84ae4615264b",
+  "desc": "LOCATION (a clay star cut open: glowing yellow and orange layers around a dull grey iron ball at its centre, on navy clay ground before a navy space backdrop with tiny cream stars)"
+ },
+ "loc_atom_bench": {
+  "id": "7990cfd8-c6e5-44d0-b174-c6c0ea4994c9",
+  "desc": "LOCATION (cream clay workbench with a clay atom and a pile of sand and cream balls, a cream clay funnel on a wooden stand holding grey beads, sky-blue backdrop with clouds)"
+ },
+ "loc_scale": {
+  "id": "2e399372-8fa5-4275-bc2c-dc81b5f134f3",
+  "desc": "LOCATION (wooden clay balance scale on grass-green ground: LEFT pan down and empty, RIGHT pan raised high holding a small green clay mountain with a cream snowy peak)"
+ },
+ "loc_space": {
+  "id": "da1afe0d-d04f-4445-9738-8f3882121427",
+  "desc": "LOCATION (deep navy clay space with tiny cream clay stars and big swirling pale-blue and cream cotton-wool nebula clouds)"
+ },
+ "prop_ring_box": {
+  "id": "3f08022b-ae2c-42bc-9dcb-97ab213715b4",
+  "desc": "PROP small signal-red clay ring box with a hinged lid and cream cushion (the only red thing in every scene)"
+ },
+ "prop_gold_ring": {
+  "id": "cbb43663-43bc-4e6e-aee7-bccae889bdab",
+  "desc": "PROP plain gold clay ring with a warm sheen"
+ },
+ "prop_neutron_star": {
+  "id": "2cb509b1-71c7-4007-a441-b0f7f650781e",
+  "desc": "PROP small glowing pale-blue clay ball with a cream halo and two thin cream beams (a neutron star; repeat it for a second one)"
+ },
+ "prop_teaspoon": {
+  "id": "2ff14398-e561-423d-8602-e8f1f2bcbcb3",
+  "desc": "PROP silver-grey clay teaspoon heaped with glowing pale-blue clay"
+ },
+ "prop_gold_beads": {
+  "id": "f4f93593-a264-4087-8fd9-6bf059a01f08",
+  "desc": "PROP glittering round gold clay beads"
+ }
+}

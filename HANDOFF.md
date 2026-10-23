@@ -1,9 +1,16 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-21.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-23.
 
 ## State right now
 
+- **Episode 4 is finished (2026-10-23, Friday run):** "Where the Gold in Your Ring Came From" (slug
+  `where-the-gold-in-your-ring-came-from`, `produced_not_published`, no `publish_at`). 148.55 credits,
+  55.6 s. `scripts/qc_episode.py 4` on the hosted file: "would be approved and posted automatically (95.5)".
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/695a9333-0582-4aa4-aac7-3fe18f8f4b75.mp4
+  - Thumbnail ("OLDER THAN THE SUN"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261023_060903_8b2ef9fb-7be9-46fb-99cb-dda5c56f245f.png
+    and cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/95839b3e-b03d-4f76-b077-807314ae5bac.jpg
+  - Files: `channel/episodes/004-gold-ring/`. Sandbox working files: `~/ep4/`.
 - **Episode 3 is finished (2026-10-19, first scheduled run):** "Why Metal Feels Colder Than Wood"
   (slug `why-metal-feels-colder-than-wood`, status `produced_not_published`, no `publish_at`, so the
   importer schedules it at the next free slot). 142.4 credits, 54.5 s.
@@ -57,12 +64,10 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 90.3, so production is PAUSED (checked Wed 2026-10-21 06:00 UTC).** Runs make nothing
-  while the balance is under 200. After episode 3 the balance was 258.3; on Mon 2026-10-19 between
-  11:00 and 11:37 UTC 168 more credits went on models this channel's recipe does not use (FLUX 3 Video
-  -72 net after refunds, two Gemini Omni Flash jobs -90, four GPT Image 2.5 Flare images -6). That
-  spend did not come from the production session. Runs resume by themselves once the owner tops up
-  or upgrades (the owner's call) and the balance is 200 or more.
+- **Credits: 851.45** on the Higgsfield Plus plan after episode 4 (2026-10-23). The balance was 1000 at
+  the start of the Friday run (topped up after the Wednesday pause at 90.3). Enough for about five more
+  episodes at ~150 each. Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not
+  use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet
@@ -94,9 +99,8 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
   - The old `claude/happy-cannon-dzuzwj` branch is deleted, and `main` is the default branch
     (checked 2026-10-16).
   - The scheduled task's prompt now says `main` (applied 2026-10-16 on the owner's word).
-- **Next episode (once credits are back above 200):** episode 4 (next topic by score:
-  `where-the-gold-in-your-ring-came-from`, 85.5; say "much of" Earth's gold, not "all": how much
-  comes from neutron-star mergers is still debated). Pushed episodes reach the Mac's import within about 45 minutes
+- **Next scheduled run:** Mon 2026-10-26 08:58 makes episode 5 (Monday, so it refreshes topics first;
+  next by score now: `why-airplanes-fly-curved-routes`, 85.3). Pushed episodes reach the Mac's import within about 45 minutes
   (15-minute pull + 30-minute import).
 
 - **Dashboard redesign for phones (2026-10-17, owner request: "not UX at all, especially on phone";

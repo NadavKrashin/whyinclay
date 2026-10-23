@@ -1,0 +1,223 @@
+{
+ "topic": "Where the gold in your ring came from",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red ring box",
+  "asset": "prop_ring_box",
+  "progression": "the red ring box opens on the gold ring, sits empty and shut beside the star, waits with its lid ajar while atoms miss their chance, rests beside the heavy teaspoon, floats between the two circling dead stars, then catches the gold from the crash",
+  "resolution": "the red ring box snaps shut around a gold ring made from the crash's glittering beads"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2,
+   3,
+   4
+  ],
+  "turn": 5,
+  "payoff": 6
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "Your gold ring is older than the Sun. Stick around until the very end, and you'll watch the enormous crash that made it.",
+   "promise": "Stick around until the very end, and you'll watch the enormous crash that made it.",
+   "location": "loc_dresser",
+   "through_line_state": "the red ring box springs open and the gold ring inside it gleams",
+   "shots": [
+    "CU frontal: the signal-red clay ring box springs open by itself and the gold clay ring inside gleams",
+    "ECU macro: the gold ring's curved surface, a warm sparkle sliding across the fingerprinted clay",
+    "MEDIUM low angle: the open red box on the cream dresser with sunlight streaming through the window behind",
+    "WIDE high angle: the whole sunny clay bedroom dresser, the tiny red box glowing on top",
+    "MEDIUM lateral: the camera glides past the box toward the window as a clay Sun in the sky outside dims slightly, then everything settles"
+   ],
+   "assets_used": [
+    "loc_dresser",
+    "prop_ring_box",
+    "prop_gold_ring"
+   ],
+   "audio": "a soft velvet snap as the box opens, a bright tiny chime as the ring sparkles, a calm morning hum",
+   "direction_note": "The ring box only opens in this scene; the ring stays inside it.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Made before the\nSun *existed*",
+     "at": "your gold ring",
+     "until": "stick around"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Inside stars, small atoms get squeezed into bigger ones, but that trick stops at iron, long before you get to gold.",
+   "location": "loc_star_cutaway",
+   "through_line_state": "the red ring box sits shut and empty beside the star, waiting",
+   "shots": [
+    "WIDE frontal: the giant clay star cut open like an onion, glowing yellow and orange layers around a dull grey iron ball at its centre, on a navy clay space backdrop",
+    "CU lateral: small cream clay beads drift inward through the glowing layers and squash together into bigger beads",
+    "ECU macro: the dull grey iron ball at the star's centre, the beads bouncing off it and stopping",
+    "MEDIUM high angle: the shut red ring box sits on the navy ground beside the glowing star, empty",
+    "CU low angle: the glowing orange layers pulse slowly around the grey iron centre, then settle"
+   ],
+   "assets_used": [
+    "loc_star_cutaway",
+    "prop_ring_box"
+   ],
+   "audio": "a deep warm rumble from the star, soft clay squishes as beads merge, a dull thunk on the iron ball",
+   "direction_note": "Beads only move inward, toward the grey centre. Nothing gold appears in this scene.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Stars stop\nat *iron*",
+     "at": "but that trick stops",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "build",
+   "vo_line": "To build gold, atoms have to swallow a flood of extra neutrons within seconds, far more than a normal star has.",
+   "location": "loc_atom_bench",
+   "through_line_state": "the red ring box waits with its lid ajar while the atom stays too small",
+   "shots": [
+    "MEDIUM frontal: a big clay atom of sand and cream balls sits on a cream workbench under a clay funnel",
+    "ECU macro: a few small grey clay neutron beads trickle slowly out of the funnel tip",
+    "CU lateral: the clay atom swells a little as the beads stick to it, then stops",
+    "WIDE high angle: the whole workbench with the half-empty funnel and the red ring box beside the atom, lid ajar",
+    "MEDIUM low angle: the funnel runs dry while the atom stays small, then the scene settles"
+   ],
+   "assets_used": [
+    "loc_atom_bench",
+    "prop_ring_box"
+   ],
+   "audio": "a light pattering of tiny beads, a soft clay squelch as they stick, a hollow tap as the funnel empties",
+   "direction_note": "Beads only fall downward out of the funnel. The atom never turns gold here.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "An atom",
+      "+ neutrons",
+      "*Gold*"
+     ],
+     "at": "atoms have to swallow",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "build",
+   "vo_line": "So where's that flood? Somewhere so packed that a single teaspoon of it would weigh about a billion tons on Earth.",
+   "location": "loc_scale",
+   "through_line_state": "the red ring box rests at the foot of the scale beside the heavy teaspoon",
+   "shots": [
+    "CU frontal: a small silver clay teaspoon heaped with glowing pale-blue clay sits on the left pan of a giant clay balance scale",
+    "WIDE low angle: the giant balance scale tips hard to the left while a whole grass-green clay mountain sits on the right pan, lifted into the air",
+    "ECU macro: the glowing pale-blue heap in the teaspoon, packed tight and shimmering",
+    "MEDIUM high angle: the red ring box rests at the foot of the scale beneath the heavy teaspoon",
+    "CU lateral: the scale creaks and holds, the mountain hanging high, then everything settles"
+   ],
+   "assets_used": [
+    "loc_scale",
+    "prop_teaspoon",
+    "prop_ring_box"
+   ],
+   "audio": "a deep wooden creak as the scale tips, a heavy clay thud, a faint shimmering hum from the teaspoon",
+   "direction_note": "The scale only tips to the LEFT, toward the teaspoon. The mountain is on the RIGHT pan and rises.",
+   "overlays": [
+    {
+     "type": "stat",
+     "text": "1 billion",
+     "label": "tons in one teaspoon",
+     "at": "a single teaspoon",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "arc_role": "turn",
+   "vo_line": "That's a neutron star, the crushed core left after a giant star explodes, and sometimes two of them circle each other.",
+   "location": "loc_space",
+   "through_line_state": "the red ring box floats between the two circling dead stars, lid open",
+   "shots": [
+    "WIDE frontal: a navy clay space scene with cotton-wool nebula clouds, one small glowing pale-blue clay neutron star spinning in the middle",
+    "CU lateral: a second glowing pale-blue neutron star drifts in from the right",
+    "MEDIUM overhead: the two neutron stars circle each other clockwise, drawing a swirl in the clouds",
+    "ECU macro: the floating red ring box with its lid open, the pale-blue glow reflected on it",
+    "CU low angle: the two neutron stars circle faster and closer, then the frame settles"
+   ],
+   "assets_used": [
+    "loc_space",
+    "prop_neutron_star",
+    "prop_ring_box"
+   ],
+   "audio": "a low cosmic hum, a rising whoosh as the stars circle, a faint rhythmic pulse",
+   "direction_note": "The two stars circle CLOCKWISE and get closer; they do not touch in this scene.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Neutron star:\na *dead* star's core",
+     "at": "that's a neutron star",
+     "until": "and sometimes two"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "arc_role": "payoff",
+   "vo_line": "When they collide, they spray gold, and crashes like that seeded the cloud our Sun grew from. That's your ring's gold.",
+   "delivers_promise": "the two neutron stars crash in a bright flash and spray glittering gold beads that drift into the swirling cloud and fall into the red ring box, which closes around a gold ring",
+   "location": "loc_space",
+   "through_line_state": "the red ring box catches the gold beads from the crash and snaps shut around a gold ring",
+   "shots": [
+    "MEDIUM frontal: the two pale-blue neutron stars smash together in a bright cream flash",
+    "WIDE high angle: a burst of glittering gold clay beads sprays outward from the crash into the cotton-wool cloud",
+    "CU lateral: the gold beads drift through the swirling cloud and gather together",
+    "ECU macro: gold beads tumble into the open red ring box and melt into a gold ring",
+    "MEDIUM low angle: the red ring box snaps shut and glows softly in the cloud, then everything settles"
+   ],
+   "assets_used": [
+    "loc_space",
+    "prop_neutron_star",
+    "prop_gold_beads",
+    "prop_ring_box",
+    "prop_gold_ring"
+   ],
+   "audio": "a deep soft boom as the stars collide, a sparkling shimmer of scattering beads, a velvet snap as the box closes",
+   "direction_note": "Gold beads only move outward from the crash, then into the box. The box closes once, at the end.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "A crash that\nmakes *gold*",
+     "at": "when they collide",
+     "until": "that's your ring's"
+    },
+    {
+     "type": "card",
+     "text": "Your ring:\n*star-crash* gold",
+     "at": "that's your ring's",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://scienceinschool.org/article/2007/fusion-9/",
+  "https://www.chemistryworld.com/features/how-elements-are-made-beyond-the-stars/4014861.article",
+  "https://arxiv.org/pdf/1710.05858",
+  "https://ligo.org/wp-content/uploads/2024/08/GW170817Kilonova.pdf",
+  "https://doi.org/10.1038/s41586-019-1113-7",
+  "https://www.astronomy.com/astronomy-for-beginners/astronomy-101-neutron-stars/",
+  "https://apod.nasa.gov/apod/neutron_stars.html"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds by day, deep navy clay space with cotton-wool nebula clouds for space scenes, cream, warm sand, grass green, glowing yellow-orange star clay, pale-blue glowing neutron stars and gold clay; signal red ONLY on the ring box"
+}

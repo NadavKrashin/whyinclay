@@ -80,6 +80,9 @@ worked example: copy its file shapes.
   - a number the voice says gets a `stat`;
   - a mechanism gets a diagram or a `chain`, at least once per episode;
   - the payoff restates the answer.
+  Keep each `chain` step to about 12 characters ("Heat *leaves*", "+ neutrons"): the three boxes share
+  one row and shrink to fit, so a longer step comes out too small to read on a phone (episodes 3 and 4
+  both had to be cut down after the preview).
   Skip cards that only echo the voice ("HERE'S WHY", "HERE'S THE SURPRISE"). Write cards in sentence
   case, in words a person would say ("No light sensors, so it's blind", not "ZERO LIGHT
   DETECTORS"), at most 2 short lines, one red key word. Text never adds a new claim.

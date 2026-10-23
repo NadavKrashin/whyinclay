@@ -176,6 +176,56 @@
    },
    "topic_source": "seeds/topics.json refresh of 2026-10-19 (inspired by The Action Lab, 'The Fastest Heat Conductor', about 20.6x its channel's median)",
    "publish_at": null
+  },
+  {
+   "number": 4,
+   "slug": "where-the-gold-in-your-ring-came-from",
+   "title": "Where the Gold in Your Ring Came From",
+   "thumbnail_hook": "OLDER THAN THE SUN",
+   "produced_on": "2026-10-23",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/695a9333-0582-4aa4-aac7-3fe18f8f4b75.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261023_060903_8b2ef9fb-7be9-46fb-99cb-dda5c56f245f.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/95839b3e-b03d-4f76-b077-807314ae5bac.jpg",
+   "credits_spent": 148.55,
+   "sources": [
+    "https://scienceinschool.org/article/2007/fusion-9/",
+    "https://www.chemistryworld.com/features/how-elements-are-made-beyond-the-stars/4014861.article",
+    "https://arxiv.org/pdf/1710.05858",
+    "https://ligo.org/wp-content/uploads/2024/08/GW170817Kilonova.pdf",
+    "https://doi.org/10.1038/s41586-019-1113-7",
+    "https://www.astronomy.com/astronomy-for-beginners/astronomy-101-neutron-stars/",
+    "https://apod.nasa.gov/apod/neutron_stars.html"
+   ],
+   "known_issues": [
+    "Which cosmic events make most of the universe's gold is still debated (neutron-star mergers are a confirmed source since 2017; some gold may come from rare kinds of supernovae), so the script says crashes like that seeded the Sun's cloud, not that they made all of it",
+    "Scene 2's star renders as a cartoon five-pointed star cut open rather than a round star",
+    "The first cover render baked the headline wrong ('OLŒR') with a repeated strip at the bottom; it was re-rendered text-free and the headline baked on deterministically"
+   ],
+   "credits_note": "Balance 1000 before the run -> 851.45 after (2026-10-23): 9 narration takes (line 1 needed three, line 6 two), 10 set/prop images, 6 scenes, thumbnail, cover and one clean cover re-render. No scene regenerations.",
+   "category": "space_astronomy",
+   "description": "Where does gold come from? Not from ordinary stars: they can only build atoms up to iron. Gold needs a flood of neutrons within seconds, and one place that happens is when two neutron stars, the crushed cores of dead stars, crash together. Crashes like that seeded the cloud our Sun formed from, so the gold in your ring is older than the Sun.",
+   "caption": "The gold in your ring is older than the Sun. Here's the crash that made it, in clay.",
+   "hashtags": [
+    "#shorts",
+    "#space",
+    "#science",
+    "#gold",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "7 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, an atom-plus-neutrons-to-gold chain, a 1 billion tons stat, and the payoff cards",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-10-19 (inspired by SciShow, 'Neutron stars gave you jewelry.', about 3.9x its channel's median)",
+   "publish_at": null
   }
  ]
 }
