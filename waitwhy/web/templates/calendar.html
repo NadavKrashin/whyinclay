@@ -7,7 +7,7 @@
 {% if waiting %}<div class="card" style="margin-bottom:12px"><h3>Not scheduled yet</h3>
 {% for v, why in waiting %}<div style="margin:6px 0"><a href="/videos/{{ v.id }}">{{ v.title }}</a> — <span class="warn">{{ why }}</span></div>{% endfor %}</div>{% endif %}
 {% for d, items in days.items() %}<div class="card" style="margin-bottom:10px"><h3>{{ d }}</h3>
-{% for j, v, label, cls, dry in items %}<div style="margin:6px 0"><span class="chip">{{ j.scheduled_at|in_tz(cfg.timezone) }} {{ cfg.timezone.split('/')[-1] }} · {{ j.scheduled_at|in_tz('UTC') }} UTC</span> <span class="chip">{{ j.platform }}</span> <a href="/videos/{{ v.id }}">{{ v.title }}</a> — <span class="{{ cls }}">{{ label }}</span>{% if dry %} <span class="chip">test post (dry run)</span>{% endif %}</div>{% endfor %}</div>
+{% for j, v, label, cls, dry in items %}<div style="margin:6px 0"><span class="chip">{{ j.scheduled_at|in_tz(cfg.timezone) }} {{ cfg.timezone.split('/')[-1] }} · {{ j.scheduled_at|in_tz('UTC') }} UTC</span> <span class="chip">{{ j.platform }}</span> <a href="/videos/{{ v.id }}">{{ v.title }}</a> — <span class="{{ cls }}">{{ label }}</span>{% if dry %} <span class="chip">test post (dry run)</span>{% endif %}{% if j.status in ('failed','blocked') %}<form class="inline" method="post" action="/publications/{{ j.id }}/retry"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Retry</button></form>{% endif %}</div>{% endfor %}</div>
 {% else %}<p class="muted">Nothing scheduled.</p>{% endfor %}
 <p class="muted">Slots are chosen in the audience timezone ({{ cfg.publishing_slots.timezone }}: {{ cfg.publishing_slots.slots|join(', ') }}), not yours.</p>
 {% endblock %}

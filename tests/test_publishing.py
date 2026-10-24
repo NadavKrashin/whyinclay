@@ -343,3 +343,27 @@ def test_calendar_speaks_plainly(session, cfg):
     assert "skipped: facebook is off" in html and "waiting for its slot" in html
     assert "dry run" not in html                                      # live now: no stale test-post tags
     assert "Not scheduled yet" in html and "no_excessive_silence" in html and held.title in html
+
+
+def test_failed_post_has_a_retry_button_that_reposts(session, cfg):
+    """Owner 2026-10-24: YouTube failed while signed out; after reconnecting there was no Retry on the post."""
+    from fastapi.testclient import TestClient
+
+    from waitwhy.api.app import app, csrf_token
+    set_setting(session, "mock_publish_scenario", {"youtube": "ok"})
+    v = f.ready_video(session, cfg)
+    pub.schedule_video(session, get_config(session), v, "test")
+    yt = session.query(PublicationJob).filter_by(platform="youtube").one()
+    yt.status, yt.last_error, yt.error_class = "failed", "YouTube refresh token expired or revoked", "auth"
+    session.commit()
+    c = TestClient(app)
+    assert f"/publications/{yt.id}/retry" in c.get(f"/videos/{v.id}", auth=("ceo", "test-pass")).text
+    assert f"/publications/{yt.id}/retry" in c.get("/calendar", auth=("ceo", "test-pass")).text
+    r = c.post(f"/publications/{yt.id}/retry", data={"csrf": csrf_token("ceo")}, auth=("ceo", "test-pass"),
+               follow_redirects=False)
+    assert r.status_code in (302, 303)
+    session.expire_all()
+    yt = session.get(PublicationJob, yt.id)
+    assert yt.status == "scheduled" and yt.last_error is None
+    _publish_all(session)
+    assert session.get(PublicationJob, yt.id).status == "published"

@@ -319,6 +319,18 @@ def status_label(pj: PublicationJob, dry_run_mode: bool) -> tuple[str, str, bool
     return label, cls, show_dry
 
 
+def retry_publication(session: Session, pj: PublicationJob, actor: str) -> bool:
+    """Owner's Retry on a failed or blocked post (e.g. after reconnecting YouTube): run it again now."""
+    if pj.status not in ("failed", "blocked"):
+        return False
+    now = datetime.now(timezone.utc)
+    pj.status, pj.last_error, pj.error_class, pj.scheduled_at = "scheduled", None, None, now
+    queue.enqueue(session, "publish", {"publication_job_id": str(pj.id)}, run_at=now, video_id=pj.video_id,
+                  idempotency_key=f"publish:{pj.id}:retry:{now.isoformat()}")
+    audit(session, actor, "publication.retried", "publication_job", pj.id, platform=pj.platform)
+    return True
+
+
 def cancel_video_publications(session: Session, video_id: uuid.UUID, actor: str) -> int:
     n = 0
     for pj in session.execute(select(PublicationJob).where(PublicationJob.video_id == video_id,

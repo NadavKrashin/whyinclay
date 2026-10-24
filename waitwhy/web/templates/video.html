@@ -38,7 +38,8 @@
   {% for p in pubs %}<tr><td>{{ p.platform }}</td><td><span class="chip {{ 'ok' if p.status=='published' else ('bad' if p.status in ('failed','blocked') else 'warn') }}">{{ p.status }}</span>{% if p.dry_run %} <span class="chip">dry run</span>{% endif %}<div class="muted">{{ (p.last_error or '')[:160] }}</div></td>
   <td>{{ p.scheduled_at.strftime('%Y-%m-%d %H:%M') if p.scheduled_at else '' }} UTC</td>
   <td>{% set post = posts.get(p.id) %}{% if post %}<a href="{{ post.url }}">{{ post.privacy_status }}</a>{% endif %}
-  {% if p.status in ('manual_action_required','private_uploaded') %}<a href="/publications/{{ p.id }}/package">package</a>{% endif %}</td></tr>{% else %}<tr><td colspan="4" class="muted">Not scheduled.</td></tr>{% endfor %}</table></div>
+  {% if p.status in ('manual_action_required','private_uploaded') %}<a href="/publications/{{ p.id }}/package">package</a>{% endif %}
+  {% if p.status in ('failed','blocked') %}<form class="inline" method="post" action="/publications/{{ p.id }}/retry"><input type="hidden" name="csrf" value="{{ csrf }}"><button>Retry</button></form>{% endif %}</td></tr>{% else %}<tr><td colspan="4" class="muted">Not scheduled.</td></tr>{% endfor %}</table></div>
   {% for m in post_metrics %}<div class="muted">{{ m.platform }}: views {{ m.latest.get('views', '—') if m.latest else 'unavailable' }} · 7d {{ m.windows['7d'] if m.windows['7d'] is not none else 'n/a yet' }}</div>{% endfor %}
   </div>
   {% if script %}<details class="card" style="margin-top:12px" open><summary>Script v{{ script.version }} ({{ script.word_count }} words, ~{{ script.est_duration_s }}s)</summary>

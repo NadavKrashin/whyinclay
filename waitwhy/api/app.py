@@ -366,6 +366,17 @@ def manual_package(pid: uuid.UUID, u: str = Depends(user), s: Session = Depends(
                              headers={"Content-Disposition": f"attachment; filename={pj.platform}-package.zip"})
 
 
+@app.post("/publications/{pid}/retry")
+def retry_publication(request: Request, pid: uuid.UUID, csrf: str = Form(...), u: str = Depends(user),
+                      s: Session = Depends(db)):
+    check_csrf(u, csrf)
+    pj = s.get(PublicationJob, pid)
+    if pj is None:
+        raise HTTPException(404)
+    pub.retry_publication(s, pj, f"user:{u}")
+    return back(request, f"/videos/{pj.video_id}")
+
+
 @app.post("/publications/{pid}/manual-done")
 def manual_done(request: Request, pid: uuid.UUID, url: str = Form(...), csrf: str = Form(...), u: str = Depends(user),
                 s: Session = Depends(db)):
