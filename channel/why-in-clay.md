@@ -9,8 +9,8 @@ worked example: copy its file shapes.
 | | |
 |---|---|
 | Name | Why in Clay (handle `@whyinclay`) |
-| Promise | One everyday mystery, explained in 60 seconds of handmade clay |
-| Format | 9:16, 6 scenes generated as 10 s clips, five hard-cut shots per scene (cuts at 2/4/6/8 s); each clip is trimmed to its line (step 6a), so a finished episode runs about 55 s |
+| Promise | One everyday mystery, explained in 30 seconds of handmade clay |
+| Format | 9:16, **4 scenes** (owner, 2026-10-24; was 6) generated as 10 s clips, five hard-cut shots per scene (cuts at 2/4/6/8 s); each clip is trimmed to its line (step 6a), so a finished episode runs **about 30 s** (25-35 s) |
 | Look | Higgsfield explainer preset **Claymotion** (`1de0f39e-c602-4b00-b54a-38440c7f63f7`). Style key image job `313e8a54-0203-4435-9f21-af07936fc570`. Style formula: `channel/style.txt`, pasted verbatim into every image and video prompt |
 | Motion token | `smooth simple handcrafted motion, subtle stop-motion feel` (dimensional style: no "3D render" in negatives) |
 | Palette | sky blue, grass green, warm sand, cream; ONE signal-red accent reserved for the episode's through-line prop and warning marks |
@@ -26,10 +26,21 @@ worked example: copy its file shapes.
   reach for textbook or thesaurus words ("photoreceptors", "compensates", "considerably",
   "positioned rightward") to slow the narrator down: episode 2's first cut sounded AI-written because of them.
   Numbers are written as words.
-- **Pace.** Bram reads 21-23 plain words in about 7.8-8.5 s (2.6-2.8 words/second), which fits the
-  10-second scenes. If a take still comes out short or rushed, add one concrete detail in plain words
-  rather than swapping in longer words. (Kevin, the episode-1 voice, ran 3.1-3.8 words/second on plain
-  wording; that is why the narrator changed.)
+- **Pace and length (owner, 2026-10-24).** 15-19 plain words per scene (Bram reads 2.6-2.8
+  words/second, so about 6-7 s a scene once trimmed) and **at most 75 words in the whole episode**.
+  Each scene says ONE thing. If a line needs a second idea, it belongs in another episode. (Kevin, the
+  episode-1 voice, ran 3.1-3.8 words/second; that is why the narrator changed.)
+- **Why 30 seconds.** Measured 2026-10-24 on episodes 1-4: on YouTube, viewers were down to 54% by
+  0:11 and 38% by 0:16 (episode 2), only 10% of episode 1's viewers reached its end, and YouTube rated
+  its retention at about 0.4 of similar Shorts through the middle. Instagram gave every Reel one test
+  batch of about 110 people, who watched 6-15 s of 55. Episodes 3 and 4 passed the hook check and did
+  no better: people leave during the explanation, not at the first line. A 30 s Short that is watched
+  to the end and replayed is what both platforms push.
+- **Show, don't lecture.** The clay does the explaining; the voice points at it. Every build line
+  names something the viewer SEES happen in that scene ("The metal spoon pulls the heat out of your
+  finger"), never a textbook step with nothing on screen ("Inside stars, small atoms get squeezed
+  into bigger ones"). No numbers or names the picture doesn't show. Something visibly changes on
+  every cut.
 - **Hook and retention (owner, 2026-10-18).** Episodes 1 and 2 kept only 43% and 46% of viewers
   past the first seconds; Shorts that keep growing hold 60-70%. Both opened with a 22-word fact
   ("Each of your eyes has a blind spot. There's an area...") that gave no reason to stay. Every
@@ -45,16 +56,22 @@ worked example: copy its file shapes.
     see how one driver can stop it." It names a concrete thing the viewer gets at the end: a test
     they can do on themselves, a reveal they can see, the one move that fixes it. Never vague bait
     ("wait for it", "you won't believe"). Breaking a promise teaches viewers to swipe, so only
-    promise what scene 6 really shows.
-  - **Hold the promised thing back until scene 6.** Build (2-4) makes the question sharper, it
-    doesn't answer it: no history or names before scene 5 unless they are the surprise (episode 2's
-    "Edme Mariotte found it" in scene 3 was a detour), and no "Try it" before the payoff (episode 2
-    handed over its blind-spot test in scene 4, so nobody needed the ending).
-  - **Re-hook in scene 4 or 5:** one line that raises the stakes again before the answer ("But
-    that's not the weird part." / "So why don't you see a black hole?").
-  - **Payoff (scene 6) delivers the promise on screen** (record how in the block's
+    promise what scene 4 really shows. Keep the promise short (about 8-10 words) so scene 1 stays
+    under 20 words.
+  - **Hold the promised thing back until scene 4.** Scene 2 makes the question sharper, it doesn't
+    answer it: no history or names unless they are the surprise (episode 2's "Edme Mariotte found
+    it" was a detour), and no "Try it" before the payoff (episode 2 handed over its blind-spot test
+    in scene 4 of 6, so nobody needed the ending).
+  - **Twist in scene 3:** one line that turns the question around before the answer ("But that's
+    not the weird part." / "So why don't you see a black hole?").
+  - **Payoff (scene 4) delivers the promise on screen** (record how in the block's
     `delivers_promise`), and its last sentence comes back to the hook's words so the end flows into
     the start and rewatches loop.
+  - **End on a question people want to answer**, recorded as the payoff block's
+    `comment_question` and shown as its last card (on screen, not spoken, so it costs no time):
+    a quick guess or a personal check, never "like and subscribe" ("Did yours vanish too?" / "Which
+    one did you think was colder?"). It is also the first line of the `caption` and `description`
+    (step 8). Episodes 1-4 got zero comments, shares or saves on every platform.
   - **Text from frame one:** scene 1's first card starts on the first words (its `at` is in the
     first four words), in different words from the voice, so muted viewers get the hook at once.
     Shot 1 opens on the most striking image already moving: no establishing shot, no slow push-in.
@@ -70,8 +87,9 @@ worked example: copy its file shapes.
   sand car).
 - **Direction of travel:** for anything that moves, state which way it faces and moves in the shot
   text, and put the reverse motion in the negatives (episode 1 had a car reversing at 0:37).
-- **Arc:** hook + promise (1), build (2-4, re-hook in 4 or 5), turn (5), payoff (6). The payoff
-  answers the hook, keeps the promise and loops back to the first line.
+- **Arc (4 scenes):** hook + promise (1), build (2), twist (3), payoff (4). The payoff answers the
+  hook, keeps the promise, loops back to the first line and ends on the `comment_question` card.
+  Use `arc_role` values `hook`, `build`, `turn`, `payoff`.
 - **On-screen text and diagrams (owner request, every episode):** give every block an `overlays`
   list (format in the `overlays.py` docstring; episode 2 is the worked example). About ONE per
   scene; a card has to earn its place (owner, 2026-10-16: two or three echo cards per scene looked
@@ -79,7 +97,7 @@ worked example: copy its file shapes.
   - the hook names the mystery in plain words (`card`);
   - a number the voice says gets a `stat`;
   - a mechanism gets a diagram or a `chain`, at least once per episode;
-  - the payoff restates the answer.
+  - the payoff restates the answer, then the `comment_question` card closes the episode.
   Keep each `chain` step to about 12 characters ("Heat *leaves*", "+ neutrons"): the three boxes share
   one row and shrink to fit, so a longer step comes out too small to read on a phone (episodes 3 and 4
   both had to be cut down after the preview).
@@ -109,7 +127,8 @@ follow them, except where this file says otherwise.
    was never posted: fix that one first (re-edit in the sandbox where possible, which costs no
    credits), check it again, update its `video_url`, and push, before starting a new episode.
    **Credit guard.** Call `balance`. If below 200 credits, stop: make nothing new and report
-   "paused: N credits left". One episode costs about 150 credits. Never buy credits or change the plan.
+   "paused: N credits left". A 4-scene episode should cost about 100 credits (6-scene episodes cost
+   about 150); record the real figure. Never buy credits or change the plan.
 1. **Topic.** Take the highest-scoring topic in `seeds/topics.json` whose slug is not in
    `channel/episodes.json` and has no `risk_flags`. Score = the weighted sum of its `scores` using
    `topic_scoring_weights` in `config/company.yaml`.
@@ -130,12 +149,13 @@ follow them, except where this file says otherwise.
    in episode 1's shape: blocks with `vo_line`, five `shots` (vary size and angle on every cut, no
    OTS, no people), `assets_used` (max 7: location first), `through_line_state` and `audio`
    (2-4 diegetic clay SFX cues). Validate with
-   `validate_motion_script.py --script script_manifest.json --duration-seconds 60` until `valid: true`.
+   `validate_motion_script.py --script script_manifest.json --duration-seconds 40` until `valid: true`.
    Then run `python3 channel/tools/check_hook.py channel/episodes/NNN-slug/script_manifest.json`
-   until it prints "hook check passed" (no credits; see "Hook and retention"). Scene 1 needs
-   `promise`, the payoff scene `delivers_promise`.
-3. **Narration first** (cheap; it proves the script fits before the 120-credit video spend). One
-   `generate_audio_batch` with all six lines in the format
+   until it prints "hook check passed" (no credits; see "Hook and retention"). It also checks the
+   30-second shape: 4 scenes, at most 20 words a scene and 75 in all. Scene 1 needs `promise`, the
+   payoff scene `delivers_promise` and `comment_question` (shown as its last card).
+3. **Narration first** (cheap; it proves the script fits before the roughly 80-credit video spend). One
+   `generate_audio_batch` with all four lines in the format
    `[curious] {line}` (this overrides the narration workflow's timecode format, which leaked words).
    Convert with the narration workflow's reverse-trim recipe, measure with
    `measure_narration_takes.py`, then run `python3 check_takes.py script_manifest.json work/voices`
@@ -156,7 +176,7 @@ follow them, except where this file says otherwise.
    Regenerate a scene only for a named failure (wrong style, missing audio, person or text on
    screen), at most twice.
 6. **Assemble + captions + upload** in ONE background `sandbox_exec`: `media_upload` first, then
-   `finish_video.sh --blocks 6 ... --out work/output/final_clean.mp4`, the caption fragment, then the
+   `finish_video.sh --blocks 4 ... --out work/output/final_clean.mp4`, the caption fragment, then the
    PUT. Gotchas from episode 1:
    - The sandbox refuses pasted base64 files. Upload the manifest with `media_upload` and curl it.
    - Presigned PUTs need the header `If-None-Match: *`.
@@ -171,13 +191,13 @@ follow them, except where this file says otherwise.
    Inspect frames at a few cue midpoints before `media_confirm`.
 6a. **Trim dead air** (no credits; every run), right after `finish_video.sh` and before the captions
    in step 6. `finish_video.sh` centres each line in its 10 s scene,
-   so with Bram's ~8.3 s lines two scenes meet with 1.5 s or more of silence, which the Mac holds
+   so with Bram's 6-7 s lines two scenes meet with 3 s or more of silence, which the Mac holds
    (episode 2 v2). Run `python3 trim_dead_air.py --sidecar work/output/final_clean.mp4.assembly.json
    --blocks-dir work/blocks --voice-dir vdir --out-dir trimmed` (upload `channel/tools/trim_dead_air.py`):
    it trims each clip to its line plus 0.45 s each side and writes a new sidecar. Caption the trimmed
    `final_clean.mp4` with `audio_to_captions.py ... --per-block <new sidecar> --voice-dir vdir`, and pass
    `--assembly <new sidecar>` to `overlays.py` in 6b so the scraps follow the shorter scenes. Episodes
-   come out about 55 s long.
+   come out about 30 s long (25-35 s).
 6b. **Overlays** (no credits): upload `channel/tools/overlays.py` and the manifest, then
    `python3 overlays.py script_manifest.json work/output/final.words.json work/output/final.mp4 final_v.mp4 --still T ...`
    writes overlay previews: composite and look at one per overlay, fix overlaps or wrong timing, then run
@@ -197,7 +217,8 @@ follow them, except where this file says otherwise.
 8. **Record.** Append the episode to `channel/episodes.json` in episode 1's shape: urls, credits spent
    (balance before minus after), sources, known issues, `category`, `description` and `hashtags`
    (yt-seo rules; at most 5, as TikTok allows no more; the app keeps `#shorts` for YouTube only and
-   drops it elsewhere), `caption`, `cover_url`, and `checks` with `narration_strict`, `captions` and `visual_review`
+   drops it elsewhere), `caption` and `description` that both open with the `comment_question`,
+   `cover_url`, and `checks` with `narration_strict`, `captions` and `visual_review`
    set to `passed` only if that check really ran and passed. Use status `produced_not_published` (once an episode is
    confirmed live, a session sets it to `published` with a `posted` map of links: the importer never
    touches `published` entries, so a reset or restored database can't post it twice). The

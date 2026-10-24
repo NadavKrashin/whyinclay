@@ -15,6 +15,8 @@ first seconds, and no reason to stay to the end. This checks the structure that 
   4. The payoff scene says how it delivers the promise (`delivers_promise`) and its last sentence
      comes back to the hook's words, so the end loops into the start.
   5. The demo or answer the promise points at is not given away before the payoff scene.
+  6. The 30-second shape (owner, 2026-10-24): 3-4 scenes, at most 20 words a scene, 75 in all.
+  7. The payoff ends on a `comment_question` card: a question viewers want to answer.
 
 The yt-script hook score is printed as advice only: it rewards words like "never" and "lose" and,
 by its own notes, barely separates a channel's hits from its misses.
@@ -29,6 +31,9 @@ import sys
 from pathlib import Path
 
 MAX_FIRST_WORDS = 10
+SCENES = (3, 4)
+MAX_SCENE_WORDS = 20
+MAX_TOTAL_WORDS = 75
 END_WORDS = re.compile(r"\b(end|last|stay|stick around|by the end|finish|final)\b", re.I)
 VAGUE_PROMISE = re.compile(r"\b(wait for it|you won't believe|something crazy|something amazing|"
                            r"mind[- ]?blowing|insane)\b", re.I)
@@ -51,6 +56,10 @@ def content(text: str) -> set[str]:
     return {w.rstrip("s") for w in words(text) if w not in STOP and len(w) > 2}
 
 
+def card_text(text: str) -> str:
+    return re.sub(r"\s+", " ", (text or "").replace("*", "")).strip().lower()
+
+
 def check(manifest: dict) -> list[tuple[bool, str]]:
     blocks = manifest.get("blocks") or []
     if not blocks:
@@ -60,6 +69,15 @@ def check(manifest: dict) -> list[tuple[bool, str]]:
     sents = sentences(vo)
     hook = sents[0] if sents else ""
     results: list[tuple[bool, str]] = []
+
+    results.append((SCENES[0] <= len(blocks) <= SCENES[1],
+                    f"{len(blocks)} scenes (the 30-second format has {SCENES[0]}-{SCENES[1]}; 4 is the default)"))
+    counts = [len(words(b.get("vo_line", ""))) for b in blocks]
+    long = [f"scene {b.get('n', i + 1)}: {c}" for i, (b, c) in enumerate(zip(blocks, counts)) if c > MAX_SCENE_WORDS]
+    results.append((not long, f"every scene is at most {MAX_SCENE_WORDS} words" if not long else
+                    f"too many words (max {MAX_SCENE_WORDS} a scene, one idea each): {', '.join(long)}"))
+    results.append((sum(counts) <= MAX_TOTAL_WORDS,
+                    f"{sum(counts)} words in all (max {MAX_TOTAL_WORDS}, about 30 seconds)"))
 
     n = len(words(hook))
     results.append((0 < n <= MAX_FIRST_WORDS,
@@ -93,6 +111,14 @@ def check(manifest: dict) -> list[tuple[bool, str]]:
     shared = content(hook) & content(last)
     results.append((bool(shared), f"last line loops back to the hook ({', '.join(sorted(shared))})" if shared else
                     f"the last sentence should come back to the hook's words so the end loops into the start: \"{last}\""))
+
+    question = (payoff.get("comment_question") or "").strip()
+    cards = [o for o in payoff.get("overlays") or [] if o.get("type", "card") == "card"]
+    shown = bool(question) and bool(cards) and card_text(cards[-1].get("text")) == card_text(question)
+    results.append((question.endswith("?") and shown,
+                    "payoff ends on the comment question card" if question.endswith("?") and shown else
+                    "the payoff needs `comment_question` (a question viewers want to answer, ending in \"?\") "
+                    f"and its last card must show that text: \"{question}\""))
 
     early_demo = [b.get("n", i + 1) for i, b in enumerate(blocks[:payoff_i])
                   if re.match(r"\s*(try it|try this|do it now)\b", b.get("vo_line", ""), re.I)]

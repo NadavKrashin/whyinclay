@@ -253,6 +253,17 @@ dashboard Agents page. Never claim it is live without checking.
 
 ## Open quality items (fix in future episodes, not urgent)
 
+- **30-second format (owner, 2026-10-24).** Episodes are now 4 scenes and about 30 s (were 6 scenes,
+  about 55 s). The numbers behind it, measured 2026-10-24: YouTube's Shorts feed sent episode 1 1,702
+  views but episode 2 only 4 and episode 3 none; viewers fell to 54% by 0:11 and 38% by 0:16, and
+  only 10% finished episode 1. Instagram gave each Reel one test batch of about 110 people, who
+  watched 6-15 s of 55. Zero comments, shares or saves anywhere. Episodes 3 and 4 passed the hook
+  check and did no better, so the loss is in the explanation. Recipe changes: at most 75 words (15-19
+  a scene), show-don't-lecture build lines, a twist in scene 3, payoff in scene 4, and a
+  `comment_question` card at the end that also opens the caption and description.
+  `channel/tools/check_hook.py` checks the shape; `config/company.yaml` `min_duration_seconds` is now
+  20 so the Mac doesn't hold them. Expect about 100 credits an episode; record the real figure.
+
 - **Hooks are now a hard gate (owner, 2026-10-18).** YouTube Studio showed only 43% (episode 1) and
   46% (episode 2) of viewers staying past the first seconds, against 60-70% for Shorts that keep
   growing. Every new script follows "Hook and retention" in `channel/why-in-clay.md`: a punch of at most

@@ -11,7 +11,7 @@ handles approvals, publishing, analytics and reports.
 
 The owner wants this to run automatically. Do not stop to ask for approval inside these limits:
 
-- Produce episodes and spend Higgsfield credits per `channel/why-in-clay.md` (about 150 credits per
+- Produce episodes and spend Higgsfield credits per `channel/why-in-clay.md` (about 100 credits per 4-scene episode since 2026-10-24; was about 150 for 6 scenes;
   episode, hard cap 200 per episode, pause when the balance is under 200).
 - Pick topics, write scripts, retry failed takes and scenes, and choose titles and thumbnails.
 - Commit and push work to the working branch.

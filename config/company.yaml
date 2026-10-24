@@ -16,7 +16,7 @@ video:
   height: 1920
   fps: 30
   default_duration_seconds: 60
-  min_duration_seconds: 45
+  min_duration_seconds: 20             # 4-scene episodes run about 30 s (owner, 2026-10-24)
   max_duration_seconds: 75             # FB Reels API accepts 3-90 s; keep headroom
   video_codec: h264
   audio_codec: aac
