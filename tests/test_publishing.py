@@ -218,10 +218,14 @@ def test_database_times_are_utc_and_calendar_shows_owner_time(session, cfg):
     from waitwhy.api.app import app
     assert session.execute(text("SHOW timezone")).scalar() == "UTC"
     v = f.ready_video(session, cfg)
-    pub.schedule_video(session, get_config(session), v, "test", at=datetime(2026, 10, 16, 16, 0, tzinfo=timezone.utc))
+    from datetime import timedelta
+    from zoneinfo import ZoneInfo
+    at = (datetime.now(timezone.utc) + timedelta(days=1)).replace(hour=16, minute=0, second=0, microsecond=0)
+    pub.schedule_video(session, get_config(session), v, "test", at=at)   # the calendar shows the last 7 days on
     session.commit()
+    local = at.astimezone(ZoneInfo("Asia/Jerusalem")).strftime("%H:%M")  # 19:00 in summer, 18:00 in winter
     r = TestClient(app).get("/calendar", auth=("ceo", "test-pass"))
-    assert r.status_code == 200 and "19:00 Jerusalem · 16:00 UTC" in r.text
+    assert r.status_code == 200 and f"{local} Jerusalem · 16:00 UTC" in r.text
 
 
 def test_manual_action_alert_links_to_the_dashboard(session, cfg):
