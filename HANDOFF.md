@@ -159,8 +159,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
    Still open:
    - restart the services and confirm Settings shows youtube ✓ and instagram ✓
    - ~~get Google **Publish app** to work~~ Done 2026-10-23: the Google app is "In production", so new
-     sign-ins no longer lapse after 7 days. The 2026-10-16 token expired that day; the owner must rerun
-     `scripts/youtube_auth.py` once (a token from Testing mode stays dead after publishing)
+     sign-ins no longer lapse after 7 days. The 2026-10-16 token expired that day; the owner re-signed in
+     (`.env` updated 2026-10-23 20:24). Checked 2026-10-24: the token refreshes, has upload, readonly and
+     analytics scopes, and reads the channel and its analytics
    - ~~apply for the YouTube API audit~~ Submitted 2026-10-16; waiting for Google
    - TikTok stays a manual handoff
    No R2 bucket is needed.
