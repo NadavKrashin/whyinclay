@@ -149,7 +149,10 @@ follow them, except where this file says otherwise.
    in episode 1's shape: blocks with `vo_line`, five `shots` (vary size and angle on every cut, no
    OTS, no people), `assets_used` (max 7: location first), `through_line_state` and `audio`
    (2-4 diegetic clay SFX cues). Validate with
-   `validate_motion_script.py --script script_manifest.json --duration-seconds 40` until `valid: true`.
+   `validate_motion_script.py --script script_manifest.json --duration-seconds 40 --duration-retry-blocks 1,2,3,4`
+   until `valid: true`. The Higgsfield validator is built for 10-second lines of 20-23 words; its
+   `--duration-retry-blocks` allowance is what accepts 17-19 words, and every other check still runs
+   (episode 5, 2026-10-26). Write 17-19 words a scene: it rejects 15-16.
    Then run `python3 channel/tools/check_hook.py channel/episodes/NNN-slug/script_manifest.json`
    until it prints "hook check passed" (no credits; see "Hook and retention"). It also checks the
    30-second shape: 4 scenes, at most 20 words a scene and 75 in all. Scene 1 needs `promise`, the
@@ -157,8 +160,11 @@ follow them, except where this file says otherwise.
 3. **Narration first** (cheap; it proves the script fits before the roughly 80-credit video spend). One
    `generate_audio_batch` with all four lines in the format
    `[curious] {line}` (this overrides the narration workflow's timecode format, which leaked words).
-   Convert with the narration workflow's reverse-trim recipe, measure with
-   `measure_narration_takes.py`, then run `python3 check_takes.py script_manifest.json work/voices`
+   Convert with the narration workflow's reverse-trim recipe, then measure each take with
+   `bash $HF_WORKFLOWS/narration/scripts/speech_metrics.sh work/voices/voiceNN.wav --text '<line>'`:
+   it must show `rate=ok` (at most 2.9 words/s) and `pauses=0`, and 17-19 words come out at about
+   6-7.5 s. (`measure_narration_takes.py` still gates on the old 7.8-9.5 s window for 10-second lines,
+   so it calls every 30-second take too short; don't use it.) Then run `python3 check_takes.py script_manifest.json work/voices`
    (upload `channel/tools/check_takes.py` to the sandbox). It fails any take containing words that are
    not in the script. The workflow's own `verify_takes.py` is NOT enough: it passed all three bad
    takes in episode 1. The captions show script words, so they hide spoken mistakes. Regenerate only
@@ -175,11 +181,13 @@ follow them, except where this file says otherwise.
    stray objects only show up as motion.
    Regenerate a scene only for a named failure (wrong style, missing audio, person or text on
    screen), at most twice.
-6. **Assemble + captions + upload** in ONE background `sandbox_exec`: `media_upload` first, then
-   `finish_video.sh --blocks 4 ... --out work/output/final_clean.mp4`, the caption fragment, then the
-   PUT. Gotchas from episode 1:
+6. **Assemble + captions + upload** in background `sandbox_exec` calls: `media_upload` first, then
+   the assembly in 6a (NOT `finish_video.sh`: its gate rejects any take under 7.2 s of speech, and
+   30-second lines are 6-7.5 s), the caption fragment, the overlays (6b), then the PUT. Gotchas:
    - The sandbox refuses pasted base64 files. Upload the manifest with `media_upload` and curl it.
    - Presigned PUTs need the header `If-None-Match: *`.
+   - Call `media_upload` for the video right before its PUT, not at the start of the run: the URL
+     can fail with ExpiredToken after about 20 minutes although it says 24 h (episode 5).
    - The assembler sidecar names voices `v_000.wav`...; symlink `work/voices/voiceNN.wav` to those
      names in a separate folder and pass it as `--voice-dir` with `--per-block`.
    - Lines with numbers align badly (Whisper writes digits). Add `--minimum-similarity 0.70` after
@@ -189,12 +197,19 @@ follow them, except where this file says otherwise.
      clear of the right-hand buttons (inside the middle ~72% of the width).
    - `sandbox_exec` foreground calls time out at 60 s; run long work with `background:true` and poll.
    Inspect frames at a few cue midpoints before `media_confirm`.
-6a. **Trim dead air** (no credits; every run), right after `finish_video.sh` and before the captions
-   in step 6. `finish_video.sh` centres each line in its 10 s scene,
-   so with Bram's 6-7 s lines two scenes meet with 3 s or more of silence, which the Mac holds
-   (episode 2 v2). Run `python3 trim_dead_air.py --sidecar work/output/final_clean.mp4.assembly.json
-   --blocks-dir work/blocks --voice-dir vdir --out-dir trimmed` (upload `channel/tools/trim_dead_air.py`):
-   it trims each clip to its line plus 0.45 s each side and writes a new sidecar. Caption the trimmed
+6a. **Assemble with the dead-air trim** (no credits; every run). Download the four clips as
+   `work/blocks/block01.mp4`... and write a small sidecar `sidecar_in.json`:
+   `{"clip_seconds": 10, "sfx_vol": 0.12, "per_block": [{"n": 1, "clip": "block01.mp4", "voice": "v_000.wav"}, ...]}`.
+   Run `python3 trim_dead_air.py --sidecar sidecar_in.json --blocks-dir work/blocks --voice-dir vdir
+   --out-dir trimmed` (upload `channel/tools/trim_dead_air.py`). It cuts each clip to its line plus
+   0.45 s each side, mixes the clip's own sound under the voice, joins the scenes and normalises to
+   -16 LUFS, so no gap between lines reaches the 1.5 s the Mac holds (episode 2 v2), and writes a new
+   sidecar. A 6.5-8 s line keeps only 7-8.5 s of the 10 s clip, and centring the cut would shave
+   about 1.4 s off both ends, leaving the first and last shots as sub-second flashes and possibly
+   cutting the scene's key moment. So find each clip's cuts
+   (`ffmpeg -i blockNN.mp4 -vf "select='gt(scene,0.25)',showinfo" -f null -`) and set `trim_start_s`
+   in each `per_block` entry to start on a cut (often 0, dropping the closing "settle" shot), so every
+   shot left is at least about 1 s and the moment the line is about stays in. Caption the trimmed
    `final_clean.mp4` with `audio_to_captions.py ... --per-block <new sidecar> --voice-dir vdir`, and pass
    `--assembly <new sidecar>` to `overlays.py` in 6b so the scraps follow the shorter scenes. Episodes
    come out about 30 s long (25-35 s).

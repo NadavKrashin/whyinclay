@@ -226,6 +226,53 @@
    },
    "topic_source": "seeds/topics.json refresh of 2026-10-19 (inspired by SciShow, 'Neutron stars gave you jewelry.', about 3.9x its channel's median)",
    "publish_at": null
+  },
+  {
+   "number": 5,
+   "slug": "if-the-sun-vanished-youd-see-it-for-8-minutes",
+   "title": "If the Sun Vanished, You'd Still See It for 8 Minutes",
+   "thumbnail_hook": "YOU'RE SEEING THE PAST",
+   "produced_on": "2026-10-26",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/b791d7a2-8113-491b-bc07-b2f1aff100ca.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261026_071201_e438589f-bae4-4ad2-93cb-73528784a8b5.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/df3cc6b9-b5f9-4420-883a-b87bdb7047f5.jpg",
+   "credits_spent": 98.25,
+   "sources": [
+    "https://howthingsfly.si.edu/ask-an-explainer/how-long-does-it-take-light-sun-get-earth",
+    "https://www.skyatnightmagazine.com/space-science/how-take-light-from-sun-reach-earth",
+    "https://www.universetoday.com/articles/how-long-does-it-take-sunlight-to-reach-the-earth",
+    "https://arxiv.org/abs/1710.05834"
+   ],
+   "known_issues": [
+    "'Eight minutes' is rounded: sunlight takes about 8 minutes 20 seconds on average, a little less in January and more in July",
+    "Scene 2's close-up of the Sun was generated mirrored (Sun on the right); that one 2-second shot was flipped horizontally so the Sun stays on the left throughout",
+    "Scene 4's last shot (the clock ringing) came out on a sky-blue backdrop instead of space; it was cut by the trim, so the clock is never seen ringing and the payoff ends on the last light beads reaching Earth"
+   ],
+   "credits_note": "Balance 851.45 before the run -> 753.2 after (2026-10-26): 4 narration takes (all passed first time), 7 set/prop images (one hill re-render to remove red flowers), 4 scenes, thumbnail and cover. No scene regenerations.",
+   "category": "space_astronomy",
+   "description": "What would you do in those 8 minutes? Sunlight takes about eight minutes to cross the 150 million km to Earth, so the Sun you see is always about eight minutes old. Gravity travels at the speed of light too (confirmed in 2017, when gravitational waves and light from the same neutron-star crash arrived together), so if the Sun vanished, Earth would keep seeing it and keep circling it for about eight minutes before anything changed.",
+   "caption": "What would you do in those 8 minutes? If the Sun vanished, we'd only find out 8 minutes later. In clay.",
+   "hashtags": [
+    "#shorts",
+    "#space",
+    "#science",
+    "#sun",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "5 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, an 8 minutes stat, a Sun gone / still light / still pull chain, and the two payoff cards ending on the comment question",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by Physics Girl, 'What would happen if the Sun dissapeared?', about 4.1x its channel's median)",
+   "publish_at": null
   }
  ]
 }

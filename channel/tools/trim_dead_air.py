@@ -11,6 +11,9 @@ Usage (inside the Higgsfield sandbox, after finish_video.sh):
     python3 trim_dead_air.py --sidecar work/output/final_clean.mp4.assembly.json \\
         --blocks-dir work/blocks --voice-dir vdir --out-dir trimmed
 
+A per_block entry may set trim_start_s to start its cut there instead of centring it (pick a shot cut
+so no shot is left as a sub-second sliver; find cuts with ffmpeg's scene filter, see recipe step 6a).
+
 It writes OUT_DIR/work/output/final_clean.mp4 and a new sidecar next to it. Then caption with
 `audio_to_captions.py ... --per-block <new sidecar> --voice-dir vdir` and run
 `overlays.py ... --assembly <new sidecar>`, then `scripts/qc_episode.py N --file <final>`.
@@ -69,7 +72,10 @@ def main() -> int:
             lead_pad = max(0.0, lead_pad - (length - (clip_len - 0.04)))
             length = lead_pad + dur + tail_pad
         length = round(length * FPS) / FPS
-        start = round(max(0.0, (clip_len - length) / 2) * FPS) / FPS
+        start = max(0.0, (clip_len - length) / 2)
+        if "trim_start_s" in b:  # chosen by hand, e.g. on a shot cut so no shot is left as a sliver
+            start = min(float(b["trim_start_s"]), clip_len - length)
+        start = round(max(0.0, start) * FPS) / FPS
         seg = os.path.join(seg_dir, f"s{n}.mkv")
         fc = (f"[0:v]trim=start={start}:duration={length},setpts=PTS-STARTPTS,fps={FPS},format=yuv420p[v];"
               f"[0:a]atrim=start={start}:duration={length},asetpts=PTS-STARTPTS,"
@@ -80,7 +86,9 @@ def main() -> int:
                         "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "16",
                         "-preset", "medium", "-c:a", "pcm_s16le", seg], check=True)
         segs.append(seg)
+        # audio_to_captions.py skips blocks without speech_s > 0; a hand-made sidecar has none
         out["per_block"].append(dict(b, clip_s=length, speech_abs_s=round(t + lead_pad, 3), lead_silence_s=0.0,
+                                     speech_s=b.get("speech_s") or round(dur, 3),
                                      trim_start_s=start, voice_offset_s=round(lead_pad, 3)))
         print(f"block {n}: {length:.2f} s from {start:.2f} s, line at +{lead_pad:.2f} s", flush=True)
         t += length

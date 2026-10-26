@@ -1139,6 +1139,141 @@
    "reasoning": "Editorial heuristic score 81.0, judged by hand, not a virality prediction. Added from the 2026-10-19 trend scan: the idea beat its source channel's median; our angle is different and built for clay.",
    "added_on": "2026-10-19",
    "inspired_by": "Steve Mould, 'Are you a super taster?' https://www.youtube.com/shorts/zoTuSOEOvPw (about 5.9x its channel's median, scan 2026-10-19)"
+  },
+  {
+   "slug": "if-the-sun-vanished-youd-see-it-for-8-minutes",
+   "title": "If the Sun Vanished, You'd Still See It for 8 Minutes",
+   "category": "space_astronomy",
+   "angle": "Sunlight takes about eight minutes to reach Earth, so the Sun you see is eight minutes old",
+   "summary": "Light has a travel time, even from the Sun. Explained in 30 seconds.",
+   "keywords": [
+    "sun",
+    "light",
+    "eight minutes",
+    "speed of light",
+    "space"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 90,
+    "visual_potential": 84,
+    "audience_curiosity": 88,
+    "scientific_clarity": 92,
+    "evergreen": 95,
+    "originality": 62,
+    "feasibility": 90
+   },
+   "reasoning": "Editorial heuristic score 86.5, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-10-26",
+   "inspired_by": "Physics Girl, 'What would happen if the Sun dissapeared?' https://www.youtube.com/shorts/4s9LuOSR3Q4 (about 4.1x its channel's median, scan 2026-10-26)"
+  },
+  {
+   "slug": "why-a-straw-looks-broken-in-water",
+   "title": "Why a Straw Looks Broken in Water",
+   "category": "everyday_mysteries",
+   "angle": "Light slows down when it goes from water into air and bends, so the straw's underwater part shows up in the wrong place",
+   "summary": "Your eyes trust straight lines; light doesn't travel in one. Explained in 30 seconds.",
+   "keywords": [
+    "straw",
+    "water",
+    "refraction",
+    "light",
+    "bend"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 82,
+    "visual_potential": 90,
+    "audience_curiosity": 84,
+    "scientific_clarity": 90,
+    "evergreen": 95,
+    "originality": 58,
+    "feasibility": 92
+   },
+   "reasoning": "Editorial heuristic score 84.5, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-10-26",
+   "inspired_by": "The Action Lab, 'How To Make Light Stop Moving' https://www.youtube.com/shorts/y9PbnPDwa3Q (about 13.7x its channel's median, scan 2026-10-26)"
+  },
+  {
+   "slug": "why-the-big-nuts-end-up-on-top",
+   "title": "Why the Big Nuts Always End Up on Top",
+   "category": "everyday_mysteries",
+   "angle": "Shaking lets small pieces fall into the gaps under big ones, so the big ones get pushed up (the Brazil nut effect)",
+   "summary": "Shaken mixes sort themselves. Explained in 30 seconds.",
+   "keywords": [
+    "nuts",
+    "shaking",
+    "brazil nut effect",
+    "granular",
+    "cereal"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 84,
+    "visual_potential": 92,
+    "audience_curiosity": 84,
+    "scientific_clarity": 86,
+    "evergreen": 92,
+    "originality": 74,
+    "feasibility": 90
+   },
+   "reasoning": "Editorial heuristic score 86.0, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-10-26",
+   "inspired_by": "The Action Lab, 'Spontaneous Organization' https://www.youtube.com/shorts/jBB3gCl1AA4 (about 5.8x its channel's median, scan 2026-10-26)"
+  },
+  {
+   "slug": "why-a-magnet-can-float-a-frog",
+   "title": "Why a Strong Enough Magnet Can Float a Frog",
+   "category": "science_physics",
+   "angle": "Water and everything wet is weakly pushed away by magnets; a strong enough magnet pushes back as hard as gravity pulls (diamagnetic levitation)",
+   "summary": "Everything is a tiny bit magnetic, backwards. Explained in 30 seconds.",
+   "keywords": [
+    "magnet",
+    "frog",
+    "levitation",
+    "diamagnetism",
+    "water"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 90,
+    "visual_potential": 86,
+    "audience_curiosity": 90,
+    "scientific_clarity": 78,
+    "evergreen": 90,
+    "originality": 82,
+    "feasibility": 80
+   },
+   "reasoning": "Editorial heuristic score 86.1, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-10-26",
+   "inspired_by": "The Action Lab, 'Giant Magnet Can Move a Mouse' https://www.youtube.com/shorts/nugpYT7XueI (about 10.8x its channel's median, scan 2026-10-26)"
+  },
+  {
+   "slug": "why-everything-pulls-on-everything",
+   "title": "Why Two Bowling Balls Pull on Each Other",
+   "category": "science_physics",
+   "angle": "Every object with mass pulls on every other; between small things the pull is just too weak to notice, until you measure it carefully",
+   "summary": "Gravity isn't just for planets. Explained in 30 seconds.",
+   "keywords": [
+    "gravity",
+    "attraction",
+    "mass",
+    "cavendish",
+    "balls"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 84,
+    "visual_potential": 80,
+    "audience_curiosity": 82,
+    "scientific_clarity": 82,
+    "evergreen": 95,
+    "originality": 68,
+    "feasibility": 84
+   },
+   "reasoning": "Editorial heuristic score 82.1, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-10-26",
+   "inspired_by": "Steve Mould, 'Watch gravity bring these two balls together in real time' https://www.youtube.com/shorts/pleHURTV6fU (about 11.8x its channel's median, scan 2026-10-26)"
   }
  ]
 }

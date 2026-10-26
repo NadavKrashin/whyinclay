@@ -1,0 +1,26 @@
+{
+ "loc_hill": {
+  "id": "c6d7066c-904b-45e5-9e89-941b741c8a7f",
+  "desc": "LOCATION (rounded grass-green clay hill with tiny cream daisies under a sky-blue backdrop with cotton-wool clouds and a big warm yellow-orange clay Sun with cotton-wool rays)"
+ },
+ "loc_space": {
+  "id": "07faaac5-f723-4e7b-b8f2-05f5f4ad0ca3",
+  "desc": "LOCATION (deep navy clay space with tiny cream stars, a big glowing yellow-orange clay Sun at the far LEFT edge, empty dark space to the right)"
+ },
+ "loc_orbit": {
+  "id": "6aabe7cc-26a4-4497-b7cf-044c0470df71",
+  "desc": "LOCATION (high-angle navy clay board with cream stars, a glowing yellow-orange clay Sun ball in the centre and a grooved circular cream clay track around it)"
+ },
+ "prop_red_clock": {
+  "id": "6d5a2fec-f29b-4e91-83d1-bedfa6ba2142",
+  "desc": "PROP round signal-red clay alarm clock with two bells, cream face with tick marks and one dark hand, no numbers (the only red thing in every scene)"
+ },
+ "prop_earth": {
+  "id": "b97893b5-1a89-47c2-b974-63f03cb7e7bb",
+  "desc": "PROP small round clay Earth with sky-blue oceans, green continents and cotton-wool clouds"
+ },
+ "prop_light_beads": {
+  "id": "31535d15-16d5-44f2-94e8-0c9b03aca3d3",
+  "desc": "PROP a trail of small glowing warm-yellow clay beads (sunlight)"
+ }
+}

@@ -1,0 +1,162 @@
+{
+ "topic": "If the Sun vanished, you would still see it for eight minutes",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red alarm clock",
+  "asset": "prop_red_clock",
+  "progression": "the red alarm clock ticks on the sunny hill, its hand creeps round while the light travels, it keeps ticking on Earth's orbit track when the question is asked, then ticks through the eight minutes and rings when the light finally runs out",
+  "resolution": "the red alarm clock rings as the last glow leaves the clay Earth"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2
+  ],
+  "turn": 3,
+  "payoff": 4
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "The Sun you see is eight minutes old. Stay to the end and watch it switch off.",
+   "promise": "Stay to the end and watch it switch off.",
+   "location": "loc_hill",
+   "through_line_state": "the red alarm clock sits ticking on the sunny grass under the clay Sun",
+   "shots": [
+    "CU low angle: the warm yellow clay Sun glows above the green clay hill, its cotton-wool rays pulsing",
+    "ECU macro: the red clay alarm clock on the grass, its single hand ticking forward",
+    "MEDIUM frontal: the clay Sun's glow spills across the grass and lights up the red clock",
+    "WIDE high angle: the whole sunny clay hill with the tiny red clock on top and the Sun above",
+    "MEDIUM lateral: a soft beam of light slides down from the Sun onto the hill, then everything settles"
+   ],
+   "assets_used": [
+    "loc_hill",
+    "prop_red_clock"
+   ],
+   "audio": "a soft steady ticking, a warm low hum from the Sun, a light breeze through the clay grass",
+   "direction_note": "The clock hand only moves forward, clockwise. The Sun stays shining in this scene.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "You're looking\nat the *past*",
+     "at": "the sun you see",
+     "until": "stay to the end"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Each beam of sunlight crosses space for eight whole minutes before it finally lands in your eyes.",
+   "location": "loc_space",
+   "through_line_state": "the red alarm clock floats near Earth, its hand creeping round while the light travels",
+   "shots": [
+    "WIDE frontal: navy clay space with the big glowing clay Sun on the far left and the small blue-green clay Earth on the far right",
+    "CU lateral: a stream of glowing yellow clay beads leaves the Sun and travels slowly to the right",
+    "MEDIUM overhead: the beads crawl across the dark gap between the Sun and Earth",
+    "ECU macro: the red clay alarm clock floating beside Earth, its hand creeping forward",
+    "CU low angle: the first glowing beads finally land on Earth and light it up, then the scene settles"
+   ],
+   "assets_used": [
+    "loc_space",
+    "prop_light_beads",
+    "prop_earth",
+    "prop_red_clock"
+   ],
+   "audio": "a soft whooshing stream of beads, a steady ticking, a gentle chime as the light lands",
+   "direction_note": "The beads only travel from LEFT (the Sun) to RIGHT (Earth). The Sun is always on the left.",
+   "overlays": [
+    {
+     "type": "stat",
+     "text": "8 minutes",
+     "label": "from the Sun to you",
+     "at": "crosses space",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "turn",
+   "vo_line": "So if the Sun vanished right now, Earth wouldn't even notice at first. Not the light, not the pull.",
+   "location": "loc_orbit",
+   "through_line_state": "the red alarm clock keeps ticking beside Earth on its orbit track",
+   "shots": [
+    "MEDIUM high angle: the clay Earth rolls along a grooved circular clay track around the glowing clay Sun in the middle",
+    "ECU macro: the red clay alarm clock ticking on the edge of the track",
+    "CU lateral: the clay Earth spins happily, still lit on the side facing the Sun",
+    "WIDE overhead: the whole round track with the Sun in the centre and Earth part way round",
+    "CU low angle: a thin cream clay thread stretches from the Sun to Earth, holding it on its track, then settles"
+   ],
+   "assets_used": [
+    "loc_orbit",
+    "prop_earth",
+    "prop_red_clock"
+   ],
+   "audio": "a soft rolling rumble along the track, a steady ticking, a low warm hum",
+   "direction_note": "Earth only moves anticlockwise along the track. The Sun stays in the centre and stays lit in this scene.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "Sun *gone*",
+      "Still light",
+      "Still pull"
+     ],
+     "at": "if the sun vanished",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "payoff",
+   "vo_line": "The Sun switches off, yet we keep seeing it and still circling it for eight whole minutes.",
+   "delivers_promise": "the clay Sun on the left pops out of sight while the clay Earth on the right keeps glowing as the last light beads cross the gap and the red clock ticks; then Earth's glow fades and the clock rings",
+   "comment_question": "What would you do in those 8 minutes?",
+   "location": "loc_space",
+   "through_line_state": "the red alarm clock ticks through the eight minutes beside Earth and rings as its last glow fades",
+   "shots": [
+    "CU frontal: the glowing clay Sun on the far left shrinks and pops out of sight, leaving dark navy space",
+    "MEDIUM lateral: the clay Earth on the right keeps spinning and stays lit as if nothing happened",
+    "ECU macro: the red clay alarm clock's hand races round",
+    "WIDE high angle: the last glowing yellow beads cross the dark gap and reach Earth, then Earth's glow fades and space goes dim",
+    "MEDIUM low angle: the red alarm clock rings and shakes beside the dim clay Earth, then everything settles"
+   ],
+   "assets_used": [
+    "loc_space",
+    "prop_earth",
+    "prop_light_beads",
+    "prop_red_clock"
+   ],
+   "audio": "a soft pop as the Sun vanishes, a steady rolling rumble, a bright clay alarm bell at the end",
+   "direction_note": "The beads only travel from LEFT to RIGHT. After the Sun pops out it does not come back, and no new beads leave the left.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "We'd find out\n*8 minutes* late",
+     "at": "the sun switches off",
+     "until": "and still"
+    },
+    {
+     "type": "card",
+     "text": "What would you do\nin those *8 minutes*?",
+     "at": "and still",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://howthingsfly.si.edu/ask-an-explainer/how-long-does-it-take-light-sun-get-earth",
+  "https://www.skyatnightmagazine.com/space-science/how-take-light-from-sun-reach-earth",
+  "https://www.universetoday.com/articles/how-long-does-it-take-sunlight-to-reach-the-earth",
+  "https://arxiv.org/abs/1710.05834"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds by day, deep navy clay space with tiny cream clay stars for space scenes, cream, warm sand, grass green, a warm yellow-orange clay Sun with glowing yellow light beads, a blue-and-green clay Earth; signal red ONLY on the alarm clock"
+}

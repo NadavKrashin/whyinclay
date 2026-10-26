@@ -1,9 +1,28 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-23.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-26.
 
 ## State right now
 
+- **Episode 5 is finished (2026-10-26, Monday run), the first 30-second episode:** "If the Sun
+  Vanished, You'd Still See It for 8 Minutes" (slug `if-the-sun-vanished-youd-see-it-for-8-minutes`,
+  `produced_not_published`, no `publish_at`). 98.25 credits, 29.6 s, 4 scenes, 70 words.
+  `scripts/qc_episode.py 5` on the hosted file: "would be approved and posted automatically (95.5)";
+  `check_hook.py` passes (its advisory hookscore says 41 WEAK).
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/b791d7a2-8113-491b-bc07-b2f1aff100ca.mp4
+  - Thumbnail ("YOU'RE SEEING THE PAST"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261026_071201_e438589f-bae4-4ad2-93cb-73528784a8b5.png
+    and cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/df3cc6b9-b5f9-4420-883a-b87bdb7047f5.jpg
+  - The 30-second pipeline, as run (recipe steps 2, 3, 6, 6a updated): validate with
+    `--duration-seconds 40 --duration-retry-blocks 1,2,3,4`; measure takes with `speech_metrics.sh`;
+    skip `finish_video.sh` (its gate wants 7.2 s+ of speech) and assemble straight from a hand-made
+    `sidecar_in.json` with `trim_dead_air.py`, setting `trim_start_s` per scene on a shot cut. A 6.5 s
+    line keeps only about 7 s of the 10 s clip, and centring would leave sub-second shots.
+    `trim_dead_air.py` now also writes `speech_s`, without which `audio_to_captions.py` refuses the sidecar.
+  - Fixed for free: scene 2's Sun close-up came out mirrored, so that 2 s shot was flipped. The last
+    question card was moved earlier so it is on screen 3.4 s, not 2.
+  - Presigned upload URLs can die within about 20 minutes (ExpiredToken) even though they say 24 h:
+    ask `media_upload` for the video URL right before the PUT, not at the start of the run.
+  - Files: `channel/episodes/005-sun-8-minutes/`. Sandbox working files: `~/ep5/`.
 - **Episode 4 is finished (2026-10-23, Friday run):** "Where the Gold in Your Ring Came From" (slug
   `where-the-gold-in-your-ring-came-from`, `produced_not_published`, no `publish_at`). 148.55 credits,
   55.6 s. `scripts/qc_episode.py 4` on the hosted file: "would be approved and posted automatically (95.5)".
@@ -64,9 +83,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 851.45** on the Higgsfield Plus plan after episode 4 (2026-10-23). The balance was 1000 at
-  the start of the Friday run (topped up after the Wednesday pause at 90.3). Enough for about five more
-  episodes at ~150 each. Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not
+- **Credits: 753.2** on the Higgsfield Plus plan after episode 5 (2026-10-26; 851.45 before it). A
+  30-second episode costs about 100 (80 of it the four scenes), so this covers about six more runs
+  before the 200 floor. Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not
   use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
@@ -262,7 +281,7 @@ dashboard Agents page. Never claim it is live without checking.
   a scene), show-don't-lecture build lines, a twist in scene 3, payoff in scene 4, and a
   `comment_question` card at the end that also opens the caption and description.
   `channel/tools/check_hook.py` checks the shape; `config/company.yaml` `min_duration_seconds` is now
-  20 so the Mac doesn't hold them. Expect about 100 credits an episode; record the real figure.
+  20 so the Mac doesn't hold them. Expect about 100 credits an episode (episode 5: 98.25).
 
 - **Hooks are now a hard gate (owner, 2026-10-18).** YouTube Studio showed only 43% (episode 1) and
   46% (episode 2) of viewers staying past the first seconds, against 60-70% for Shorts that keep
