@@ -218,12 +218,19 @@ follow them, except where this file says otherwise.
    writes overlay previews: composite and look at one per overlay, fix overlaps or wrong timing, then run
    it without `--still` (background, about 2 minutes) and PUT `final_v.mp4` as the episode video.
    It fails loudly if an `at`/`until` phrase is not in the captions.
+   The `--still` PNG covers only the top ~42% of the frame (1440x1074 on a 1440x2560 video): composite
+   it with `overlay=0:0` on the full frame. Don't use `scale2ref`, which squashes the video into that
+   band and makes cards look as if they cover the subject (episode 6 nearly moved good cards because of it).
 7. **Thumbnail and cover.** Follow `thumbnail-generation` with the faceless Phase-8b handoff
    (non-photoreal clay medium, people-free, one variant). Verify the baked text. Upload it.
    Also make a **9:16 cover** for TikTok and Reels: same scene and hook text, composed for portrait
    (text in the upper-middle third, clear of the bottom 20% where the app's buttons sit). Export it as a
    1080x1920 JPEG under 2 MB, verify the text letter for letter, upload it, and record it as `cover_url`.
    TikTok rejected episode 1's 25 MB landscape PNG; the app's fallback letterboxes the thumbnail.
+   On a 9:16 cover, `bake_text_overlay.mjs` keeps a long hook on one line (it ignores line breaks), so
+   "NO STRINGS ATTACHED" ran off both edges (episode 6). Then draw it on two lines yourself: ImageMagick
+   with `/usr/share/fonts/truetype/higgsfield/Montserrat-ExtraBold.ttf`, white fill over a dark-brown
+   stroke pass, about 118 pt on 1080 px wide.
 7b. **The Mac's check, before anything is pushed.** Write the episode's `channel/episodes.json` entry
    (step 8), then run `python3 scripts/qc_episode.py N --file <final video>`. It must end with "would be
    approved and posted automatically" (exit code 0). Anything else means the Mac would hold the episode

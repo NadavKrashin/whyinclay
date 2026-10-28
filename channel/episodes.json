@@ -273,6 +273,54 @@
    },
    "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by Physics Girl, 'What would happen if the Sun dissapeared?', about 4.1x its channel's median)",
    "publish_at": null
+  },
+  {
+   "number": 6,
+   "slug": "why-a-magnet-can-float-a-frog",
+   "title": "How a Magnet Floated a Live Frog",
+   "thumbnail_hook": "NO STRINGS ATTACHED",
+   "produced_on": "2026-10-28",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/786514f0-9f31-4138-9915-819ad95a5eff.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261028_071123_3e4c0be4-f67c-476d-a43d-d9ebb5a80e0d.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/87135ee7-b769-4cc8-abd7-f68d7518ce8e.jpg",
+   "credits_spent": 97.6,
+   "sources": [
+    "https://doi.org/10.1088/0143-0807/18/4/012",
+    "https://w.mriquestions.com/uploads/3/4/5/7/34572113/simon_and_geim._diamagnetic_levitation._j_appl_phys.pdf",
+    "https://pubmed.ncbi.nlm.nih.gov/31026760/",
+    "https://en.wikipedia.org/wiki/Moses_effect"
+   ],
+   "known_issues": [
+    "The clay shows a squat coil tower with the frog floating just above its open top; in the real 1997 experiment the frog floated inside the bore of a 16-tesla Bitter magnet, near the top of the coil",
+    "Clay exaggeration: the water drop visibly squashes beside a small horseshoe magnet in scene 1, and in scene 2 the magnet's tips dip into the water; the real effect from a strong permanent magnet is a dent tens of microns deep",
+    "Scene 2's overhead shot drew clay arrows pointing IN toward the magnet (it reads as attraction); that 2-second shot was cut out before assembly",
+    "Scene 4 opened on a half-second flash of the magnet reference image; the scene starts after it"
+   ],
+   "credits_note": "Balance 753.2 before the run -> 655.6 after (2026-10-28): 6 narration takes (line 2 needed three: two read at 2.92-2.97 words/s, the third was rewritten with a sentence break), 6 set/prop images, 4 scenes, thumbnail and cover. No scene regenerations.",
+   "category": "science_physics",
+   "description": "Would you climb in after the frog? Water, wood, plastic and you are all weakly pushed away by magnets (diamagnetism). Near a fridge magnet that push is far too weak to notice, but in 1997 Andre Geim's team at the Nijmegen High Field Magnet Laboratory used a 16-tesla magnet strong enough for the push to beat gravity, and a live frog, mostly water, floated in midair and came out unharmed.",
+   "caption": "Would you climb in after the frog? Every magnet pushes you away, just very weakly. Crank it up and a frog floats. In clay.",
+   "hashtags": [
+    "#shorts",
+    "#science",
+    "#physics",
+    "#magnets",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "5 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, a magnet in / water moves / a tiny dent chain, a too-weak-for-gravity card, and the two payoff cards ending on the comment question",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by The Action Lab, 'Giant Magnet Can Move a Mouse', about 10.8x its channel's median)",
+   "publish_at": null
   }
  ]
 }

@@ -1,0 +1,160 @@
+{
+ "topic": "Why a strong enough magnet can float a frog",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red horseshoe magnet",
+  "asset": "prop_red_magnet",
+  "progression": "the red horseshoe magnet nudges a water drop on the kitchen counter, hangs over the dish and dents the water, sits stuck on the fridge door too weak to lift the frog, then sits tiny beside the giant glowing coil while the frog floats",
+  "resolution": "the little red horseshoe magnet sits beside the giant coil as the frog floats calmly above it"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2
+  ],
+  "turn": 3,
+  "payoff": 4
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "Every magnet is quietly pushing you away. Stay to the end and watch one lift a real frog.",
+   "promise": "Stay to the end and watch one lift a real frog.",
+   "location": "loc_kitchen",
+   "through_line_state": "the red horseshoe magnet slides up to a water drop on the counter and the drop shies away",
+   "shots": [
+    "CU frontal: the signal-red clay horseshoe magnet slides slowly from the left toward a glossy sky-blue clay water drop on the sandy counter, and the drop wobbles and leans slightly to the right, away from the magnet",
+    "ECU macro: the glossy sky-blue water drop trembling, its left side flattening a little, away from the magnet's silver tips",
+    "MEDIUM low angle: a small grass-green clay frog sits on the counter beside the cream clay fridge, blinking and watching the red magnet",
+    "WIDE high angle: the whole sunny clay kitchen counter with the red magnet on the left, the water drop in the middle and the little frog on the right",
+    "MEDIUM lateral: the red magnet slides back to the left and the water drop settles round again, then everything settles"
+   ],
+   "assets_used": [
+    "loc_kitchen",
+    "prop_red_magnet",
+    "prop_water_drop",
+    "prop_frog"
+   ],
+   "audio": "a soft clay scrape as the magnet slides, a tiny wet wobble from the drop, a quiet kitchen hum",
+   "direction_note": "The magnet is always on the LEFT and only slides right then back left. The drop only leans to the RIGHT, away from it. The frog stays sitting.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Magnets push\n*water* away",
+     "at": "every magnet is",
+     "until": "stay to the end"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Hold a strong magnet just over water. The surface dips away from it, into a tiny dent.",
+   "location": "loc_water_dish",
+   "through_line_state": "the red horseshoe magnet hangs over the dish and the water dents away beneath it",
+   "shots": [
+    "WIDE frontal: a shallow cream clay dish full of flat glossy sky-blue clay water on a sandy clay table, the red horseshoe magnet hanging just above it with its silver tips pointing down",
+    "CU lateral: the red magnet lowers slowly, straight down, toward the water surface",
+    "ECU macro: right under the magnet's silver tips the glossy water surface sinks into a small round dent",
+    "MEDIUM overhead: looking straight down at the dish, a round dimple in the water under the magnet with cream clay arrows pressed into the water pointing outward, away from the magnet",
+    "CU low angle: the magnet lifts straight up and the dent smooths flat again, then the scene settles"
+   ],
+   "assets_used": [
+    "loc_water_dish",
+    "prop_red_magnet"
+   ],
+   "audio": "a soft clay creak as the magnet lowers, a gentle wet ripple, a quiet settling tap",
+   "direction_note": "The magnet only moves straight down, then straight up. The water only dips DOWN under it, never bulges up toward it.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "*Magnet* in",
+      "Water moves",
+      "A tiny *dent*"
+     ],
+     "at": "the surface dips",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "turn",
+   "vo_line": "So why don't things float near your fridge? That push is far too weak to beat gravity.",
+   "location": "loc_kitchen",
+   "through_line_state": "the red horseshoe magnet sits stuck on the fridge door while the frog below stays firmly on the counter",
+   "shots": [
+    "MEDIUM frontal: the red horseshoe magnet stuck on the cream clay fridge door, the little green frog sitting on the counter just below it",
+    "CU lateral: the frog hops straight up a little and drops straight back down onto the counter",
+    "ECU macro: the red magnet on the fridge door, perfectly still",
+    "WIDE frontal: a cream clay chart board leaning on the counter with a tiny cream clay arrow pointing UP and a huge sand-brown clay arrow pointing DOWN, no letters or numbers",
+    "MEDIUM low angle: the frog settles back on the counter and blinks, then everything settles"
+   ],
+   "assets_used": [
+    "loc_kitchen",
+    "prop_red_magnet",
+    "prop_frog"
+   ],
+   "audio": "a soft clay plop as the frog lands, a faint fridge hum, a quiet tap",
+   "direction_note": "The frog only hops up and comes straight back down. The small arrow points UP, the huge arrow points DOWN.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Far too weak\nto beat *gravity*",
+     "at": "that push is",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "payoff",
+   "vo_line": "Crank a magnet up strong enough, and that push beats gravity. A real frog floats, pushed away and unharmed.",
+   "delivers_promise": "the giant cream clay coil switches on with a soft glow and the little green frog rises off its open top and floats calmly in midair, blinking, unharmed",
+   "comment_question": "Would you climb in after the frog?",
+   "location": "loc_magnet_lab",
+   "through_line_state": "the little red horseshoe magnet sits tiny beside the giant glowing coil while the frog floats above it",
+   "shots": [
+    "WIDE low angle: the tall cream clay electromagnet tower with thick coiled bands stands on the bench, the little red horseshoe magnet tiny beside it, and the coil bands begin to glow softly",
+    "CU frontal: the green clay frog sits on the round open top of the tower, then slowly rises straight up into the air",
+    "ECU macro: the frog floating calmly in midair just above the opening, legs dangling, blinking",
+    "MEDIUM lateral: the frog bobs gently up and down in the air above the tower, turning slowly",
+    "WIDE high angle: the small red horseshoe magnet beside the giant glowing tower with the frog still floating above it, then everything settles"
+   ],
+   "assets_used": [
+    "loc_magnet_lab",
+    "prop_red_magnet",
+    "prop_frog"
+   ],
+   "audio": "a low rising electric hum from the coil, a soft airy whoosh as the frog lifts, a gentle steady buzz",
+   "direction_note": "The frog only rises and then stays floating; it never falls. The red magnet stays still on the bench.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Strong enough,\nthe frog *floats*",
+     "at": "crank a magnet",
+     "until": "a real frog"
+    },
+    {
+     "type": "card",
+     "text": "Would you climb in\nafter the *frog*?",
+     "at": "a real frog",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://doi.org/10.1088/0143-0807/18/4/012",
+  "https://w.mriquestions.com/uploads/3/4/5/7/34572113/simon_and_geim._diamagnetic_levitation._j_appl_phys.pdf",
+  "https://pubmed.ncbi.nlm.nih.gov/31026760/",
+  "https://en.wikipedia.org/wiki/Moses_effect"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds, cream, warm sand, grass green (the frog), glossy sky-blue clay water, silver magnet tips; signal red ONLY on the horseshoe magnet"
+}

@@ -1,0 +1,26 @@
+{
+ "loc_kitchen": {
+  "id": "e38a9cc9-9ea0-450d-b9cb-5fcceaae9260",
+  "desc": "LOCATION (sunny warm-sand clay kitchen counter, a rounded cream clay fridge at the back left, a window onto a sky-blue backdrop with cotton-wool clouds)"
+ },
+ "loc_water_dish": {
+  "id": "3e527c77-5436-4607-a5e3-fb1b0e253614",
+  "desc": "LOCATION (a shallow round cream clay dish full of flat glossy sky-blue clay water on a warm-sand clay table, sky-blue backdrop with cotton-wool clouds)"
+ },
+ "loc_magnet_lab": {
+  "id": "f5915d44-e831-46b6-9c72-c7d7b8861130",
+  "desc": "LOCATION (a tall cream and warm-sand clay electromagnet tower of stacked coiled bands with a round open hole in its flat top, on a warm-sand clay bench, sky-blue backdrop with cotton-wool clouds)"
+ },
+ "prop_red_magnet": {
+  "id": "dd2ab87f-1bb1-4aa5-acfd-42da26a4416c",
+  "desc": "PROP (a chunky signal-red clay horseshoe magnet with two silver-grey clay tips)"
+ },
+ "prop_frog": {
+  "id": "993e6af7-5dce-48ee-9df3-f25c4a2f02aa",
+  "desc": "PROP (a small friendly grass-green clay frog with a cream belly and big round eyes)"
+ },
+ "prop_water_drop": {
+  "id": "b924d1e5-2c38-4e7a-be09-0bee0f6e7116",
+  "desc": "PROP (one plump glossy sky-blue clay water drop)"
+ }
+}

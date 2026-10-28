@@ -1,9 +1,27 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-26.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-28.
 
 ## State right now
 
+- **Episode 6 is finished (2026-10-28, Wednesday run):** "How a Magnet Floated a Live Frog" (slug
+  `why-a-magnet-can-float-a-frog`, `produced_not_published`, no `publish_at`). 97.6 credits, 32.4 s,
+  4 scenes, 70 words. `scripts/qc_episode.py 6` on the hosted file: "would be approved and posted
+  automatically (95.5)"; `check_hook.py` passes (advisory hookscore 40 WEAK). `qc_episode.py --all`
+  at the start of the run: episodes 3-5 all pass, nothing held.
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/786514f0-9f31-4138-9915-819ad95a5eff.mp4
+  - Thumbnail ("NO STRINGS ATTACHED"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261028_071123_3e4c0be4-f67c-476d-a43d-d9ebb5a80e0d.png
+    and cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/87135ee7-b769-4cc8-abd7-f68d7518ce8e.jpg
+  - Fixed for free: scene 2's overhead shot drew arrows pointing IN to the magnet (reads as
+    attraction), so that shot was cut out of the clip before the trim. Scene 4 opened on a 0.5 s flash
+    of the magnet reference image, so its cut starts after it. Line 2 read too fast twice (2.92 and
+    2.97 words/s); the third take was rewritten with a sentence break and passed at 2.77.
+  - Scene 4 first came back as a preset suggestion ("DROWN IN MUSIC") instead of a job; resubmitting
+    with that id as `declined_preset_id` worked. `build_blocks.py` only declines one fixed preset id.
+  - Recipe notes added: the cover headline drawn with ImageMagick when `bake_text_overlay.mjs`
+    overflows a 9:16 frame, and the right way to composite overlay previews (`overlay=0:0`; the PNG
+    is only the top 42% of the frame).
+  - Files: `channel/episodes/006-frog-magnet/`. Sandbox working files: `~/ep6/`.
 - **Episode 5 is finished (2026-10-26, Monday run), the first 30-second episode:** "If the Sun
   Vanished, You'd Still See It for 8 Minutes" (slug `if-the-sun-vanished-youd-see-it-for-8-minutes`,
   `produced_not_published`, no `publish_at`). 98.25 credits, 29.6 s, 4 scenes, 70 words.
@@ -83,8 +101,8 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 753.2** on the Higgsfield Plus plan after episode 5 (2026-10-26; 851.45 before it). A
-  30-second episode costs about 100 (80 of it the four scenes), so this covers about six more runs
+- **Credits: 655.6** on the Higgsfield Plus plan after episode 6 (2026-10-28; 753.2 before it). A
+  30-second episode costs about 100 (80 of it the four scenes), so this covers about four more runs
   before the 200 floor. Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not
   use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
