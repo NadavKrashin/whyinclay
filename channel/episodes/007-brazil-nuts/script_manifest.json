@@ -1,0 +1,164 @@
+{
+ "topic": "Why the big nuts end up on top when you shake a mix",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red jar lid",
+  "asset": "prop_jar",
+  "progression": "the glass jar's signal-red lid rattles as the jar shakes, stays clamped on while the gaps open inside, rattles again as the big nut climbs, then pops off to show the big nut sitting on top",
+  "resolution": "the red lid pops off the jar and the big nut sits right on top of the mix"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2
+  ],
+  "turn": 3,
+  "payoff": 4
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "Shake mixed nuts and the big ones climb. Stay to the end and watch one rise to the top.",
+   "promise": "Stay to the end and watch one rise to the top.",
+   "location": "loc_table",
+   "through_line_state": "the jar's red lid rattles as the whole jar shakes side to side",
+   "shots": [
+    "CU frontal: a clear glass jar with a signal-red clay lid already shaking side to side on the sandy table, full of small tan clay peanuts with one big brown clay Brazil nut buried near the bottom",
+    "ECU macro: the red lid rattling on top of the jar as it shakes",
+    "MEDIUM low angle: through the glass, the big brown nut low down among the small tan peanuts, everything jiggling",
+    "WIDE high angle: the whole sunny clay table with the shaking jar in the middle and the sky-blue window behind",
+    "MEDIUM lateral: the jar gives one last shake and stops, the big nut a little higher than before, then everything settles"
+   ],
+   "assets_used": [
+    "loc_table",
+    "prop_jar",
+    "prop_big_nut",
+    "prop_small_nuts"
+   ],
+   "audio": "a busy clay rattle of nuts in glass, a tinny clatter from the lid, a soft thud as the jar stops",
+   "direction_note": "The jar shakes side to side and stays upright. The big nut only moves UP, never down.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "The *biggest* nuts\nrise to the top",
+     "at": "shake mixed nuts",
+     "until": "stay to the end"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Every shake opens tiny gaps under the big nut, and the small ones slip down into them.",
+   "location": "loc_cutaway",
+   "through_line_state": "the red lid sits clamped on top of the giant cutaway jar while the gaps open below the big nut",
+   "shots": [
+    "WIDE frontal: a giant cutaway of the jar like a cream clay window box, packed with small tan clay peanuts and one big brown Brazil nut in the middle, the red lid along the top edge",
+    "CU lateral: the whole pile jolts upward and a dark gap opens right under the big brown nut",
+    "ECU macro: two small tan peanuts tumble down into the dark gap under the big nut and fill it",
+    "MEDIUM overhead: cream clay arrows pressed into the cutaway, small arrows pointing DOWN beside the little peanuts and one big arrow pointing UP under the big nut, no letters",
+    "CU low angle: the pile settles with the big nut now resting on the small peanuts that filled its gap, then everything settles"
+   ],
+   "assets_used": [
+    "loc_cutaway",
+    "prop_jar",
+    "prop_big_nut",
+    "prop_small_nuts"
+   ],
+   "audio": "a hollow clay jolt, a soft pitter-patter of small nuts dropping, a gentle settling crunch",
+   "direction_note": "Small peanuts only fall DOWN into the gap. The big nut only goes UP. Arrows: small ones point down, the big one points up.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "*Shake*",
+      "A gap opens",
+      "It *fills*"
+     ],
+     "at": "every shake opens",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "turn",
+   "vo_line": "So why doesn't the big nut fall back? Because its old spot, right below, is already full.",
+   "location": "loc_cutaway",
+   "through_line_state": "the red lid stays on as the big nut tries to drop and lands on the filled-in spot",
+   "shots": [
+    "MEDIUM frontal: in the cutaway, the big brown nut sinks a little, then stops, sitting on a tight bed of small tan peanuts",
+    "ECU macro: the small peanuts packed firmly where the big nut used to be, no gap left",
+    "CU lateral: the big brown nut wiggles but cannot push back down into the packed small peanuts",
+    "WIDE high angle: the whole cutaway with the big nut clearly higher than at the start and the red lid above",
+    "MEDIUM low angle: the big nut rests on its new higher spot, then everything settles"
+   ],
+   "assets_used": [
+    "loc_cutaway",
+    "prop_small_nuts",
+    "prop_big_nut",
+    "prop_jar"
+   ],
+   "audio": "a dull clay bump as the big nut lands, a tight crunchy creak, a quiet settling tap",
+   "direction_note": "The big nut never sinks below where it was; the small peanuts stay packed under it.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Its old spot\nis *taken*",
+     "at": "its old spot",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "payoff",
+   "vo_line": "With every shake, it climbs one gap at a time, until the biggest nuts sit right on top.",
+   "delivers_promise": "the jar shakes and the big brown nut climbs up through the small peanuts gap by gap until it pops out on top of the mix, and the red lid pops off",
+   "comment_question": "What always ends up on top in your bag?",
+   "location": "loc_table",
+   "through_line_state": "the red lid rattles with each shake and pops off as the big nut reaches the top",
+   "shots": [
+    "CU frontal: through the glass, the big brown nut halfway up the jar, the jar shaking side to side",
+    "ECU macro: the big brown nut nudging upward between small tan peanuts with each shake",
+    "MEDIUM lateral: the big brown nut breaks out on top of the small peanuts and sits there",
+    "CU low angle: the signal-red lid pops off the jar and wobbles on the table",
+    "WIDE high angle: the open jar on the sunny table with the big brown nut resting right on top of the mix, then everything settles"
+   ],
+   "assets_used": [
+    "loc_table",
+    "prop_small_nuts",
+    "prop_big_nut",
+    "prop_jar"
+   ],
+   "audio": "a rhythmic clay rattle, a soft pop as the lid comes off, a light wobble of the lid on the table",
+   "direction_note": "The big nut only climbs UP through the jar and ends on top. The jar stays upright.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Gap by gap,\nit *climbs*",
+     "at": "with every shake",
+     "until": "until the biggest"
+    },
+    {
+     "type": "card",
+     "text": "What always ends up\non *top* in your bag?",
+     "at": "until the biggest",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://doi.org/10.1103/PhysRevLett.58.1038",
+  "https://doi.org/10.1103/PhysRevLett.70.3728",
+  "https://www.nature.com/articles/429352b",
+  "https://en.wikipedia.org/wiki/Brazil_nut_effect"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds, cream, warm sand, tan clay peanuts, a brown clay Brazil nut, clear glass; signal red ONLY on the jar lid"
+}

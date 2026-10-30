@@ -321,6 +321,54 @@
    },
    "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by The Action Lab, 'Giant Magnet Can Move a Mouse', about 10.8x its channel's median)",
    "publish_at": null
+  },
+  {
+   "number": 7,
+   "slug": "why-the-big-nuts-end-up-on-top",
+   "title": "Why Big Nuts Rise When You Shake the Bag",
+   "thumbnail_hook": "IT CLIMBS UP",
+   "produced_on": "2026-10-30",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/52f937ec-aa8b-4dc0-84c4-e07110e105c7.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261030_070859_ec4dfde8-b58d-44d3-b3cb-54fdbbca3d23.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/701b6540-1999-43d8-b8ca-b9670b7befd6.jpg",
+   "credits_spent": 96.2,
+   "sources": [
+    "https://doi.org/10.1103/PhysRevLett.58.1038",
+    "https://doi.org/10.1103/PhysRevLett.70.3728",
+    "https://www.nature.com/articles/429352b",
+    "https://en.wikipedia.org/wiki/Brazil_nut_effect"
+   ],
+   "known_issues": [
+    "The script shows one mechanism (small pieces dropping into the gap under the big one, as in Rosato et al.'s 1987 simulations); experiments also show convection carrying grains up the middle, and with some sizes, densities or shaking strengths the big ones can sink instead (the reverse Brazil nut effect)",
+    "Scene 2 never shows the gap opening as a motion; the idea is carried by its clay arrow shot (small arrows down, big arrow up under the nut)",
+    "Scene 1's clip moved the big nut to the top at about 8 s, which would spoil the payoff; the cut ends before that",
+    "The jar glass rendered closer to real glass than clay"
+   ],
+   "credits_note": "Balance 655.6 before the run -> 559.4 after (2026-10-30): 6 narration takes (line 3 needed three: 2.91 and 3.01 words/s, then rewritten with commas and passed at 2.51), 5 set/prop images, 4 scenes, thumbnail and cover. No scene regenerations.",
+   "category": "science_physics",
+   "description": "What always ends up on top in your bag? Shake a mix of nuts and the biggest ones rise. Each shake opens a little gap under a big nut, small pieces drop into it, and the big nut can't get back down, so it climbs one gap at a time. Physicists call it the Brazil nut effect; it was simulated in 1987 and experiments since show convection in the shaken grains helps too.",
+   "caption": "What always ends up on top in your bag? Shake mixed nuts and the big ones climb. Here's how, in clay.",
+   "hashtags": [
+    "#shorts",
+    "#science",
+    "#physics",
+    "#brazilnuteffect",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "5 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, a shake / a gap opens / it fills chain, an old-spot-is-taken card, and the two payoff cards ending on the comment question",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by The Action Lab, 'Spontaneous Organization', about 5.8x its channel's median)",
+   "publish_at": null
   }
  ]
 }

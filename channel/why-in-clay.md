@@ -169,6 +169,9 @@ follow them, except where this file says otherwise.
    not in the script. The workflow's own `verify_takes.py` is NOT enough: it passed all three bad
    takes in episode 1. The captions show script words, so they hide spoken mistakes. Regenerate only
    failing lines (max 3 attempts per line; the third needs new words).
+   When Bram reads a line RUSHED, cutting words usually makes him faster still (episodes 6 and 7: 2.92
+   -> 2.97 and 2.91 -> 3.01 words/s). Break the line up instead: a second sentence or a comma pair
+   ("Because its old spot, right below, is already full.") slowed both to 2.5-2.8.
 4. **Assets.** `generate_image_batch`, `seedream_v5_pro`, `1k`, style key `313e8a54-...` as
    `image_references`. Locations 9:16, empty sets, dark clay asphalt where there is a road. Props 1:1
    on a plain pale sky-blue background. Look at every image before using it and regenerate any set
@@ -196,6 +199,8 @@ follow them, except where this file says otherwise.
      Check one frame per scene: the caption must sit above the Shorts title/handle area and stay
      clear of the right-hand buttons (inside the middle ~72% of the width).
    - `sandbox_exec` foreground calls time out at 60 s; run long work with `background:true` and poll.
+     When polling a background job, save its pid (`echo $! > job.pid`) and test `kill -0 $(cat job.pid)`;
+     `pgrep -f name` matches the polling command itself and reports "running" forever (episode 6).
    Inspect frames at a few cue midpoints before `media_confirm`.
 6a. **Assemble with the dead-air trim** (no credits; every run). Download the four clips as
    `work/blocks/block01.mp4`... and write a small sidecar `sidecar_in.json`:

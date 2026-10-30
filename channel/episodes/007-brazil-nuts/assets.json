@@ -1,0 +1,22 @@
+{
+ "loc_table": {
+  "id": "23b5e525-ec83-4f21-b8ab-0746d27c6849",
+  "desc": "LOCATION (sunny warm-sand clay tabletop, a cream clay wall with a window onto a sky-blue backdrop with cotton-wool clouds)"
+ },
+ "loc_cutaway": {
+  "id": "271b3272-0813-42d2-9a6d-f8c95a38bd8c",
+  "desc": "LOCATION (a tall cream clay jar cut in half seen straight on, pale sky-blue back wall inside, on a warm-sand floor, sky-blue backdrop with cotton-wool clouds)"
+ },
+ "prop_jar": {
+  "id": "36b658a9-f624-4bb1-a9f2-53aa7364093f",
+  "desc": "PROP (a clear glass jar with a chunky signal-red clay screw lid)"
+ },
+ "prop_big_nut": {
+  "id": "6149c54f-1645-4650-b6fb-17bee310ded5",
+  "desc": "PROP (one big chunky brown clay Brazil nut, a long ridged three-sided wedge)"
+ },
+ "prop_small_nuts": {
+  "id": "077c95a5-101c-4a5c-9cce-1a07de9771b6",
+  "desc": "PROP (many little tan clay peanuts, all about the same size)"
+ }
+}

@@ -1,9 +1,24 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-28.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-30.
 
 ## State right now
 
+- **Episode 7 is finished (2026-10-30, Friday run):** "Why Big Nuts Rise When You Shake the Bag"
+  (slug `why-the-big-nuts-end-up-on-top`, `produced_not_published`, no `publish_at`). 96.2 credits,
+  30.25 s, 4 scenes, 72 words. `scripts/qc_episode.py 7` on the hosted file: "would be approved and
+  posted automatically (95.5)"; `check_hook.py` passes (advisory hookscore 34 WEAK). The start-of-run
+  `qc_episode.py --all` found nothing held (episodes 3-6 pass).
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/52f937ec-aa8b-4dc0-84c4-e07110e105c7.mp4
+  - Thumbnail ("IT CLIMBS UP"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261030_070859_ec4dfde8-b58d-44d3-b3cb-54fdbbca3d23.png
+    and cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/701b6540-1999-43d8-b8ca-b9670b7befd6.jpg
+  - Line 3 read RUSHED twice (2.91, then 3.01 after cutting words); the third take, rewritten with a
+    comma pair, passed at 2.51. Same pattern as episode 6, now in the recipe (step 3): break a rushed
+    line up, don't cut it.
+  - Cut choices: scene 1 ends before its clip jumps the big nut to the top at ~8 s (would spoil the
+    payoff); scene 4 starts at its 2 s cut so it runs climb -> top -> lid pops -> open jar.
+  - Files: `channel/episodes/007-brazil-nuts/`. Sandbox working files: `~/ep7/`.
+  - Next run is Monday 2026-11-02: topic refresh day (recipe step 1).
 - **Episode 6 is finished (2026-10-28, Wednesday run):** "How a Magnet Floated a Live Frog" (slug
   `why-a-magnet-can-float-a-frog`, `produced_not_published`, no `publish_at`). 97.6 credits, 32.4 s,
   4 scenes, 70 words. `scripts/qc_episode.py 6` on the hosted file: "would be approved and posted
@@ -101,10 +116,11 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 655.6** on the Higgsfield Plus plan after episode 6 (2026-10-28; 753.2 before it). A
-  30-second episode costs about 100 (80 of it the four scenes), so this covers about four more runs
-  before the 200 floor. Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not
-  use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
+- **Credits: 559.4** on the Higgsfield Plus plan after episode 7 (2026-10-30; 655.6 before it). A
+  30-second episode costs about 96-98 (80 of it the four scenes), so this covers about three more runs
+  before the 200 floor (the fourth would start under 300 and end near 265; the fifth would pause).
+  Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not use (FLUX 3 Video,
+  Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet
