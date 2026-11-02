@@ -1274,6 +1274,168 @@
    "reasoning": "Editorial heuristic score 82.1, judged by hand, not a virality prediction. Added from the 2026-10-26 trend scan: the idea beat its source channel's median; our angle is different, built for clay and for 30 seconds.",
    "added_on": "2026-10-26",
    "inspired_by": "Steve Mould, 'Watch gravity bring these two balls together in real time' https://www.youtube.com/shorts/pleHURTV6fU (about 11.8x its channel's median, scan 2026-10-26)"
+  },
+  {
+   "slug": "why-sound-is-just-squeezed-air",
+   "title": "Sound Is Just Squeezed Air",
+   "category": "science_physics",
+   "angle": "A sound is a moving pattern of squeezed and stretched air; special cameras can even see it",
+   "summary": "Every sound you hear is air being squeezed. Explained in 30 seconds.",
+   "keywords": [
+    "sound",
+    "air",
+    "pressure",
+    "waves",
+    "hearing"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 88,
+    "visual_potential": 86,
+    "audience_curiosity": 86,
+    "scientific_clarity": 88,
+    "evergreen": 95,
+    "originality": 78,
+    "feasibility": 82
+   },
+   "reasoning": "Editorial heuristic score 86.7, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "Steve Mould, 'This camera can SEE sound!' https://www.youtube.com/shorts/K4542wtX8B4 (about 12.8x its channel's median, scan 2026-11-02)"
+  },
+  {
+   "slug": "why-waves-break-at-the-beach",
+   "title": "Why Waves Break When They Reach the Beach",
+   "category": "science_physics",
+   "angle": "In shallow water the bottom of a wave slows down while the top keeps going, so the top topples over",
+   "summary": "Waves trip over the seabed. Explained in 30 seconds.",
+   "keywords": [
+    "waves",
+    "beach",
+    "ocean",
+    "shallow water",
+    "surf"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 84,
+    "visual_potential": 90,
+    "audience_curiosity": 84,
+    "scientific_clarity": 86,
+    "evergreen": 95,
+    "originality": 74,
+    "feasibility": 84
+   },
+   "reasoning": "Editorial heuristic score 85.6, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "Veritasium, 'Why Waves Travel Faster At The Top' https://www.youtube.com/shorts/RmHcX5oVzvs (about 3.1x its channel's median, scan 2026-11-02)"
+  },
+  {
+   "slug": "why-your-cat-cant-roar",
+   "title": "Why Your House Cat Can't Roar",
+   "category": "everyday_mysteries",
+   "angle": "Lions and tigers have a voice box built for roaring (big square vocal folds and a stretchy throat bone link); house cats are built to purr instead",
+   "summary": "Your cat's throat is built differently from a lion's. Explained in 30 seconds.",
+   "keywords": [
+    "cat",
+    "lion",
+    "roar",
+    "purr",
+    "voice box"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 88,
+    "visual_potential": 84,
+    "audience_curiosity": 90,
+    "scientific_clarity": 78,
+    "evergreen": 95,
+    "originality": 76,
+    "feasibility": 80
+   },
+   "reasoning": "Editorial heuristic score 85.1, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "SciShow, 'Why can't your house cat roar?' https://www.youtube.com/shorts/3TB8mkcpTuc (about 2.3x its channel's median, scan 2026-11-02)"
+  },
+  {
+   "slug": "how-light-gets-trapped-in-a-fibre",
+   "title": "How Light Gets Trapped Inside a Glass Fibre",
+   "category": "technology_computing",
+   "angle": "Light hitting the inside wall of a glass fibre at a shallow angle bounces back every time (total internal reflection), so it zigzags along for kilometres",
+   "summary": "Your internet is light bouncing inside glass threads. Explained in 30 seconds.",
+   "keywords": [
+    "optical fibre",
+    "light",
+    "internet",
+    "reflection",
+    "glass"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 84,
+    "visual_potential": 88,
+    "audience_curiosity": 84,
+    "scientific_clarity": 86,
+    "evergreen": 92,
+    "originality": 76,
+    "feasibility": 84
+   },
+   "reasoning": "Editorial heuristic score 85.1, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "Steve Mould, 'Optic Fibres Are Weird...' https://www.youtube.com/shorts/QfWlJHNXy10 (about 2.6x its channel's median, scan 2026-11-02)"
+  },
+  {
+   "slug": "why-driving-backwards-is-hard",
+   "title": "Why Driving Backwards Is So Hard",
+   "category": "engineering_infrastructure",
+   "angle": "When the steering wheels are at the back, every small turn swings the car further off line, so reversing is naturally unstable",
+   "summary": "Reversing turns your car into a shopping trolley. Explained in 30 seconds.",
+   "keywords": [
+    "driving",
+    "reversing",
+    "steering",
+    "cars",
+    "stability"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 86,
+    "visual_potential": 84,
+    "audience_curiosity": 86,
+    "scientific_clarity": 78,
+    "evergreen": 92,
+    "originality": 80,
+    "feasibility": 82
+   },
+   "reasoning": "Editorial heuristic score 84.2, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "minutephysics, 'Why Driving Backwards Is So Hard' https://www.youtube.com/shorts/sEQvDbyFNbo (about 2.3x its channel's median, scan 2026-11-02)"
+  },
+  {
+   "slug": "why-diamond-feels-ice-cold",
+   "title": "Why a Diamond Feels Ice Cold",
+   "category": "science_physics",
+   "angle": "Diamond carries heat away from your skin even faster than copper, so it feels colder than metal at the same temperature",
+   "summary": "The best heat carrier on Earth is a gemstone. Explained in 30 seconds.",
+   "keywords": [
+    "diamond",
+    "heat",
+    "conduction",
+    "cold",
+    "gem"
+   ],
+   "risk_flags": [],
+   "scores": {
+    "hook_strength": 86,
+    "visual_potential": 82,
+    "audience_curiosity": 84,
+    "scientific_clarity": 84,
+    "evergreen": 95,
+    "originality": 70,
+    "feasibility": 82
+   },
+   "reasoning": "Editorial heuristic score 83.7, judged by hand, not a virality prediction. Added from the 2026-11-02 trend scan: the idea beat its source channel's median by 2x or more; our angle is different, built for clay and for 30 seconds.",
+   "added_on": "2026-11-02",
+   "inspired_by": "The Action Lab, 'The Fastest Heat Conductor' https://www.youtube.com/shorts/ZEGazGMEhtw (about 20.6x its channel's median, scan 2026-11-02); a follow-up to episode 3's metal-and-wood idea"
   }
  ]
 }

@@ -369,6 +369,53 @@
    },
    "topic_source": "seeds/topics.json refresh of 2026-10-26 (inspired by The Action Lab, 'Spontaneous Organization', about 5.8x its channel's median)",
    "publish_at": null
+  },
+  {
+   "number": 8,
+   "slug": "why-sound-is-just-squeezed-air",
+   "title": "What Sound Actually Is",
+   "thumbnail_hook": "IT'S JUST AIR",
+   "produced_on": "2026-11-02",
+   "status": "produced_not_published",
+   "video_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/800aa10f-079b-4e45-bf6d-bd17d5cb4db3.mp4",
+   "thumbnail_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261102_070942_3f685968-f08b-4d56-a524-33606ca7a564.png",
+   "cover_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/80af7591-ae5e-43a4-9959-577dc134def9.jpg",
+   "credits_spent": 117.15,
+   "sources": [
+    "https://www.physicsclassroom.com/class/sound/Lesson-1/Sound-as-a-Longitudinal-Wave",
+    "https://www.physicsclassroom.com/Class/sound/U11L1c.html",
+    "https://openstax.org/books/college-physics/pages/17-1-sound"
+   ],
+   "known_issues": [
+    "Simplified on purpose: the clay shows sound as rings of squeezed air; in reality each squeeze is followed by a stretched, thinner patch, and the waves spread out as spheres, not flat rings",
+    "Scene 3's first take had a bead roll off the end of the row and away across the table, which contradicts the line ('the air itself barely goes anywhere'); it was regenerated once (20 credits) with every bead held in a dimple",
+    "Scene 1's opening shot sits on a plain blue backdrop rather than the room set; scene 2's diagram board stands on a bench on grass",
+    "The thumbnail's back wall came out yellow instead of cream"
+   ],
+   "credits_note": "Balance 559.4 before the run -> 442.25 after (2026-11-02): 4 narration takes (all passed first time), 6 set/prop images, 5 scenes (scene 3 regenerated once), thumbnail and cover.",
+   "category": "science_physics",
+   "description": "What's the loudest sound you've ever heard? Every sound is squeezed air. A drum skin shoves the air next to it into a crowded band; that air barely moves, each bit just bumps its neighbour and swings back, and the bump travels outward until it reaches your ear and pushes on your eardrum. That's what you hear.",
+   "caption": "What's the loudest sound you've ever heard? Every sound is just squeezed air, passed along bump by bump. In clay.",
+   "hashtags": [
+    "#shorts",
+    "#science",
+    "#physics",
+    "#sound",
+    "#claymation"
+   ],
+   "checks": {
+    "narration_strict": "passed",
+    "captions": "passed",
+    "visual_review": "passed"
+   },
+   "overlays": "5 cards and diagrams drawn by channel/tools/overlays.py: hook card from the first word, a drum hits / air bunches / band moves chain, an each-bit-only-wiggles card, and the two payoff cards ending on the comment question",
+   "narrator": {
+    "name": "Bram",
+    "voice_id": "549ff70a-3ee7-4f04-a4d9-89a24fab7709",
+    "voice_type": "preset"
+   },
+   "topic_source": "seeds/topics.json refresh of 2026-11-02 (inspired by Steve Mould, 'This camera can SEE sound!', about 12.8x its channel's median)",
+   "publish_at": null
   }
  ]
 }

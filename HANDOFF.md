@@ -1,9 +1,24 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-10-30.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-02.
 
 ## State right now
 
+- **Episode 8 is finished (2026-11-02, Monday run):** "What Sound Actually Is" (slug
+  `why-sound-is-just-squeezed-air`, `produced_not_published`, no `publish_at`). 117.15 credits (one
+  scene regenerated), 29.8 s, 4 scenes, 74 words. `scripts/qc_episode.py 8` on the hosted file: "would
+  be approved and posted automatically (95.5)"; `check_hook.py` passes (advisory hookscore 40 WEAK).
+  - Video: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/800aa10f-079b-4e45-bf6d-bd17d5cb4db3.mp4
+  - Thumbnail ("IT'S JUST AIR"): https://d8j0ntlcm91z4.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/hf_20261102_070942_3f685968-f08b-4d56-a524-33606ca7a564.png
+    and cover: https://d2ol7oe51mr4n9.cloudfront.net/user_3GwgNHZqxuXDkDZnfXEEDAP3y0F/80af7591-ae5e-43a4-9959-577dc134def9.jpg
+  - Monday topic refresh: yt-dlp pulled 164 Shorts from 6 channels (The Action Lab, SciShow, Physics
+    Girl, minutephysics, Steve Mould, Veritasium); `swipe.py --min 2.0` found 46 outliers. Six new topics
+    added to `seeds/topics.json` (sound, breaking waves, cat roar, optical fibre, reversing, diamond);
+    several outliers were skipped as near-duplicates of existing topics. 41 unused unflagged topics.
+  - Scene 3's first take had a bead roll away, the opposite of the line; regenerated once with every
+    bead in its own dimple and "beads rolling away" in the negatives.
+  - All four narration takes passed first time (lines written with a comma or second sentence).
+  - Files: `channel/episodes/008-sound-air/`. Sandbox working files: `~/ep8/`.
 - **Episode 7 is finished (2026-10-30, Friday run):** "Why Big Nuts Rise When You Shake the Bag"
   (slug `why-the-big-nuts-end-up-on-top`, `produced_not_published`, no `publish_at`). 96.2 credits,
   30.25 s, 4 scenes, 72 words. `scripts/qc_episode.py 7` on the hosted file: "would be approved and
@@ -116,11 +131,12 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 559.4** on the Higgsfield Plus plan after episode 7 (2026-10-30; 655.6 before it). A
-  30-second episode costs about 96-98 (80 of it the four scenes), so this covers about three more runs
-  before the 200 floor (the fourth would start under 300 and end near 265; the fifth would pause).
-  Earlier note: on Mon 2026-10-19 168 credits went on models this recipe does not use (FLUX 3 Video,
-  Gemini Omni Flash, GPT Image 2.5 Flare), not from the production session.
+- **Credits: 442.25** on the Higgsfield Plus plan after episode 8 (2026-11-02; 559.4 before it). A
+  30-second episode costs about 96-98, or about 117 with one scene retake, so this covers two more runs
+  (Wed, Fri) before the balance nears the 200 floor; the following Monday run will likely pause.
+  Topping up credits is the owner's call. Earlier note: on Mon 2026-10-19 168 credits went on models
+  this recipe does not use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the
+  production session.
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet

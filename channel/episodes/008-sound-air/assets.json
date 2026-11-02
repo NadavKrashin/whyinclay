@@ -1,0 +1,26 @@
+{
+ "loc_room": {
+  "id": "e46480d5-c068-452b-a1a6-8024bcecdab1",
+  "desc": "LOCATION (cosy sunny clay room: warm-sand clay floor, cream clay walls, a window onto a sky-blue backdrop with cotton-wool clouds, a small cream shelf on the right wall)"
+ },
+ "loc_bead_board": {
+  "id": "614acbd1-2efc-4d12-96b5-7b219a1a073f",
+  "desc": "LOCATION (a flat pale sky-blue clay diagram board with a chunky cream clay border, standing on a warm-sand clay table, sky-blue backdrop with cotton-wool clouds)"
+ },
+ "prop_drum": {
+  "id": "6be2ef6a-8280-4aab-b315-03ff904d7a72",
+  "desc": "PROP (a chunky round signal-red clay drum with a cream clay skin and cream tension pegs)"
+ },
+ "prop_mallet": {
+  "id": "acf281c2-d1a9-472c-bdb8-111ee58c0cc5",
+  "desc": "PROP (a small cream clay drum mallet on a coiled warm-sand clay spring stand)"
+ },
+ "prop_air_beads": {
+  "id": "3b4d95ea-b9c3-42e2-bc05-10f728029a42",
+  "desc": "PROP (even rows of small round cream clay beads standing for air)"
+ },
+ "prop_ear": {
+  "id": "27e6297a-d6ef-42a8-8079-a1bc96ff62ab",
+  "desc": "PROP (a big cream clay outer-ear sculpture on a warm-sand pedestal with a white cotton tuft inside)"
+ }
+}

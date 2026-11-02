@@ -1,0 +1,160 @@
+{
+ "topic": "Every sound you hear is squeezed air",
+ "genre": "education",
+ "animation_mode": "fully_animated",
+ "channel_type": "Explainer",
+ "style": "Claymotion",
+ "through_line": {
+  "name": "the red drum",
+  "asset": "prop_drum",
+  "progression": "the red drum thumps in the sunny room, its skin shoves the row of air beads in the cutaway, its beat sets one bead bumping the next, then its beat sends rings of squeezed air across the room to the clay ear",
+  "resolution": "the red drum's beat reaches the big clay ear as a ring of squeezed air and the ear's cotton tuft flutters"
+ },
+ "arc": {
+  "hook": 1,
+  "build": [
+   2
+  ],
+  "turn": 3,
+  "payoff": 4
+ },
+ "blocks": [
+  {
+   "n": 1,
+   "arc_role": "hook",
+   "vo_line": "Every sound you hear is squeezed air. Stay to the end and watch a drum beat ripple through the air.",
+   "promise": "Stay to the end and watch a drum beat ripple through the air.",
+   "location": "loc_room",
+   "through_line_state": "the red drum thumps on its own and its skin shivers",
+   "shots": [
+    "CU frontal: a chunky signal-red clay drum with a cream skin already thumping on its own, its skin bouncing as a cream clay mallet on a little spring stand taps it",
+    "ECU macro: the cream drum skin shivering after a hit, tiny cream clay crumbs hopping on it",
+    "MEDIUM low angle: the red drum on the sandy floor of the sunny clay room, the window behind",
+    "WIDE high angle: the whole cosy clay room with the little red drum in the middle and empty air around it",
+    "MEDIUM lateral: the mallet taps once more and the drum skin settles, then everything settles"
+   ],
+   "assets_used": [
+    "loc_room",
+    "prop_drum",
+    "prop_mallet"
+   ],
+   "audio": "a deep soft drum thump, a little skin rattle, a quiet room hum",
+   "direction_note": "The drum stays on the floor; only its skin and the mallet move. No hands.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Air, *squashed*\nand let go",
+     "at": "every sound you",
+     "until": "stay to the end"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "arc_role": "build",
+   "vo_line": "Hit a drum, and its skin shoves the air next to it, squeezing it into a crowded band.",
+   "location": "loc_bead_board",
+   "through_line_state": "the red drum's skin pushes into the rows of air beads",
+   "shots": [
+    "WIDE frontal: a sky-blue clay board with the red drum on its side at the far LEFT, its cream skin facing right, and even rows of little cream clay beads filling the board to the right",
+    "CU lateral: the drum skin bulges to the RIGHT and shoves the nearest beads",
+    "ECU macro: the beads next to the skin squeeze together into a tight crowded band",
+    "MEDIUM overhead: the crowded band of beads with clay arrows pressed beside it pointing RIGHT, the beads further right still evenly spaced, no letters",
+    "CU low angle: the drum skin springs back and the crowded band sits a little further right, then everything settles"
+   ],
+   "assets_used": [
+    "loc_bead_board",
+    "prop_drum",
+    "prop_air_beads"
+   ],
+   "audio": "a soft thump, a gentle clay squish as the beads crowd, a quiet settling tap",
+   "direction_note": "The drum is always on the LEFT; the push and the crowded band move only to the RIGHT.",
+   "overlays": [
+    {
+     "type": "chain",
+     "steps": [
+      "Drum *hits*",
+      "Air *bunches*",
+      "Band moves"
+     ],
+     "at": "its skin shoves",
+     "dur": "rest",
+     "gap": 1.0
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "arc_role": "turn",
+   "vo_line": "But the air itself barely goes anywhere. Each little bit just bumps its neighbour, then swings back.",
+   "location": "loc_bead_board",
+   "through_line_state": "the red drum sits at the left edge while one bead bumps the next and swings back",
+   "shots": [
+    "MEDIUM frontal: a single row of cream clay beads across the sky-blue board, each bead sitting snugly in its own deep round dimple pressed into the clay, the red drum at the far LEFT",
+    "ECU macro: the cream clay mallet taps the first bead, which rocks RIGHT against its neighbour and then rocks back into its own dimple",
+    "CU lateral: the rock passes along the row from bead to bead toward the RIGHT, each bead tipping a little and settling back into its own dimple",
+    "WIDE high angle: the whole row of beads in their dimples, a ripple of little rocks travelling to the RIGHT, every bead staying in place",
+    "MEDIUM low angle: the last bead on the RIGHT rocks in its dimple and settles, the row still complete, then everything settles"
+   ],
+   "assets_used": [
+    "loc_bead_board",
+    "prop_air_beads",
+    "prop_mallet",
+    "prop_drum"
+   ],
+   "audio": "soft clicky clay taps passing along the row, a faint wooden tick, a quiet settle",
+   "direction_note": "Every bead stays in its own dimple; none rolls away or leaves the row. Only the rocking travels to the RIGHT.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "Each bit only\n*wiggles*",
+     "at": "each little bit",
+     "dur": "rest"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "arc_role": "payoff",
+   "vo_line": "That bump races outward as rings of squeezed air, and when they hit your ear, you hear the drum.",
+   "delivers_promise": "the red drum thumps and rings of slightly darker squeezed cream clay air ripple out across the room until one reaches a big clay ear sculpture, whose cotton tuft flutters",
+   "comment_question": "What's the loudest sound you've ever heard?",
+   "location": "loc_room",
+   "through_line_state": "the red drum's beat ripples out across the room and reaches the clay ear",
+   "shots": [
+    "CU frontal: the red drum thumps and a ring of translucent cream clay air bulges out from its skin",
+    "WIDE high angle: rings of cream clay air ripple outward across the sunny room one after another, growing wider",
+    "MEDIUM lateral: a ring of squeezed air travels toward a big cream clay ear sculpture standing on a little stand at the RIGHT",
+    "ECU macro: the ring reaches the clay ear and a little cotton tuft inside the ear flutters",
+    "WIDE low angle: the drum on the LEFT, the ear on the RIGHT, the last ring fading between them, then everything settles"
+   ],
+   "assets_used": [
+    "loc_room",
+    "prop_ear",
+    "prop_drum"
+   ],
+   "audio": "a deep drum thump, a soft airy whoosh of each ring, a tiny fluttering rustle at the ear",
+   "direction_note": "The drum is on the LEFT and the ear on the RIGHT; rings only travel outward from the drum.",
+   "overlays": [
+    {
+     "type": "card",
+     "text": "The *push* travels,\nnot the air",
+     "at": "that bump races",
+     "until": "and when they"
+    },
+    {
+     "type": "card",
+     "text": "What's the loudest sound\nyou've ever *heard*?",
+     "at": "and when they",
+     "dur": "rest"
+    }
+   ]
+  }
+ ],
+ "sources": [
+  "https://www.physicsclassroom.com/class/sound/Lesson-1/Sound-as-a-Longitudinal-Wave",
+  "https://www.physicsclassroom.com/Class/sound/U11L1c.html",
+  "https://openstax.org/books/college-physics/pages/17-1-sound"
+ ],
+ "palette_lock": "painted sky-blue backdrop with cotton-wool clouds, cream, warm sand, cream clay air beads; signal red ONLY on the drum"
+}
