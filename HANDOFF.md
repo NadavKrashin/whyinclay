@@ -1,9 +1,16 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-02.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-04.
 
 ## State right now
 
+- **PAUSED (Wed 2026-11-04 run): 42.25 credits, under the 200 floor.** No episode was made. The
+  balance was 442.25 after episode 8 on Monday morning; on Mon 2026-11-02 at 21:06 and 21:15 UTC two
+  Seedance 2.5 generations spent 160 + 240 = 400 credits. They did not come from the production session
+  (its run ended about 07:35 UTC, and the recipe never uses Seedance), so someone or something else on
+  the account made them. Production resumes on its own at the next scheduled run once the balance is 200
+  or more; buying credits or changing the plan is the owner's call. Next topic in line:
+  `why-waves-break-at-the-beach` (85.6). `qc_episode.py --all` this morning: episodes 3-8 all pass.
 - **Episode 8 is finished (2026-11-02, Monday run):** "What Sound Actually Is" (slug
   `why-sound-is-just-squeezed-air`, `produced_not_published`, no `publish_at`). 117.15 credits (one
   scene regenerated), 29.8 s, 4 scenes, 74 words. `scripts/qc_episode.py 8` on the hosted file: "would
@@ -131,12 +138,10 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 442.25** on the Higgsfield Plus plan after episode 8 (2026-11-02; 559.4 before it). A
-  30-second episode costs about 96-98, or about 117 with one scene retake, so this covers two more runs
-  (Wed, Fri) before the balance nears the 200 floor; the following Monday run will likely pause.
-  Topping up credits is the owner's call. Earlier note: on Mon 2026-10-19 168 credits went on models
-  this recipe does not use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare), not from the
-  production session.
+- **Credits: 42.25** on the Higgsfield Plus plan (2026-11-04), after 400 credits of Seedance 2.5 spent
+  outside the production session on 2026-11-02 evening (see the PAUSED note above). An episode needs
+  about 100 and the recipe pauses below 200. Earlier note: on Mon 2026-10-19 168 credits also went on
+  models this recipe does not use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare).
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet
