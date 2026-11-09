@@ -1,9 +1,13 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-04.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-09.
 
 ## State right now
 
+- **STILL PAUSED (Mon 2026-11-09 run): 29.25 credits.** No episode made. Since Wednesday a further 13
+  credits went on 52 GPT Image 2.6 images (0.25 each) on Fri 2026-11-06, 06:15-06:24 UTC, again not from
+  the production session. The Friday 2026-11-06 scheduled run produced nothing and sent no report (it
+  would have paused anyway at about 29 credits). Production restarts by itself once the balance is 200+.
 - **PAUSED (Wed 2026-11-04 run): 42.25 credits, under the 200 floor.** No episode was made. The
   balance was 442.25 after episode 8 on Monday morning; on Mon 2026-11-02 at 21:06 and 21:15 UTC two
   Seedance 2.5 generations spent 160 + 240 = 400 credits. They did not come from the production session
@@ -138,10 +142,10 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
     repo with `create_session` (permission_mode auto), confirm Higgsfield `balance` and a sandbox
     command run there without a prompt, then point a new task at it with `create_trigger` and
     `persistent_session_id`, reusing the prompt (`list_triggers`), and disable the old task.
-- **Credits: 42.25** on the Higgsfield Plus plan (2026-11-04), after 400 credits of Seedance 2.5 spent
-  outside the production session on 2026-11-02 evening (see the PAUSED note above). An episode needs
-  about 100 and the recipe pauses below 200. Earlier note: on Mon 2026-10-19 168 credits also went on
-  models this recipe does not use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare).
+- **Credits: 29.25** on the Higgsfield Plus plan (2026-11-09). Outside spend since 2026-11-02: 400 on
+  Seedance 2.5 (11-02 evening) and 13 on GPT Image 2.6 (11-06 morning), none from the production session.
+  An episode needs about 100 and the recipe pauses below 200. Earlier note: on Mon 2026-10-19 168 credits
+  also went on models this recipe does not use (FLUX 3 Video, Gemini Omni Flash, GPT Image 2.5 Flare).
 - **App: running on the owner's Mac mini** (reported by the owner 2026-10-16; this cloud session can't
   reach the Mac, so those details are as reported, not checked from here).
   - Dashboard: https://atlass-mac-mini-2.tailf9f0e7.ts.net. Reachable only on the owner's tailnet
