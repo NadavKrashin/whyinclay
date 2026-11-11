@@ -4,6 +4,9 @@ Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md
 
 ## State right now
 
+- **Mac back online (owner, 2026-11-11):** YouTube showed only episodes 1-4 at 15:48 UTC, so episodes 5-8
+  (made 10-26 to 11-02) never posted while the Mac was down. To avoid a burst, 6-8 got `publish_at` one per
+  day at 19:00 Israel (Nov 12, 13, 14); 5 takes the next free slot (tonight). Verify on the public channel.
 - **STILL PAUSED (Mon 2026-11-09 and Wed 2026-11-11 runs): 29.25 credits, unchanged on 11-11.** No episode made. Since Wednesday a further 13
   credits went on 52 GPT Image 2.6 images (0.25 each) on Fri 2026-11-06, 06:15-06:24 UTC, again not from
   the production session. The Friday 2026-11-06 scheduled run produced nothing and sent no report (it
