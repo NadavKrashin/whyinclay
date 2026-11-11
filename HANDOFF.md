@@ -1,10 +1,10 @@
 # Handoff: where to pick up
 
-Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-09.
+Read this first in any new session, then `CLAUDE.md` and `channel/why-in-clay.md`. Last updated 2026-11-11.
 
 ## State right now
 
-- **STILL PAUSED (Mon 2026-11-09 run): 29.25 credits.** No episode made. Since Wednesday a further 13
+- **STILL PAUSED (Mon 2026-11-09 and Wed 2026-11-11 runs): 29.25 credits, unchanged on 11-11.** No episode made. Since Wednesday a further 13
   credits went on 52 GPT Image 2.6 images (0.25 each) on Fri 2026-11-06, 06:15-06:24 UTC, again not from
   the production session. The Friday 2026-11-06 scheduled run produced nothing and sent no report (it
   would have paused anyway at about 29 credits). Production restarts by itself once the balance is 200+.
